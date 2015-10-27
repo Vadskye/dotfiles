@@ -77,10 +77,6 @@ function go() {
                         _initial_setup
                         return 0
                         ;;
-                    update)
-                        _update_old_bookmark_format
-                        return 0
-                        ;;
                     help)
 						_echo_behavior
                         echo "$usage"
@@ -220,35 +216,6 @@ function _list_bookmarks() {
 	echo ${!go_bookmarks[@]}
 }
 
-function _set_bookmark_releases() {
-    local release=$1
-    # make sure $release is correctly formatted so we don't replace with garbage
-    if [[ $release =~ ^[0-9]+\.[0-9]+$ ]]; then
-        # The arguments for the Mac version of sed are different from the Linux version
-        platform_name="$(uname -s)"
-        if [ "$platform_name" == "Darwin" ]; then
-            sed -E -i '' 's:(p4/builds/epoc_)[0-9]+\.[0-9]+:\1'"$release"':g' ~/.go_bookmarks/*
-            sed -E -i '' 's:(epoc/builds/)[0-9]+\.[0-9]+:\1'"$release"':g' ~/.go_bookmarks/*
-        else
-            sed -r -i 's:(p4/builds/epoc_)[0-9]+\.[0-9]+:\1'"$release"':g' ~/.go_bookmarks/*
-            sed -r -i 's:(epoc/builds/)[0-9]+\.[0-9]+:\1'"$release"':g' ~/.go_bookmarks/*
-        fi
-        echo "Bookmarks now point to release $release"
-    else
-        echo "Release '$release' is incorrectly formatted and was not used"
-    fi
-}
-
-function _update_old_bookmark_format() {
-    if [ "$platform_name" == "Darwin" ]; then
-        sed -E -i '' 's:^cd :echo :g' ~/.go_bookmarks/*
-        chmod u+x ~/.go_bookmarks/*
-    else
-        sed -r -i 's:^cd :echo :g' ~/.go_bookmarks/*
-        chmod u+x ~/.go_bookmarks/*
-    fi
-}
-
 function _save_bookmarks() {
 	array_text="echo '( "
 	for bookmark in "${!go_bookmarks[@]}"; do
@@ -257,7 +224,7 @@ function _save_bookmarks() {
 	done
 	array_text=$array_text")'"
 
-	echo -e $array_text > ~/go_bookmarks
+	echo -e $array_text > $DOTFILES/bash/go_bookmarks
 }
 
 function _echo_bookmark() {
