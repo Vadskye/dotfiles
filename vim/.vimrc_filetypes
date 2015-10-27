@@ -37,7 +37,7 @@
     au Filetype perl set iskeyword+=:
 
     " yaml files should fold by indentation
-    au Filetype yaml set foldmethod=indent
+    au Filetype yaml set foldmethod=indent | set foldnestmax=2
 
     " highlight Perl subroutine names
     au Filetype perl syn match Function /\<[a-zA-Z_]\{3,}(/he=e-1
