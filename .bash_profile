@@ -5,8 +5,8 @@ source "$DOTFILES/bash/rc"
 source "$DOTFILES/bash/aliases"
 source "$DOTFILES/bash/local"
 
-if [ -f $DOTFILES/go ]; then
+if [ -f $DOTFILES/bash/go ]; then
     unset go_bookmarks
-    source "$DOTFILES/go"
-    declare -A go_bookmarks=$($DOTFILES/go_bookmarks)
+    source "$DOTFILES/bash/go"
+    declare -A go_bookmarks=$($DOTFILES/bash/go_bookmarks)
 fi
