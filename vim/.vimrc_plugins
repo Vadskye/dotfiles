@@ -2,6 +2,13 @@
     let g:airline_theme="jam"
     let g:airline#extensions#branch#enabled=0
 
+    " don't use separator symbols
+    let g:airline_left_sep=''
+    let g:airline_right_sep=''
+
+    " don't load third party extensions
+    let g:airline_extensions = ['ctrlp', 'tagbar', 'whitespace']
+
     function! ShortDirectoryName(dir)
         let dir = substitute(a:dir, '\v^.*epoc_([0-9]+\.[0-9]+)/(.*)', 'e\1 \2', '')
         let dir = substitute(dir, '\v^.*build_([0-9]+\.[0-9]+)/(.*)', 'a\1 \2', '')
@@ -13,13 +20,14 @@
     endfunction
 
     function! AirlineInit()
-        let g:airline_section_b = "%{ShortDirectoryName(expand('%:p:h'))}"
-        let g:airline_section_y = '%{ShortDirectoryName(getcwd())}'
-
+         let g:airline_section_a = "%{airline#util#prepend(airline#parts#crypt(),0)}%{airline#util#prepend(airline#parts#paste(),0)}%{ShortDirectoryName(expand('%:p:h'))}"
         " never display full path
-        let g:airline_section_c = '%{expand("%:t")} %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
-        " remove column information
-        let g:airline_section_z = '%3p%%%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#'
+        let g:airline_section_b = '%{expand("%:t")} %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+        let g:airline_section_c = '%{airline#util#prepend(airline#extensions#tagbar#currenttag(),0)}%{airline#util#wrap(airline#parts#filetype(),0)}'
+        " don't show column information
+        let g:airline_section_x = '%3p%%%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#'
+        let g:airline_section_z = '%{ShortDirectoryName(getcwd())}'
+
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
 
@@ -128,7 +136,7 @@
     " automatically quit after opening a file
     let NERDTreeQuitOnOpen=1
     " show hidden files
-    let NERDTreeShowHidden=0
+    let NERDTreeShowHidden=1
 
 " Supertab:
     " let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
@@ -163,6 +171,11 @@
     let g:pydiction_menu_height = 10
 
 " Tagbar:
+    let g:tagbar_skip_ctags_validation = 1
+    let g:tagbar_skip_update_on_save = 1
+    let g:tagbar_ctags_bin = "$USERPROFILE/Utilities/ctags58/ctags.exe"
+    let g:ctags_types = {'vim': 1, 'eiffel': 1, 'asm': 1, 'sh': 1, 'asp': 1, 'html': 1, 'basic': 1, 'rexx': 1, 'lisp': 1, 'c++': 1, 'cobol': 1, 'sql': 1, 'ant': 1, 'lua': 1, 'awk': 1, 'matlab': 1, 'tcl': 1, 'beta': 1, 'erlang': 1, 'python': 1, 'slang': 1, 'verilog': 1, 'c': 1, 'pascal': 1, 'tex': 1, 'vhdl': 1, 'vera': 1, 'php': 1, 'ocaml': 1, 'java': 1, 'flex': 1, 'scheme': 1, 'make': 1, 'sml': 1, 'c#': 1, 'perl': 1, 'dosbatch': 1, 'yacc': 1, 'javascript': 1, 'ruby': 1, 'fortran': 1}
+
     " nnoremap ;f :TagbarOpen fj<CR>
     " let g:tagbar_sort = 0
     " let g:tagbar_indent = 1
