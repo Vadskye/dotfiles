@@ -45,3 +45,6 @@ Temporary Items
 # BASH
 bash/local
 bash/go_bookmarks
+
+# VIM
+vim/.vimrc_local
