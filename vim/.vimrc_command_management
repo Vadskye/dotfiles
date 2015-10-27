@@ -4,13 +4,13 @@
 
 " Commands:
     " Execute current file in new vsplit
-    command! -nargs=* Execute silent! call VnewTemp() | read !# <args>
+    command! -nargs=* Execute silent! call VnewTemp() | read !#:p <args>
     " execute current file in current window
     command! -nargs=* ExecuteHere silent! read !# <args>
     " Perl files don't like showing output when executed normally
-    command! -nargs=* ExecutePerl silent! call VnewTemp() | read !perl # <args>
+    command! -nargs=* ExecutePerl silent! call VnewTemp() | read !perl #:p <args>
     command! -nargs=* ExecutePerlHere silent! read !perl # <args>
-    command! -nargs=* ExecutePython silent! call VnewTemp() | read !python # <args>
+    command! -nargs=* ExecutePython silent! call VnewTemp() | read !python #:p <args>
     command! -nargs=* ExecutePythonHere silent! read !python # <args>
     " set and use a 'main file' that can be executed regardless of current file location
     command! SetMainFile silent! let g:mainfile = expand('%:p')
