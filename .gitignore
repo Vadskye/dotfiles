@@ -48,3 +48,4 @@ bash/go_bookmarks
 
 # VIM
 vim/.vimrc_local
+vim/bundle
