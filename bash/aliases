@@ -1,0 +1,83 @@
+#!/bin/bash
+
+alias g="go"
+alias ge="go -e"
+alias ls="ls --color"
+alias ll="ls --color=auto -aFlh"
+alias rebash='source ~/.bash_profile'
+alias bashprofile="vim ~/.bash_profile"
+alias bashrc="vim $DOTFILES/bash/rc; rebash"
+
+alias processes="ps -u $USER"
+alias killmy="pkill -u $USER -f"
+# background log
+function bgl() {
+    "$@" > ~/derp.log 2> err.log &
+}
+
+# case insensitive cd
+function cdc() {
+    # first, try normal cd
+    builtin cd "$@" 2>/dev/null && return
+    # next, try ucfirst cd
+    local args=( "$@" )
+    args[0]=$(ucfirst_basename ${args[0]})
+    # echo "trying ucfirst ${args[0]}"
+    builtin cd "${args[*]}" 2>/dev/null && return
+    # finally, try uc cd
+    args[0]=$(uc_basename ${args[0]})
+    # echo "trying uc ${args[0]}"
+    builtin cd "${args[*]}" 2>/dev/null && return
+    # give up and try cd again, knowing that it will fail
+    # but the error message will be what the user expects
+    builtin cd "$@" && return
+}
+function ucfirst() {
+    echo $(perl -e "print ucfirst \"$1\n\"")
+}
+function uc() {
+    echo $(perl -e "print uc \"$1\n\"")
+}
+function ucfirst_basename() {
+    local dir=$(dirname "$1")
+    local regex="(.*)[.]([^.]*)$"
+    [[ $(basename "$1") =~ $regex ]]
+    local filename=$(ucfirst ${BASH_REMATCH[1]})
+    filename="$filename.${BASH_REMATCH[2]}"
+    if [ "$dir" = "" ]; then
+        echo $filename
+    else
+        echo "$dir/$filename"
+    fi
+}
+function uc_basename() {
+    local dir=$(dirname "$1")
+    local regex="(.*)[.]([^.]*)$"
+    [[ $(basename "$1") =~ $regex ]]
+    local filename=$(uc ${BASH_REMATCH[1]})
+    filename="$filename.${BASH_REMATCH[2]}"
+    if [ "$dir" = "" ]; then
+        echo $filename
+    else
+        echo "$dir/$filename"
+    fi
+}
+function vo() {
+    go -p vim "$1"
+}
+function backup() {
+    cp -r $1 ~/backup/
+}
+function mbackup() {
+    mv $1 ~/backup/
+}
+function restore() {
+    cp -r ~/backup/$1 .
+}
+function cdl() {
+    cd $*
+    ls
+}
+function pathogit() {
+    git clone "https://github.com/$1" "$USERPROFILE/vimfiles/bundle/$2"
+}

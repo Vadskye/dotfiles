@@ -1,0 +1,10 @@
+#!/bin/bash
+
+stty ixany
+stty ixoff -ixon
+stty stop undef
+stty start undef
+set completion-ignore-case on
+
+export PROMPT_COMMAND="history -a; history -r;"
+export PS1="$NS_Cyan[\\w$NS_Cyan]\$$NS_Nocolor "
