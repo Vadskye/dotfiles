@@ -46,88 +46,88 @@
 
 function LoadTerminalPython()
     python << EOPYTHON
-    import platform
-    import subprocess
-    import threading
-    import time
-    import vim
+import platform
+import subprocess
+import threading
+import time
+import vim
 
-    class TerminalThread(object):
-        def __init__(self, command):
-            vim.command('call OpenTerminalBuffer()')
-            self.terminal_buffer_index = vim.current.buffer.number
-            # switch back to the original buffer
-            vim.command('wincmd w')
-            self.command = command
-            thread = threading.Thread(target = self.run, args = ())
-            thread.daemon = True
-            self.is_done = False
-            thread.start()
-
-        def run(self):
-            output_lines_to_buffer(self.command, self.terminal_buffer_index)
-            self.is_done = True
-            print "Terminal command complete"
-
-    def output_lines_to_buffer(cmd, buffer_number = None):
-        if buffer_number is None:
-            buffer_number = vim.current.buffer.number
-        # Append the given shell command's output linewise to the current buffer.
-        
-        current_system = platform.system()
-        if current_system == 'Linux':
-            p = subprocess.Popen(['/bin/bash', '-i', '-c', cmd], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        elif current_system == 'Windows':
-            p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-        else:
-            raise Exception("Unsupported system {0}".format(current_system))
-        for line in iter(p.stdout.readline, ''):
-            vim.buffers[buffer_number].append(line.rstrip())
-            # automatically keep up with the bottom
-            vim.command('wincmd w')
-            vim.command('normal! G')
-            vim.command('wincmd w')
-            vim.command('redraw')
-            time.sleep(0.1)
-
-    def output_lines_to_current_buffer(cmd, clear_buffer = False):
-        if clear_buffer:
-            vim.command('normal! ggdG')
-        vim.current.buffer.append('Executing "%s": {{{' % cmd)
-
-        try:
-            p = subprocess.Popen(['bash', '-c', cmd], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        except WindowsError:
-            p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-
-        vim.command('redraw')
-        last_redraw_time = time.time()
-        for line in iter(p.stdout.readline, ''):
-            vim.current.buffer.append('| ' + line.rstrip())
-            # automatically keep up with the bottom
-            if time.time() - last_redraw_time > 0.1:
-                vim.command('normal! G')
-                vim.command('redraw')
-                last_redraw_time = time.time()
-        vim.current.buffer.append('}}}')
-        vim.current.buffer.append('')
-        vim.command('normal! G')
-        vim.command('redraw')
-
-    def run_terminal_command(cmd, clear_buffer = False):
-        vim.command('echomsg "Executing command"')
-        vim.command('call OpenTerminalBuffer()')
-        output_lines_to_current_buffer(cmd, clear_buffer)
-        vim.command('wincmd w')
-        vim.command('echomsg "Execution complete"')
-
-    def cmd_derp(cmd):
-        termout = open('termout.log', 'a')
+class TerminalThread(object):
+    def __init__(self, command):
         vim.command('call OpenTermoutBuffer()')
+        self.terminal_buffer_index = vim.current.buffer.number
+        # switch back to the original buffer
+        vim.command('wincmd w')
+        self.command = command
+        thread = threading.Thread(target = self.run, args = ())
+        thread.daemon = True
+        self.is_done = False
+        thread.start()
+
+    def run(self):
+        output_lines_to_buffer(self.command, self.terminal_buffer_index)
+        self.is_done = True
+        print "Terminal command complete"
+
+def output_lines_to_buffer(cmd, buffer_number = None):
+    if buffer_number is None:
+        buffer_number = vim.current.buffer.number
+    # Append the given shell command's output linewise to the current buffer.
+    
+    current_system = platform.system()
+    if current_system == 'Linux':
+        p = subprocess.Popen(['/bin/bash', '-i', '-c', cmd], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    elif current_system == 'Windows':
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-        for line in iter(p.stdout.readline, ''):
-            termout.write(line)
-            vim.command('checktime')
+    else:
+        raise Exception("Unsupported system {0}".format(current_system))
+    for line in iter(p.stdout.readline, ''):
+        vim.buffers[buffer_number].append(line.rstrip())
+        # automatically keep up with the bottom
+        vim.command('wincmd w')
+        vim.command('normal! G')
+        vim.command('wincmd w')
+        vim.command('redraw')
+        time.sleep(0.1)
+
+def output_lines_to_current_buffer(cmd, clear_buffer = False):
+    if clear_buffer:
+        vim.command('normal! ggdG')
+    vim.current.buffer.append('Executing "%s": {{{' % cmd)
+
+    try:
+        p = subprocess.Popen(['bash', '-c', cmd], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    except WindowsError:
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+
+    vim.command('redraw')
+    last_redraw_time = time.time()
+    for line in iter(p.stdout.readline, ''):
+        vim.current.buffer.append('| ' + line.rstrip())
+        # automatically keep up with the bottom
+        if time.time() - last_redraw_time > 0.1:
+            vim.command('normal! G')
+            vim.command('redraw')
+            last_redraw_time = time.time()
+    vim.current.buffer.append('}}}')
+    vim.current.buffer.append('')
+    vim.command('normal! G')
+    vim.command('redraw')
+
+def run_terminal_command(cmd, clear_buffer = False):
+    vim.command('echomsg "Executing command"')
+    vim.command('call OpenTerminalBuffer()')
+    output_lines_to_current_buffer(cmd, clear_buffer)
+    vim.command('wincmd w')
+    vim.command('echomsg "Execution complete"')
+
+def cmd_derp(cmd):
+    termout = open('termout.log', 'a')
+    vim.command('call OpenTermoutBuffer()')
+    p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+    for line in iter(p.stdout.readline, ''):
+        termout.write(line)
+        vim.command('checktime')
 
 EOPYTHON
 endfunction
