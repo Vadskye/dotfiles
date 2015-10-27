@@ -1,0 +1,55 @@
+" Commands:
+    " Line breaking commands
+    command Nobreak set wrap|set textwidth=0|set wrapmargin=0
+    command Break set nowrap|set textwidth=80|set wrapmargin=0
+
+" Mappings:
+    " more consistent Ctrl-R
+    nnoremap <C-r> i<C-r><Esc>
+
+    " quickly insert text from default register
+    inoremap <C-r><C-r> <C-r>"
+    nnoremap <C-r><C-r> i<C-r>"<Esc>
+    cnoremap <C-r><C-r> <C-r>"
+
+    " use a as prefix for inner ("a") text objects instead of i
+    onoremap aw iw
+    onoremap aW iW
+    onoremap as is
+    onoremap ap ip
+    onoremap a[ i[
+    onoremap a] i]
+    onoremap a( i(
+    onoremap a) i)
+    onoremap ab ib
+    onoremap aB iB
+    onoremap a< i<
+    onoremap a> i>
+    onoremap at it
+    onoremap a{ i{
+    onoremap a} i}
+    onoremap a" i"
+    onoremap a' i'
+    onoremap a` i`
+
+    " use s as prefix for outer ("surrounding") text objects instead of a
+    onoremap sw aw
+    onoremap sW aW
+    onoremap ss as
+    onoremap sp ap
+    onoremap s[ a[
+    onoremap s] a]
+    onoremap s( a(
+    onoremap s) a)
+    onoremap sb ab
+    onoremap sB aB
+    onoremap s< a<
+    onoremap s> a>
+    onoremap st at
+    onoremap s{ a{
+    onoremap s} a}
+    onoremap s" a"
+    onoremap s' a'
+    onoremap s` a`
+    onoremap si ai
+    onoremap sI aI

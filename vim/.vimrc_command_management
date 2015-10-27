@@ -1,0 +1,56 @@
+" Settings:
+    " if mainfile is not set, default to the first file opened
+    let g:mainfile = '"' . expand('%:p') . '"'
+
+" Commands:
+    " Execute current file in new vsplit
+    command! -nargs=* Execute silent! call VnewTemp() | read !# <args>
+    " execute current file in current window
+    command! -nargs=* ExecuteHere silent! read !# <args>
+    " Perl files don't like showing output when executed normally
+    command! -nargs=* ExecutePerl silent! call VnewTemp() | read !perl # <args>
+    command! -nargs=* ExecutePerlHere silent! read !perl # <args>
+    command! -nargs=* ExecutePython silent! call VnewTemp() | read !python # <args>
+    command! -nargs=* ExecutePythonHere silent! read !python # <args>
+    " set and use a 'main file' that can be executed regardless of current file location
+    command! SetMainFile silent! let g:mainfile = expand('%:p')
+    command! -nargs=* ExecuteMain silent! call VnewTemp() | execute 'read !' . g:mainfile . ' <args>'
+    command! -nargs=* ExecuteMainPerl silent! call VnewTemp() | execute 'read !perl ' . g:mainfile . ' <args>'
+    command! -nargs=* ExecuteMainPython silent! call VnewTemp() | execute 'read !python ' . g:mainfile . ' <args>'
+    command! -nargs=* ExecuteMainHere silent! execute 'read !' . g:mainfile . ' <args>'
+
+    " profiling
+    command! -nargs=* ExecuteProfile silent! call VnewTemp() | execute 'read !profile # <args>'
+    command! -nargs=* ExecuteProfileMain silent! call VnewTemp() | execute 'read !profile ' . g:mainfile . '<args>'
+
+" Mappings:
+    " Run external commands
+    nmap ! :!
+    nmap !! :!<Up><Enter>
+
+    " quickly repeat last command
+    nnoremap :: :<Up><Enter>
+
+    " open command line
+    noremap <Leader><Leader> :
+
+    " rapid execution
+    nnoremap X :Execute<Up><Enter>
+    nnoremap x :Execute
+    nnoremap xx :Execute<Up>
+    nnoremap xm :ExecuteMain
+    nnoremap xmp :ExecuteMainPerl
+    nnoremap xmy :ExecuteMainPython
+    nnoremap xh :ExecuteHere
+    nnoremap xp :ExecutePerl
+    nnoremap xph :ExecutePerlHere
+    nnoremap xy :ExecutePython
+    nnoremap xyh :ExecutePythonHere
+    nnoremap xe :call VnewTemp() \| read !
+    nnoremap x<Esc> <Esc>
+
+    " profile
+    nnoremap xf :ExecuteProfile
+    nnoremap xfm :ExecuteProfileMain
+
+    nnoremap <silent> vv :execute getline('.')<CR>

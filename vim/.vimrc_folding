@@ -1,0 +1,38 @@
+" Mappings:
+    " z is the fold manipulation command
+
+    " jl opens and closes folds
+    nnoremap zl zo
+    nnoremap zL zO
+    nnoremap zj zc
+    nnoremap zJ zC
+
+    " ik increases and decreases overall fold level
+    nnoremap zi zm
+    nnoremap zI zM
+    nnoremap zk zr
+    nnoremap zK zR
+
+    " zz folds to view the current line
+    nnoremap zz zv
+
+    " z<Space> toggles the current fold
+    nnoremap z<Space> zh
+
+    " zr resets folds
+    nnoremap zr zx
+    nnoremap zR zX
+
+    " Z is the fold navigation command
+
+    " jl moves to start and end of fold
+    nnoremap Zj [z
+    nnoremap ZJ [z
+    nnoremap Zl ]z
+    nnoremap ZL ]z
+
+    " ik moves up and down folds
+    nnoremap Zi zk
+    nnoremap ZI zk
+    nnoremap Zk zj
+    nnoremap ZK zj

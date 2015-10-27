@@ -1,0 +1,129 @@
+" Settings:
+    set winaltkeys=no
+    filetype plugin indent on
+    syntax on
+
+    behave mswin
+
+    " changes from vim-sensible
+    set ruler
+    set showcmd
+    set wildmenu
+    set complete-=i
+    set smarttab
+    set nrformats-=octal
+    set autoread
+    set scrolloff=2
+    set sidescrolloff=5
+    set display+=lastline
+
+    " enable backspacing over everything in indent mode
+    set backspace=indent,eol,start
+
+    " deal with line breaks
+    set textwidth=80
+    set formatoptions=cq
+    set wrapmargin=0
+    set linebreak
+
+    " Replace tabs
+    set tabstop=4
+    set shiftwidth=4
+    set expandtab
+
+    " don't warn if an existing swap files is found
+    set shortmess+=A
+
+    " don't beep
+    set visualbell
+    set noerrorbells
+
+    set undofile
+
+    " Change backup file and undo file locations
+    if has("win32")
+        set directory=$HOME/AppData/Local/Vim/swp//
+        set backupdir=$HOME/AppData/Local/Vim/backup//
+        set undodir=$HOME/AppData/Local/Vim/undo//
+    else
+        if has("unix")
+            set directory=~/.vim/swp//
+            set backupdir=~/.vim/backup//
+            set undodir=~/.vim/undo//
+        endif
+    endif
+
+    " wrapped text should retain its indentation
+    set breakindent
+    " highlight wrapped lines
+    let &breakindentopt='sbr'
+    let &showbreak='| '
+
+    " In many terminal emulators the mouse works just fine, thus enable it.
+    if has('mouse')
+      set mouse=a
+    endif
+
+    " fix insert mode navigation in Unix
+    if has('unix')
+        imap <Esc>OA <Up>
+        imap <Esc>OB <Down>
+        imap <Esc>OC <Right>
+        imap <Esc>OD <Left>
+        imap <80>K1 <Home>
+        imap <80>K4 <End>
+    endif
+
+    " use unix line endings by default
+    set fileformats=unix,dos
+    set fileformat=unix
+
+    set diffexpr=MyDiff()
+
+    " don't redraw unnecessarily
+    set lazyredraw
+
+    " always show status line
+    set laststatus=2
+
+" Functions:
+    function MyDiff()
+       let opt = '-a --binary '
+       if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+       if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+       let arg1 = v:fname_in
+       if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+       let arg2 = v:fname_new
+       if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+       let arg3 = v:fname_out
+       if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+       if $VIMRUNTIME =~ ' '
+         if &sh =~ '\<cmd'
+           if empty(&shellxquote)
+             let l:shxq_sav = ''
+             set shellxquote&
+           endif
+           let cmd = '"' . $VIMRUNTIME . '\diff"'
+         else
+           let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+         endif
+       else
+         let cmd = $VIMRUNTIME . '\diff'
+       endif
+       silent execute 'silent !' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+       if exists('l:shxq_sav')
+         let &shellxquote=l:shxq_sav
+       endif
+     endfunction
+
+     function CaptureEx(command)
+         redir => output
+         execute a:command
+         redir END
+         return output
+     endfunction
+
+     function ReadEx(command)
+         let output = CaptureEx(a:command)
+         put=output
+     endfunction

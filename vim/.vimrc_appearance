@@ -1,0 +1,90 @@
+" Settings:
+
+    " ConEmu can use bold and italic backgrounds
+    let g:italics=11
+    let g:bold=12
+
+    " Change font
+    if has("gui_running")
+      if has("gui_gtk2")
+        set guifont=Inconsolata\ 12
+      elseif has("gui_macvim")
+        set guifont=Menlo\ Regular:h14
+      elseif has("gui_win32")
+        set guifont=Consolas:h16:cANSI
+      endif
+    endif
+
+    " Change color scheme
+    " colo vibrantink this has weird highlighting
+    " colo blacksea
+    " colo jellybeans
+    let g:jellybeans_background_color = "000000"
+    let g:jellybeans_background_color_256 = "000"
+    if has('gui_running')
+        let g:jellybeans_overrides = {
+            \ 'IncSearch': { 'guifg': '000000', 'guibg': 'FFFF00'},
+            \ 'Search':    { 'guifg': '000000', 'guibg': 'BBBB00'},
+        \ }
+    else
+        let g:jellybeans_overrides = {
+            \ 'Comment':   { 'ctermfg': 'DarkGray', 'ctermbg': g:italics},
+            \ 'Constant':  { 'ctermfg': 'DarkRed', 'ctermbg': 'Black'},
+            \ 'CursorColumn':{'ctermfg': 'Black', 'ctermbg': 'DarkGray'},
+            \ 'CursorLine':{ 'ctermfg': 'Black', 'ctermbg': 'Gray'},
+            \ 'Delimiter': { 'ctermfg': 'DarkCyan', 'ctermbg': 'Black'},
+            \ 'DiffDelete':{ 'ctermfg': 'White', 'ctermbg': 'DarkRed'},
+            \ 'DiffText':  { 'ctermfg': 'Black', 'ctermbg': 'LightBlue'},
+            \ 'Folded':    { 'ctermfg': 'Gray', 'ctermbg': 'DarkGray'},
+            \ 'FoldColumn':{ 'ctermfg': 'Gray', 'ctermbg': 'DarkGray'},
+            \ 'Function':  { 'ctermfg': 'DarkYellow', 'ctermbg': 'Black'},
+            \ 'Identifier':{ 'ctermfg': 'Magenta', 'ctermbg': 'Black'},
+            \ 'IncSearch': { 'ctermfg': 'Black', 'ctermbg': 'Yellow'},
+            \ 'LineNr':    { 'ctermfg': 'DarkGray', 'ctermbg': 'Black'},
+            \ 'MatchParen':{ 'ctermfg': 'White', 'ctermbg': 'DarkBlue'},
+            \ 'ModeMsg':   { 'ctermfg': 'White', 'ctermbg': g:bold},
+            \ 'NonText':   { 'ctermfg': 'DarkGray', 'ctermbg': 'Black'},
+            \ 'PerlMethod':{ 'ctermfg': 'Yellow', 'ctermbg': 'Black'},
+            \ 'PMenu':     { 'ctermfg': 'White', 'ctermbg': 'DarkGray'},
+            \ 'PreciseJumpTarget': {'ctermfg': 'White', 'ctermbg': 'DarkGreen'},
+            \ 'Search':    { 'ctermfg': 'Black', 'ctermbg': 'DarkYellow'},
+            \ 'SignColumn':{ 'ctermfg': 'Gray', 'ctermbg': 'DarkGray'},
+            \ 'StatusLine':{ 'ctermfg': 'Black', 'ctermbg': 'Gray'},
+            \ 'StatusLineNC':{ 'ctermfg': 'White', 'ctermbg': 'DarkGray'},
+            \ 'SpecialKey':{ 'ctermfg': 'Gray', 'ctermbg': 'DarkGray'},
+            \ 'SpellBad':  { 'ctermfg': 'White', 'ctermbg': 'DarkRed'},
+            \ 'SpellCap':  { 'ctermfg': 'White', 'ctermbg': 'Blue'},
+            \ 'SpellLocal':{ 'ctermfg': 'White', 'ctermbg': 'DarkCyan'},
+            \ 'SpellRare': { 'ctermfg': 'White', 'ctermbg': 'DarkMagenta'},
+            \ 'String':    { 'ctermfg': 'DarkGreen', 'ctermbg': 'Black'},
+            \ 'TabLine':   { 'ctermfg': 'Black', 'ctermbg': 'Gray'},
+            \ 'TabLineFill':{'ctermfg': 'Gray', 'ctermbg': 'Black'},
+            \ 'Todo'     : { 'ctermfg': 'White', 'ctermbg': g:bold},
+            \ 'VertSplit': { 'ctermfg': 'Gray', 'ctermbg': 'DarkGray'},
+            \ 'VisualNOS': { 'ctermfg': 'Gray', 'ctermbg': g:bold},
+        \ }
+    endif
+    colo jellybeans
+    " let g:jellybeans_use_lowcolor_black = 0
+
+    " fix perl comment coloring
+    " hi perlComment ctermfg=DarkGreen
+
+    " cursor settings
+    if has("gui_running")
+        set guicursor+=n-v-c:blinkon0
+        set guicursor+=i-ci:ver20-blinkon0
+    endif
+
+    " highlight long lines
+    " highlight OverLength ctermbg=darkgray ctermfg=white guibg=#592929
+
+" Mappings:
+    " clear highlighting
+    nnoremap <silent> <Space>/ :nohlsearch<Enter>
+    nnoremap <silent> <Esc> :nohlsearch<Enter>
+
+    " show highlight group under cursor
+    map hl :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

@@ -1,0 +1,186 @@
+" Settings:
+    " use mostly case insensitive search
+    set ignorecase
+    set smartcase
+
+    " search better
+    set hlsearch
+    set incsearch
+
+" Functions:
+    " Search within a scope (a {...} program block).
+    " Version 2010-02-28 from http://vim.wikia.com/wiki/VimTip1530
+    " Return a pattern to search within a specified scope, or
+    " return a backslash to cancel search if scope not found.
+    " navigator: a command to jump to the beginning of the desired scope
+    " mode: 0=scope only; 1=scope+current word
+    function! s:ScopeSearch(navigator, mode)
+        if a:mode == 0
+            let pattern = ''
+        elseif a:mode == 1
+            let pattern = expand('<cword>')
+        endif
+        let saveview = winsaveview()
+        execute 'normal! ' . a:navigator
+        let first = line('.')
+        normal %
+        let last = line('.')
+        normal %
+        call winrestview(saveview)
+        if first < last
+            return printf('\%%>%dl\%%<%dl%s', first-1, last+1, pattern)
+        endif
+        return "\b"
+    endfunction
+
+    " Return a pattern to search within a specified scope, or
+    " return a backslash to cancel search if scope not found.
+    " navigator: a command to jump to the beginning of the desired scope
+    " mode: 0=scope only; 1=scope+current word
+    function! s:IndentSearch(mode)
+        if a:mode == 0
+            let pattern = ''
+        elseif a:mode == 1
+            let pattern = expand('<cword>')
+        endif
+        let saveview = winsaveview()
+        normal I
+        let first = line('.')
+        normal k
+        let last = line('.')
+        normal i
+        call winrestview(saveview)
+        if first < last
+            return printf('\%%>%dl\%%<%dl%s', first-1, last+1, pattern)
+        endif
+        return "\b"
+    endfunction
+
+    function SubstituteLocal(type)
+        let original_selection = &selection
+        let &selection = "inclusive"
+        silent exe "normal! `[v`]\"sy"
+        call feedkeys(":.,$s%\\V\<C-r>s%%cg\<Left>\<Left>\<Left>","n")
+        let &selection = original_selection
+    endfunction
+
+    function SubstituteGlobal(type)
+        let original_selection = &selection
+        let &selection = "inclusive"
+        silent exe "normal! `[v`]\"sy"
+        call feedkeys(":%s%\\V\<C-r>s%%cg\<Left>\<Left>\<Left>","n")
+        let &selection = original_selection
+    endfunction
+
+    function s:ExecuteSubstitute(scope)
+        if a:scope == "local"
+            setlocal operatorfunc=SubstituteLocal
+        elseif a:scope == "global"
+            setlocal operatorfunc=SubstituteGlobal
+        endif
+        return 'g@'
+    endfunction
+
+    " create arbitrary substitution mappings
+    function! s:substitution_mapping_helper(mappings)
+        for [key, dict] in items(a:mappings)
+            if key == "none"
+                let key = ""
+            endif
+            execute 'nnoremap s'        . key . " " . dict.before . ":.,$s%%%cg<Left><Left><Left><Left>" . dict.after
+            execute 'nnoremap S'        . key . " " . dict.before . ":.,$Subvert%%%cg<Left><Left><Left><Left>" . dict.after
+            execute 'nnoremap <Leader>s'. key . " " . dict.before . ":%s%%%cg<Left><Left><Left><Left>" . dict.after
+            execute 'nnoremap <Leader>S'. key . " " . dict.before . ":%Subvert%%%cg<Left><Left><Left><Left>" . dict.after
+
+            " multifile substitutions work similarly
+            execute 'nnoremap ;s' . key . ' ' . dict.before . ":MultiFileSubstituteAll  <Left>" . dict.after . "<Right> %:p:h/*<Left><Left><Left><Left><Left><Left><Left><Left>"
+            execute 'nnoremap ;S' . key . ' ' . dict.before . ":MultiFileSubstitute  <Left>" . dict.after . "<Right>"
+        endfor
+    endfunction
+
+    function! MultiFileSubstitute(pattern, replacement, file_glob, require_confirmation)
+        let original_more = &more
+        let original_ignorecase = &ignorecase
+        set nomore
+        set noignorecase
+        " allow comma delimited multiple file globs
+        let file_glob = substitute(a:file_glob, ',', ' ', 'g')
+        if a:require_confirmation
+            let flags = 'cge'
+        else
+            let flags = 'ge'
+        endif
+        normal! ms
+        let original_file = expand('%')
+        execute "args " . file_glob
+        execute "keepalt argdo %s:\\v" . a:pattern . ":" . a:replacement . ":" . flags . " | update"
+        execute "keepalt edit " . original_file
+        normal! `s
+        let &more = original_more
+        let &ignorecase = original_ignorecase
+    endfunction
+
+" Commands:
+    " quicksearch
+    command -nargs=1 Sh noautocmd vim /<args>/ *
+    command -nargs=1 Sj noautocmd vim /<args>/j *|cw
+
+    " multi-file substitution
+    command -nargs=* MultiFileSubstitute call MultiFileSubstitute(<f-args>, 1)
+    command -nargs=* MultiFileSubstituteAll silent call MultiFileSubstitute(<f-args>, 0)
+
+" Mappings:
+    " Search within current block for word at cursor, or selected text.
+    nnoremap <Leader>*{ /<C-R>=<SID>ScopeSearch('[{', 1)<CR><CR>
+    nnoremap <Leader>*i /<C-R>=<SID>IndentSearch(1)<CR><CR>
+    " Search within current block for user-entered text.
+    nnoremap <Leader>/{ /<C-R>=<SID>ScopeSearch('[{', 0)<CR>
+    nnoremap <Leader>/i /<C-R>=<SID>IndentSearch(0)<CR>
+    " f for function
+    nnoremap <Leader>/f /<C-R>=<SID>ScopeSearch('[{', 0)<CR>
+    nnoremap <Leader>*f /<C-R>=<SID>ScopeSearch('[{', 1)<CR><CR>
+
+    " search and replace easily.
+    " s is from current location in the file, <leader>s is full file.
+    " lowercase s is normal substitution, uppercase S is Abolish-based substitution
+    call s:substitution_mapping_helper({
+        \ 'none' : {'before': ''     , 'after': ''},
+        \ '*'    : {'before': '"syiw', 'after': '<<C-r>s><Right>'},
+        \ '*~'   : {'before': '"syiwg~iw"zyiwg~iw', 'after': '<<C-r>s><Right><C-r>z'},
+        \ '**'   : {'before': '"syiw', 'after': '<<C-r>s><Right><C-r>s'},
+        \ '/'    : {'before': ''     , 'after': '<C-r>/<Right>'},
+        \ })
+
+    " fix accidental failure to save
+    nnoremap s<C-s> <C-s>
+    nnoremap <Leader>s<C-s> <C-s>
+    nnoremap S<C-s> <C-s>
+    nnoremap <Leader>S<C-s> <C-s>
+    " replace current word. The word is placed into the s register for ease of access.
+    " nnoremap ;c :.,s%%%gn<Left><Left><Left><Left>
+    " no confirmation
+    " nmap S :.,s%%%g<Left><Left><Left>
+    " nmap S* "9yiw:.,$s%<C-r>9%%g<Left><Left>
+
+    " search and replace based on a motion
+    nnoremap <expr> s; <SID>ExecuteSubstitute("local")
+    nnoremap <expr> <Leader>s; <SID>ExecuteSubstitute("global")
+
+    " search files quickly
+    nnoremap <C-f> :noautocmd vimgrep  **/*<Home><C-Right><C-Right><Right>
+
+    " keep screen centered, open folds
+    nnoremap n nzvzz
+    nnoremap N Nzvzz
+    nnoremap * *zz
+
+    " use gn to easily substitute
+    onoremap n gn
+
+    " use verymagic with incsearch
+    nnoremap / /\v
+    onoremap / /\v
+
+    " 'inclusive' search
+    " nnoremap ? /\v/e<Left><Left>
+    " onoremap ? /\v/e<Left><Left>

@@ -1,0 +1,119 @@
+" Settings:
+    " ignore file types when doing tab completion
+    set wildignore=*.aux,*.pyc,*.pptx,*.pdf,*.blg,*.bbl,*.zip,*.exe,*.class,*.git,*.hg,*.svn,target\\*
+
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    " Also don't do it when the mark is in the first line, that is the default
+    " position when opening a file.
+    autocmd BufReadPost *
+                \ if line("'\"") > 1 && line("'\"") <= line("$") |
+                \   exe "normal! g`\"" |
+                \ endif
+
+    " automatically sync files in vim sync directory
+    autocmd BufRead,BufNewFile $HOME/AppData/Local/Vim/scp/* nmap :w :w \|silent! !vsync %:p
+
+" Functions:
+    " save as a new filename and open the new file
+    function SaveAs(arg)
+        execute "w ".a:arg
+        execute "e ".a:arg
+    endfunction
+
+    function Go(bookmark, ...)
+        if a:0 >= 1
+            let file_name = a:1
+        endif
+        if $TERM =~# "^xterm"
+            let destination = system('bash ~/.get_bookmark_destination.sh ' . a:bookmark)
+            " strip weird /c/ issue
+            let destination = substitute(destination, '\V\^/c', '', '')
+            " strip terminal whitespace
+            let destination = substitute(destination, '\v\W+$', '', '')
+            " echomsg destination
+            " add the filename
+            if exists("file_name")
+                let destination = destination . '/' . file_name
+            endif
+            execute "e " . destination
+        else
+            echoerr "Not supported yet"
+        endif
+    endfunction
+
+" Commands:
+    command! -nargs=1 W call SaveAs('<args>')
+    command! -nargs=1 Write call SaveAs('<args>')
+    command! -nargs=1 WV vsplit | call SaveAs('<args>')
+    " rename the current file
+    command! -nargs=1 R call SaveAs('<args>') | silent execute "!del #"
+    command! -nargs=1 Rename call SaveAs('<args>') | silent execute "!del #"
+
+    " automatically force write with w!
+    command ForceWrite inoremap <C-s> <C-o>:w!<Enter>| noremap <C-s> :w!<Enter>
+
+    " Convenient command to see the difference between the current buffer and the
+    " file it was loaded from, thus the changes you made.
+    " Only define it when not defined already.
+    if !exists(":DiffOrig")
+        command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+                    \ | wincmd p | diffthis
+    endif
+
+    command! -nargs=* Go call Go(<f-args>)
+
+" Mappings:
+    " File operation remappings with ;
+    " file write
+    nnoremap ;w :w<Enter>
+    nnoremap ;W :w!<Enter>
+    " file edit
+    nnoremap ;e :e 
+    nnoremap ;E :e!
+    " file release edit 
+    nnoremap ;re :EditRelease 
+    " file release current edit 
+    nnoremap ;rce :EditRelease $RELEASE<Enter>
+    " file quit
+    nnoremap ;q :q<Enter>
+    nnoremap ;Q :q!<Enter>
+    nnoremap ;x :Explore<Enter>
+    " file list
+    nnoremap ;l :e <C-d>
+    " last file
+    nnoremap ;# :e "#"<Enter>
+    " file tree (from current file)
+    nnoremap ;t :NERDTree %:p:h<Enter>
+    " file bookmark
+    nnoremap ;b :NERDTreeFromBookmark 
+    " file diff windows
+    nnoremap <silent> ;dw :windo diffthis<Enter>
+    " file diff release
+    nnoremap ;dr :DiffRelease
+    " file diff quit
+    nnoremap ;dq :windo diffoff<Enter>
+    " file diff operations
+    nnoremap ;do do
+    nnoremap ;dp dp
+    " file diff navigation
+    nnoremap ;dn ]c
+    nnoremap ;dN [c
+    " change working directory
+    nnoremap ;cd :cd %:p:h<Enter>
+    nnoremap ;lcd :lcd %:p:h<Enter>
+    " file history
+    nnoremap ;h :MRU<Enter>
+    " navigate files in vimgrep search
+    nnoremap ;n :cnext<Enter>zvzz
+    nnoremap ;N :cprev<Enter>zvzz
+    " remote file commands
+    nnoremap ;rw :WriteToServer<Enter>
+    " edit file from same directory as current file
+    nnoremap ;ce :e %:p:h/
+    " grep in current directory
+    nnoremap ;cg :noautocmd vimgrep "" %:p:h/*<Home><C-Right><C-Right><Right><Right>
+
+    " use go to retrieve files from anywhere
+    nnoremap ;g :Go 

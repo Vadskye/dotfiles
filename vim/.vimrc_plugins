@@ -1,0 +1,220 @@
+" Airline
+    let g:airline_theme="jam"
+    let g:airline#extensions#branch#enabled=0
+
+    function! ShortDirectoryName(dir)
+        let dir = substitute(a:dir, '\v.*epoc_([0-9]+\.[0-9]+)/(.*)', 'e\1 \2', '')
+        let dir = substitute(dir, '\v.*build_([0-9]+\.[0-9]+)/(.*)', 'a\1 \2', '')
+        let dir = substitute(dir, '\va([0-9]+\.[0-9]+) perllib/Athena/(.*)', 'a\1/lib \2', '')
+        let dir = substitute(dir, '\vp4/([^/]+)/?(.*)', '\1 \2', '')
+        let dir = substitute(dir, '\v.*/home/kejohnson', '~', '')
+        let dir = substitute(dir, '\v.*Users[/\\]kejohnson', '~~', '')
+        return dir
+    endfunction
+
+    function! AirlineInit()
+        let g:airline_section_b = "%{ShortDirectoryName(expand('%:p:h'))}"
+        let g:airline_section_y = '%{ShortDirectoryName(getcwd())}'
+
+        " never display full path
+        let g:airline_section_c = '%{expand("%:t")} %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+        " remove column information
+        let g:airline_section_z = '%3p%%%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#'
+    endfunction
+    autocmd User AirlineAfterInit call AirlineInit()
+
+" AutoComplPop
+    "let g:cp_behaviorKeywordCommand = "\<C-n>"
+    " current buffer, buffers from other windows, and dictionary
+    let g:acp_completeOption = '.,w,k'
+    " select highlighting for autocomplpop
+    highlight Pmenu ctermbg=black ctermfg=darkgreen
+    highlight PmenuSel ctermbg=darkgray ctermfg=black
+    let g:acp_behaviorSnipmateLength = 1
+    set completeopt=menuone
+    " use tab to complete (based on http://stackoverflow.com/questions/16804859/vim-how-to-make-autocomplpop-snipmate-supertab-work-together)
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-R>=snipMate#TriggerSnippet()\<CR>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-R>=snipMate#TriggerSnippet()\<CR>"
+    " enter should always create a new line
+    inoremap <expr> <CR> pumvisible() ? "\<C-g>u\<CR>" : "\<CR>"
+    " use shift-enter to complete snippets
+    inoremap <S-CR> <C-R>=snipMate#TriggerSnippet()<CR>
+    let g:AutoComplPopDontSelectFirst = 1
+
+" CtrlP:
+    let g:ctrlp_map = ';/'
+    let g:ctrlp_working_path_mode = 'ra'
+    " let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
+    let g:ctrlp_cmd = 'CtrlPMixed'
+    let g:ctrlp_cache_dir = $HOME.'/vimfiles/cache/ctrlp'
+    let g:ctrlp_user_command = 'es %s'
+    " always open files in a new instance
+    let g:ctrlp_switch_buffer = 0
+
+" DBExt:
+    " let g:dbext_default_usermaps = 0
+    " let g:dbext_default_DBI_max_rows = 100
+    " let g:dbext_strip_terminator = 1
+    " let g:dbext_default_prompt_for_parameters = 0
+    " nmap <silent> <Leader>sp vip<Plug>DBExecVisualSQL
+    " nmap <silent> <Leader>sdt <Plug>DBDescribeTable
+
+" EasierMotion:
+    let g:EasyMotion_leader_key = '~~~~'
+    " let g:EasierMotion_mapping_prefix = '~~'
+    let g:EasierMotion_create_default_mappings = 0
+    " let g:EasierMotion_keys = 'qwertyuiopasdghklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMfj;'
+    let g:EasierMotion_force_uppercase = 1
+    let g:EasierMotion_keys = 'uiojklm,.'
+    " let g:EasierMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    " let g:EasierMotion_keys = 'abcdefghijklmnopqrstuvwxyz;'
+    " let g:EasierMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    " let g:EasierMotion_keys = 'ASDFGQWERTZXCVBYNMPOIUHJKL'
+    " let g:EasierMotion_smartcase = 1
+    " let g:EasierMotion_use_smartsign_us = 1
+    " let g:EasierMotion_target_highlight_group = 'ErrorMsg'
+    " let g:EasierMotion_first_target_highlight_group = 'Comment'
+    " let g:EasierMotion_second_target_highlight_group = 'ErrorMsg'
+    " hi link EasierMotionTargetGroup ErrorMsg
+    " hi link EasierMotionFirstTargetGroup ErrorMsg
+    " hi link EasierMotionSecondTargetGroup ErrorMsg
+    " let g:EasierMotion_space_jump_first = 1
+    " let g:EasierMotion_enter_jump_first = 1
+
+" easy-align
+    nmap ga <Plug>(EasyAlign)v
+    " align latex tables
+    nmap gat <Plug>(EasyAlign)vK*&
+
+" Enchanted:
+    " make sure vim is always very magic
+    let g:VeryMagic=0
+    let g:VeryMagicSubstitute=1
+    let g:VeryMagicGlobal=0
+    let g:VeryMagicVimGrep=1
+    let g:VeryMagicSearchArg=1
+    let g:VeryMagicFunction=1
+    let g:VeryMagicHelpgrep=1
+    let g:VeryMagicRange=1
+
+" Fastfold:
+    " don't pause on [] commands
+      let g:fastfold_fold_movement_commands = []
+
+" Fugitive:
+    " commit changes to the current file
+    command Gadd Git add "%"
+    command! -nargs=1 GC silent! Git add "%" | !git commit -m "<args>"
+
+    " open git status the same way we open NerdTree
+    " use 'u' for 'statUs'
+    nnoremap ;u :Gstatus<CR>
+
+" Indent Object:
+    let g:indent_object_no_mappings=1
+    omap ai <Plug>IndentObject-ii
+    omap aI <Plug>IndentObject-ii
+    omap si <Plug>IndentObject-aI
+    omap sI <Plug>IndentObject-ai
+
+" Marvim:
+    let marvim_store = $HOME . '/vimfiles/bundle/marvim/macros'
+    let marvim_find_key = '<Leader>qf' " change find key from <F2> to 'space'
+    let marvim_store_key = '<Leader>qs'     " change store key from <F3> to 'ms'
+    let marvim_register = 'j'       " change used register from 'q' to 'c'
+    " let marvim_prefix = 0           " disable default syntax based prefix
+
+" NERDTree:
+    " automatically quit after opening a file
+    let NERDTreeQuitOnOpen=1
+    " show hidden files
+    let NERDTreeShowHidden=0
+
+" Supertab:
+    " let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+    " let g:SuperTabDefaultCompletionType = "context"
+
+" Surround:
+    " mappings for vim surround
+    let g:surround_no_mappings=1
+    " delete
+    nmap dh <Plug>Dsurround
+    " create
+    nmap ch <Plug>Ysurround
+    " replace
+    nmap rh <Plug>Csurround
+    " delete
+    " nmap ds <Plug>Dsurround
+    " replace
+    " nmap rs <Plug>Csurround
+    " add surrounding
+    " nmap <Leader>s <Plug>Ysurround
+    " nmap <Leader>S <Plug>YSurround
+    " nmap <Leader>ss <Plug>Yssurround
+    " nmap <Leader>Ss <Plug>YSsurround
+    " nmap <Leader>SS <Plug>YSSurround
+
+" Perl Support:
+    " tell perl-support not to override ctrl-j mapping
+    let g:Perl_Ctrl_j='off'
+
+" Pydiction:
+    let g:pydiction_location = 'C:/Program Files/Vim/vimfiles/ftplugin/pydiction/complete-dict'
+    let g:pydiction_menu_height = 10
+
+" Tagbar:
+    " nnoremap ;f :TagbarOpen fj<CR>
+    " let g:tagbar_sort = 0
+    " let g:tagbar_indent = 1
+    " let g:tagbar_compact = 1
+    " let g:tagbar_foldlevel = 2
+    " let g:tagbar_autopreview = 1
+
+" Vim Latex:
+    let g:tex_flavor='latex'
+    " grep will sometimes skip displaying the file name if you
+    " search in a singe file. This will confuse Latex-Suite. Set your grep
+    " program to always generate a file-name.
+    set grepprg=grep\ -nH\ $*
+    " Starting with Vim 7, the filetype of empty .tex files defaults to
+    " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+    " The following changes the default filetype back to 'tex':
+    let g:tex_flavor='latex'
+    " remove markers in vim latex
+    let g:Imap_UsePlaceHolders = 0
+    let g:Tex_DefaultTargetFormat = 'pdf'
+    " prevent interference with c-j by mapping it to something
+    " that shouldn't interfere
+    map :~~~~ <Plug>IMAP_JumpForward
+    imap :~~~~ <Plug>IMAP_JumpForward
+    let g:Tex_FoldedSections = 'part,section,%%fakesection,skill,pdfbookmark,subsection,subsubsection,sssecfake,paragraph,cf,feat'
+    let g:Tex_FoldedEnvironments = 'spellsection,dtable,longtabu'
+    let g:Tex_FoldedMisc = ''
+
+    function! TexCustomFoldLabel(line_number)
+        let label = ''
+        let line = getline(a:line_number)
+        if line =~ 'spellsection'
+            let label = matchstr(getline(a:line_number), 'spellsection}.*{\zs[^}]*')
+        elseif line =~ 'lcaption'
+            let label = matchstr(line, 'lcaption{\zs[^}]*}$')
+            if ! empty(caption)
+                let label = substitute(caption, '}$', '', '')
+            endif
+        endif
+        return label
+    endfunction
+
+    function! TexCustomFoldCaption(line_number)
+        let caption = ''
+        let line = getline(a:line_number)
+        if line =~ 'spellsection'
+            let caption = matchstr(line, 'spellsection}.*{\zs[^}]*}$')
+            if ! empty(caption)
+                let caption = substitute(caption, '}$', '', '')
+            endif
+        elseif line =~ 'lcaption'
+            let caption = '-'
+        endif
+        return caption
+    endfunction

@@ -1,0 +1,87 @@
+" Settings:
+    "split opens new buffers on the right and bottom
+    set splitright
+    set splitbelow
+
+    "vimdiff vertically
+    set diffopt+=vertical
+
+" Functions:
+    function TabnewTemp()
+        execute "tabnew | setlocal buftype=nofile bufhidden=hide noswapfile"
+    endfunction
+
+    function VnewTemp()
+        execute "vnew | setlocal buftype=nofile bufhidden=hide noswapfile"
+    endfunction
+
+    function NewTemp()
+        execute "new | setlocal buftype=nofile bufhidden=hide noswapfile"
+    endfunction
+
+" Mappings:
+    if has("win32")
+        "easier window navigation
+        noremap <M-w> <C-w>
+        noremap <M-w><M-w> <C-w>w
+        noremap <M-w><M-v> <C-w>v
+        noremap <M-w><M-s> <C-w>s
+        noremap <M-w><M-q> <C-w>q
+        noremap <M-q> <C-w>w
+        noremap <M-x> <C-w>q
+        "directional window navigation
+        noremap <M-i> <C-w>k
+        noremap <M-k> <C-w>j
+        noremap <M-j> <C-w>h
+        noremap <M-l> <C-w>l
+    else
+        if has("unix")
+            "easier window navigation
+            noremap w <C-w>
+            noremap ww <C-w>w
+            noremap wv <C-w>v
+            noremap ws <C-w>s
+            noremap wq <C-w>q
+            noremap q <C-w>w
+            noremap x <C-w>q
+            "directional window navigation
+            noremap i <C-w>k
+            noremap k <C-w>j
+            noremap j <C-w>h
+            noremap l <C-w>l
+        endif
+    endif
+
+    " w controls window scrolling
+    nnoremap ww zz
+    nnoremap wi <C-Y>
+    nnoremap wl z<Right>
+    nnoremap wj z<Left>
+    nnoremap wk <C-E>
+    nnoremap wb zb
+    nnoremap wt zt
+
+    " ws controls window size
+    nnoremap ws= <C-w>=
+    nnoremap wso :resize 10<CR>
+    nnoremap wsm :resize 30<CR>
+    nnoremap wsl :resize
+
+    " W controls navigation between windows
+    nnoremap W <C-w>
+    nnoremap WW <C-w>w
+    nnoremap WV <C-w>v
+    nnoremap WS <C-w>s
+    nnoremap WQ <C-w>q
+    "directional window navigation
+    nnoremap Wi <C-w>k
+    nnoremap WI <C-w>k
+    nnoremap Wk <C-w>j
+    nnoremap WK <C-w>j
+    nnoremap Wj <C-w>h
+    nnoremap WJ <C-w>h
+    nnoremap Wl <C-w>l
+    nnoremap WL <C-w>l
+
+    "multimonitor split
+    "nnoremap <Leader>wv <C-w>v:13winc <<Enter>

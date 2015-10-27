@@ -1,0 +1,86 @@
+" Settings:
+    " Use multiline friendly "home" command on text-based file types
+    autocmd Filetype text,tex,bbcode imap <silent> <buffer> <home> <C-o>g<home>
+    autocmd Filetype text,tex,bbcode vmap <silent> <buffer> <home> <C-o>g<home>
+    autocmd Filetype text,tex,bbcode map <silent> <buffer> <home> g<home>
+
+    " HTML and YAML files use 2-space tabs
+    autocmd Filetype html setlocal shiftwidth=2 tabstop=2
+    autocmd Filetype yaml setlocal shiftwidth=2 tabstop=2
+
+    " Allow true quotes in bib files
+    autocmd Filetype bib inoremap " <C-Q>"
+
+    " add support for other filetypes
+    au BufRead,BufNewFile *.bbc set filetype=bbcode
+
+    au! BufRead,BufNewFile *.esp call EspHighlight()
+
+    au BufRead,BufNewFile *.myo set filetype=lua
+
+    " show foldcolumn
+    au Filetype tex call SetAutoFoldColumn(2)
+
+    " execute line in current vim window
+    au Filetype vim nnoremap <Leader>e ^"vy$:<C-r>v<CR>
+
+    " vim files should use markers for folding
+    au Filetype vim set foldmethod=marker
+
+    " highlight long lines
+    au Filetype perl,python match TabLine /\%>80v.\+/
+
+    " html should treat - as a keyword
+    au Filetype html,css set iskeyword+=-
+
+    " perl should treat : as a keyword
+    au Filetype perl set iskeyword+=:
+
+    " yaml files should fold by indentation
+    au Filetype yaml set foldmethod=indent
+
+    " highlight Perl subroutine names
+    au Filetype perl syn match Function /\<[a-zA-Z_]\{3,}(/he=e-1
+
+" Functions:
+    function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
+      let ft=toupper(a:filetype)
+      let group='textGroup'.ft
+      if exists('b:current_syntax')
+        let s:current_syntax=b:current_syntax
+        " Remove current syntax definition, as some syntax files (e.g. cpp.vim)
+        " do nothing if b:current_syntax is defined.
+        unlet b:current_syntax
+      endif
+      execute 'syntax include @'.group.' syntax/'.a:filetype.'.vim'
+      try
+        execute 'syntax include @'.group.' after/syntax/'.a:filetype.'.vim'
+      catch
+      endtry
+      if exists('s:current_syntax')
+        let b:current_syntax=s:current_syntax
+      else
+        unlet b:current_syntax
+      endif
+      execute 'syntax region textSnip'.ft.'
+      \ matchgroup='.a:textSnipHl.'
+      \ start="'.a:start.'" end="'.a:end.'"
+      \ contains=@'.group
+    endfunction
+
+    function EspHighlight()
+        setf html
+        call TextEnableCodeSnip('perl', '<%', '%>', 'SpecialComment')
+    endfunction
+
+    function SetAutoFoldColumn(fold_column_value)
+        let last_line_number = line('$')
+        for i in range(last_line_number)
+            if foldlevel(i) != 0
+                execute 'set foldcolumn=' . a:fold_column_value
+                return
+            endif
+        endfor
+        set foldcolumn=0
+        return
+    endfunction

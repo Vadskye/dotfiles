@@ -1,0 +1,44 @@
+" Settings:
+    " for autocompletion
+    "set complete-=k complete+=k
+
+    " search for tags in an upward search by default
+    set tags=./tags;/
+    autocmd BufEnter,BufNewFile $P4_HOME/* call TagsFromRelease()
+
+    " Run ctags on save
+    " need to figure out how to make it work with javascript, exclude libraries
+    " autocmd BufWritePost *.py,*.tex silent! !ctags -R
+
+" Functions:
+    function TagsFromRelease()
+        let l:currfilename = expand('%:p')
+        let l:release = 'lolwut'
+        if ! (match(l:currfilename, '\d\d\.\d\{1,2}') == -1)
+            let l:release = matchstr(l:currfilename, '\d\d\.\d\{1,2}')
+        elseif ! (match(l:currfilename, 'intranet') == -1)
+            let l:release = 'intranet'
+        elseif ! (match(l:currfilename, 'prod') == -1)
+            let l:release = 'prod'
+        endif
+        if exists("l:release")
+            let &tags=$P4_HOME."/tags_".l:release
+        endif
+    endfunction
+
+" Commands:
+    " get help for a part of Python
+    command! -nargs=1 PyHelpTab silent! call TabnewTemp() | read !python -c "help('<args>')"
+    command! -nargs=1 PyHelp silent! call VnewTemp() | read !python -c "help('<args>')"
+    " Run ctags
+    command Ctags silent! !ctags -R
+
+" Mappings:
+    " tag navigation
+    nnoremap hh "hyiw:tag <C-r>h<CR>
+    nnoremap hv "hyiw:vnew \| tag <C-r>h<CR>
+    nnoremap ht :tag 
+    nnoremap hn :tnext<Enter>
+    nnoremap hN :tprevious<Enter>
+    nnoremap hs :tselect<Enter>
+    nnoremap hp :PyHelp 
