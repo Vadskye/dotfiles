@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export GITHUB="$(cygpath $GITHUB)"
+export INPUTRC="$DOTFILES/bash/inputrc"
 export USERPROFILE="$(cygpath $USERPROFILE)"
 
 # Colors
