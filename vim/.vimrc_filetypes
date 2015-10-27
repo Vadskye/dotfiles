@@ -28,7 +28,7 @@
     au Filetype vim set foldmethod=marker
 
     " highlight long lines
-    au Filetype perl,python match TabLine /\%>80v.\+/
+    au Filetype perl,python match OverLength /\%>80v.\+/
 
     " html should treat - as a keyword
     au Filetype html,css set iskeyword+=-
