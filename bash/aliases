@@ -79,5 +79,5 @@ function cdl() {
     ls
 }
 function pathogit() {
-    git clone "https://github.com/$1" "$USERPROFILE/vimfiles/bundle/$2"
+    git clone "https://github.com/$1" "$DOTFILES/vim/bundle/$2"
 }
