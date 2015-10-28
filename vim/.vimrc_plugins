@@ -7,7 +7,16 @@
     let g:airline_right_sep=''
 
     " don't load third party extensions
-    let g:airline_extensions = ['ctrlp', 'tagbar', 'whitespace']
+    let g:airline_extensions = ['ctrlp', 'tagbar', 'whitespace'] 
+
+    " display full path with tagbar
+    let g:airline#extensions#tagbar#flags = 'f'
+
+    " since we handle modified manually, don't autodetect it
+    let g:airline_detect_modified=0
+
+    " don't collapse inactive windows
+    let g:airline_inactive_collapse=0
 
     function! ShortDirectoryName(dir)
         let dir = substitute(a:dir, '\v^.*epoc_([0-9]+\.[0-9]+)/(.*)', 'e\1 \2', '')
@@ -22,11 +31,12 @@
     function! AirlineInit()
          let g:airline_section_a = "%{airline#util#prepend(airline#parts#crypt(),0)}%{airline#util#prepend(airline#parts#paste(),0)}%{ShortDirectoryName(expand('%:p:h'))}"
         " never display full path
-        let g:airline_section_b = '%{expand("%:t")} %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
-        let g:airline_section_c = '%{airline#util#prepend(airline#extensions#tagbar#currenttag(),0)}%{airline#util#wrap(airline#parts#filetype(),0)}'
+        let g:airline_section_b = '%{expand("%:t")} %#__accent_red#%m%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+        let g:airline_section_c = '%{airline#extensions#tagbar#currenttag()}'
         " don't show column information
         let g:airline_section_x = '%3p%%%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#'
-        let g:airline_section_z = '%{ShortDirectoryName(getcwd())}'
+        " let g:airline_section_z = '%{ShortDirectoryName(getcwd())}'
+        let g:airline_section_z = ''
 
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
