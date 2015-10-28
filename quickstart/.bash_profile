@@ -3,7 +3,6 @@ export DOTFILES=/c/Github/dotfiles
 source "$DOTFILES/bash/env"
 source "$DOTFILES/bash/rc"
 source "$DOTFILES/bash/aliases"
-source "$DOTFILES/bash/local"
 [[ -f $DOTFILES/bash/local ]] && source "$DOTFILES/bash/local"
 
 if [ -f $DOTFILES/bash/go ]; then
