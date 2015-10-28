@@ -41,9 +41,9 @@
     set undofile
 
     " Change backup file and undo file locations
-    set directory=$DOTFILES/swp//
-    set backupdir=$DOTFILES/backup//
-    set undodir=$DOTFILES/undo//
+    set directory=$DOTFILES/vim/swp//
+    set backupdir=$DOTFILES/vim/backup//
+    set undodir=$DOTFILES/vim/undo//
 
     " wrapped text should retain its indentation
     set breakindent
