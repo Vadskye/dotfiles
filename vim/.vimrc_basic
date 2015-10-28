@@ -41,17 +41,9 @@
     set undofile
 
     " Change backup file and undo file locations
-    if has("win32")
-        set directory=$HOME/AppData/Local/Vim/swp//
-        set backupdir=$HOME/AppData/Local/Vim/backup//
-        set undodir=$HOME/AppData/Local/Vim/undo//
-    else
-        if has("unix")
-            set directory=~/.vim/swp//
-            set backupdir=~/.vim/backup//
-            set undodir=~/.vim/undo//
-        endif
-    endif
+    set directory=$DOTFILES/swp//
+    set backupdir=$DOTFILES/backup//
+    set undodir=$DOTFILES/undo//
 
     " wrapped text should retain its indentation
     set breakindent
