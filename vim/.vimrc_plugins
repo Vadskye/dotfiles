@@ -45,24 +45,6 @@
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
 
-" AutoComplPop
-    "let g:cp_behaviorKeywordCommand = "\<C-n>"
-    " current buffer, buffers from other windows, and dictionary
-    let g:acp_completeOption = '.,w,k'
-    " select highlighting for autocomplpop
-    highlight Pmenu ctermbg=black ctermfg=darkgreen
-    highlight PmenuSel ctermbg=darkgray ctermfg=black
-    let g:acp_behaviorSnipmateLength = 1
-    set completeopt=menuone
-    " use tab to complete (based on http://stackoverflow.com/questions/16804859/vim-how-to-make-autocomplpop-snipmate-supertab-work-together)
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-R>=snipMate#TriggerSnippet()\<CR>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-R>=snipMate#TriggerSnippet()\<CR>"
-    " enter should always create a new line
-    inoremap <expr> <CR> pumvisible() ? "\<C-g>u\<CR>" : "\<CR>"
-    " use shift-enter to complete snippets
-    inoremap <S-CR> <C-R>=snipMate#TriggerSnippet()<CR>
-    let g:AutoComplPopDontSelectFirst = 1
-
 " CtrlP:
     let g:ctrlp_map = ';/'
     let g:ctrlp_working_path_mode = 'ra'
@@ -197,6 +179,10 @@
     let g:tagbar_compact = 1
     let g:tagbar_foldlevel = 2
 
+" Ultisnips:
+    " manually specify snippet directory for speed
+    let g:UltiSnipsSnippetDirectories=[$DOTFILES . '/vim/UltiSnips']
+
 " Vim Latex:
     let g:tex_flavor='latex'
     " grep will sometimes skip displaying the file name if you
@@ -245,3 +231,20 @@
         endif
         return caption
     endfunction
+
+"YouCompleteMe
+
+    highlight Pmenu ctermbg=black ctermfg=darkgreen
+    highlight PmenuSel ctermbg=darkgray ctermfg=black
+
+    let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+    let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+    let g:SuperTabDefaultCompletionType = '<C-n>'
+
+    " better key bindings for UltiSnipsExpandTrigger
+    let g:UltiSnipsExpandTrigger = "<tab>"
+    let g:UltiSnipsJumpForwardTrigger = "<tab>"
+    let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+    " don't eat CR?
+    let g:SuperTabCrMapping = 0
