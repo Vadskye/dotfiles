@@ -28,8 +28,8 @@
 
 " Commands:
     " get help for a part of Python
-    command! -nargs=1 PyHelpTab silent! call TabnewTemp() | read !python -c "help('<args>')"
-    command! -nargs=1 PyHelp silent! call VnewTemp() | read !python -c "help('<args>')"
+    command! -nargs=1 PyHelpTab silent! call TabnewTemp() | execute "read !python -c " . shellescape("help('<args>')")
+    command! -nargs=1 PyHelp silent! call VnewTemp() | execute "read !python -c " . shellescape("help('<args>')")
     " Run ctags
     command Ctags silent! !ctags -R
 
