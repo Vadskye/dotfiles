@@ -19,6 +19,23 @@
         execute "new | setlocal buftype=nofile bufhidden=hide noswapfile"
     endfunction
 
+    function AutoResize(scope)
+        " line('w0') holds the line number of the first visible line
+        if a:scope == 'window'
+            let scan_range = range(line('w0'), line('w$'))
+        elseif a:scope == 'file' || a:scope == 'buffer'
+            let scan_range = range(0, line('$'))
+        endif
+        let max_width = 0
+        for line_number in scan_range
+            let line_width = col([line_number, '$'])
+            if line_width > max_width
+                let max_width = line_width
+            endif
+        endfor
+        execute "vertical resize " . (max_width + 1)
+    endfunction
+
 " Mappings:
     if has("win32")
         "easier window navigation
@@ -82,6 +99,10 @@
     nnoremap WJ <C-w>h
     nnoremap Wl <C-w>l
     nnoremap WL <C-w>l
+
+    " auto resize window
+    nnoremap <silent> wa :call AutoResize('window')<CR>
+    nnoremap <silent> wA :call AutoResize('file')<CR>
 
     "multimonitor split
     "nnoremap <Leader>wv <C-w>v:13winc <<Enter>
