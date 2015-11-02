@@ -61,6 +61,7 @@
             \ 'TabLineFill':{'ctermfg': 'Gray', 'ctermbg': 'NONE'},
             \ 'Todo'     : { 'ctermfg': 'White', 'ctermbg': g:bold},
             \ 'VertSplit': { 'ctermfg': 'Gray', 'ctermbg': 'DarkGray'},
+            \ 'Visual'   : { 'ctermfg': 'White', 'ctermbg': 'DarkGray'},
             \ 'VisualNOS': { 'ctermfg': 'Gray', 'ctermbg': g:bold},
         \ }
     endif
