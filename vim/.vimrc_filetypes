@@ -1,4 +1,8 @@
 " Settings:
+    " enable full highlighting
+    let g:python_highlight_all = 1
+
+" Autocommands:
     " Use multiline friendly "home" command on text-based file types
     autocmd Filetype text,tex,bbcode imap <silent> <buffer> <home> <C-o>g<home>
     autocmd Filetype text,tex,bbcode vmap <silent> <buffer> <home> <C-o>g<home>
@@ -26,6 +30,9 @@
 
     " vim files should use markers for folding
     au Filetype vim set foldmethod=marker
+
+    " use shift+enter to start a new line with a \ for continuing lines in vim
+    au Filetype vim inoremap <S-CR> <CR>\ 
 
     " highlight long lines
     au Filetype perl,python match OverLength /\%>80v.\+/
