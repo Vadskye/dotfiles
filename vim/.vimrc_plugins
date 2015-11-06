@@ -161,6 +161,7 @@
 " Perl Support:
     " tell perl-support not to override ctrl-j mapping
     let g:Perl_Ctrl_j='off'
+    let g:Perl_LocaltemplateFile = $DOTFILES . "/vim/perl-support/templates/Templates"
 
 " Pydiction:
     let g:pydiction_location = 'C:/Program Files/Vim/vimfiles/ftplugin/pydiction/complete-dict'
