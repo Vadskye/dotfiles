@@ -242,37 +242,7 @@
     " that shouldn't interfere
     map :~~~~ <Plug>IMAP_JumpForward
     imap :~~~~ <Plug>IMAP_JumpForward
-    let g:Tex_FoldedSections = 'part,section,%%fakesection,skill,pdfbookmark,subsection,subsubsection,sssecfake,paragraph,cf,feat'
-    let g:Tex_FoldedEnvironments = 'spellsection,dtable,longtabu'
-    let g:Tex_FoldedMisc = ''
-
-    function! TexCustomFoldLabel(line_number)
-        let label = ''
-        let line = getline(a:line_number)
-        if line =~ 'spellsection'
-            let label = matchstr(getline(a:line_number), 'spellsection}.*{\zs[^}]*')
-        elseif line =~ 'lcaption'
-            let label = matchstr(line, 'lcaption{\zs[^}]*}$')
-            if ! empty(caption)
-                let label = substitute(caption, '}$', '', '')
-            endif
-        endif
-        return label
-    endfunction
-
-    function! TexCustomFoldCaption(line_number)
-        let caption = ''
-        let line = getline(a:line_number)
-        if line =~ 'spellsection'
-            let caption = matchstr(line, 'spellsection}.*{\zs[^}]*}$')
-            if ! empty(caption)
-                let caption = substitute(caption, '}$', '', '')
-            endif
-        elseif line =~ 'lcaption'
-            let caption = '-'
-        endif
-        return caption
-    endfunction
+    let g:Tex_Folding = 0
 
 "YouCompleteMe
 
