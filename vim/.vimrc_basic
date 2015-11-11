@@ -70,7 +70,7 @@
     set fileformats=unix,dos
     set fileformat=unix
 
-    set diffexpr=MyDiff()
+    " set diffexpr=MyDiff()
 
     " don't redraw unnecessarily
     set lazyredraw
