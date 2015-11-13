@@ -7,7 +7,7 @@
     let g:airline_right_sep=''
 
     " load specific third party extensions rather than all of them
-    let g:airline_extensions = ['ctrlp', 'tagbar', 'whitespace']
+    let g:airline_extensions = ['ctrlp', 'whitespace']
 
     " display full path with tagbar
     let g:airline#extensions#tagbar#flags = 'f'
@@ -120,6 +120,23 @@
     "     \ '--regex-tex=//\\1/f,feat/e'
 
     let g:filesight_custom_tags = {
+        \ 'perl': [
+            \ {
+                \ 'highlight': 'PreProc',
+                \ 'name': 'pragma',
+                \ 'short_name': 'G',
+                \ 'position_after': 'package',
+                \ 'tag_pattern': '^use ([a-z][a-zA-Z_:]+)',
+                \ 'tag_output': '\\1',
+            \ },
+            \ {
+                \ 'highlight': 'PreProc',
+                \ 'name': 'import',
+                \ 'position_after': 'pragma',
+                \ 'tag_pattern': '^use ([A-Z][a-zA-Z_:]+)',
+                \ 'tag_output': '\\1',
+            \ },
+        \ ],
         \ 'tex': [
             \ {
                 \ 'highlight': 'Identifier',
@@ -267,3 +284,7 @@
 
     " don't eat CR?
     let g:SuperTabCrMapping = 0
+
+    " up and down should always go up and down, not control the menu
+    let g:ycm_key_list_select_completion = ['<TAB>']
+    let g:ycm_key_list_previous_completion = ['<S-TAB>']

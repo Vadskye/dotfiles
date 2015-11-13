@@ -45,6 +45,10 @@
     set backupdir=$DOTFILES/vim/backup//
     set undodir=$DOTFILES/vim/undo//
 
+    " use views, but don't save options (which alters working directory)
+    set viewdir=$DOTFILES/vim/view
+    set viewoptions-=options
+
     " wrapped text should retain its indentation
     set breakindent
     " highlight wrapped lines
