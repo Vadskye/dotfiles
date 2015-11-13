@@ -73,8 +73,8 @@
     let g:EasierMotion_create_default_mappings = 0
     " let g:EasierMotion_keys = 'qwertyuiopasdghklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMfj;'
     let g:EasierMotion_force_uppercase = 1
-    let g:EasierMotion_keys = 'uiojklm,.'
-    " let g:EasierMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    " let g:EasierMotion_keys = 'uiojklm,.'
+    let g:EasierMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'
     " let g:EasierMotion_keys = 'abcdefghijklmnopqrstuvwxyz;'
     " let g:EasierMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     " let g:EasierMotion_keys = 'ASDFGQWERTZXCVBYNMPOIUHJKL'
@@ -111,6 +111,7 @@
 
 " Filesight:
     let g:filesight_file_types = ['vim', 'perl', 'python', 'tex']
+    let g:filesight_ctags_extra_args = ['--tex-kinds=-l']
     let g:filesight_ctags_bin = expand("$USERPROFILE") . "/Utilities/ctags58/ctags.exe"
     let g:filesight_window_size = 30
     let g:filesight_run_on_startup = 1
@@ -138,10 +139,23 @@
         \ ],
         \ 'tex': [
             \ {
+                \ 'highlight': 'Identifier',
+                \ 'name': 'spell',
+                \ 'short_name': 'L',
+                \ 'tag_pattern': '\\\\begin[{]spellsection[}][{]([^}]+)[}](\\[[0-9]+\\])?',
+                \ 'tag_output' : '\\1 \\2',
+            \ },
+            \ {
+                \ 'highlight': 'Identifier',
                 \ 'name': 'feat',
-                \ 'position_after': 'subsection',
-                \ 'scope': 1,
-                \ 'tag_pattern': '\\feat[{]([^}]+)[}]',
+                \ 'tag_pattern': '\\\\feat[{]([^}]+)[}]',
+                \ 'tag_output' : '\\1',
+            \ },
+            \ {
+                \ 'highlight': 'Identifier',
+                \ 'name': 'skill',
+                \ 'short_name': 'k',
+                \ 'tag_pattern': '\\\\skill[{]([^}]+)[}]',
                 \ 'tag_output' : '\\1',
             \ },
         \ ],
