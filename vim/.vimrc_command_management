@@ -2,26 +2,38 @@
     " if mainfile is not set, default to the first file opened
     let g:mainfile = '"' . expand('%:p') . '"'
 
+" Functions:
+    function! PreviewSys(command, ...) abort
+        let args = join(a:000, ' ')
+        let cmd = a:command . ' ' . args
+        " keep empty to add an extra newline
+        " this makes it easier to notice separate commands
+        let output = split(system(cmd), '\v[\r\n]+', 1)
+        call writefile(output, expand('~/.termout'), '')
+        pedit ~/.termout
+        let g:last_cmd_previewed = cmd
+    endfunction
+
+    function! PreviewSysCurrentFile(command, ...) abort
+        let args = expand('%:p') . ' ' . join(a:000, ' ')
+        call PreviewSys(a:command, args)
+    endfunction
+
 " Commands:
     " Execute current file in new vsplit
-    command! -nargs=* Execute silent! call VnewTemp() | read !#:p <args>
-    " execute current file in current window
-    command! -nargs=* ExecuteHere silent! read !# <args>
+    command! -nargs=* Execute silent call PreviewSysCurrentFile("", <f-args>)
     " Perl files don't like showing output when executed normally
-    command! -nargs=* ExecutePerl silent! call VnewTemp() | read !perl #:p <args>
-    command! -nargs=* ExecutePerlHere silent! read !perl # <args>
-    command! -nargs=* ExecutePython silent! call VnewTemp() | read !python #:p <args>
-    command! -nargs=* ExecutePythonHere silent! read !python # <args>
+    command! -nargs=* ExecutePerl silent call PreviewSysCurrentFile('perl', <f-args>)
+    command! -nargs=* ExecutePython silent call PreviewSysCurrentFile('python', <f-args>)
     " set and use a 'main file' that can be executed regardless of current file location
     command! SetMainFile silent! let g:mainfile = expand('%:p')
-    command! -nargs=* ExecuteMain silent! call VnewTemp() | execute 'read !' . g:mainfile . ' <args>'
-    command! -nargs=* ExecuteMainPerl silent! call VnewTemp() | execute 'read !perl ' . g:mainfile . ' <args>'
-    command! -nargs=* ExecuteMainPython silent! call VnewTemp() | execute 'read !python ' . g:mainfile . ' <args>'
-    command! -nargs=* ExecuteMainHere silent! execute 'read !' . g:mainfile . ' <args>'
+    command! -nargs=* ExecuteMain silent call PreviewSys(g:mainfile, <f-args>)
+    command! -nargs=* ExecuteMainPerl silent call PreviewSys('perl', g:mainfile, <f-args>)
+    command! -nargs=* ExecuteMainPython silent call PreviewSys('python', g:mainfile, <f-args>)
 
     " profiling
-    command! -nargs=* ExecuteProfile silent! call VnewTemp() | execute 'read !profile # <args>'
-    command! -nargs=* ExecuteProfileMain silent! call VnewTemp() | execute 'read !profile ' . g:mainfile . '<args>'
+    command! -nargs=* ExecuteProfile silent call PreviewSysCurrentFile('profile', <f-args>)
+    command! -nargs=* ExecuteProfileMain silent call PreviewSys('profile', g:mainfile, <f-args>)
 
 " Mappings:
     " Run external commands
@@ -54,3 +66,5 @@
     nnoremap xfm :ExecuteProfileMain
 
     nnoremap <silent> vv :execute getline('.')<CR>
+
+    nnoremap <silent> hq :call PreviewSys('perl', expand('%:p'))<CR>
