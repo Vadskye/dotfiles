@@ -29,7 +29,7 @@
     au Filetype vim nnoremap <Leader>e ^"vy$:<C-r>v<CR>
 
     " vim files should use markers for folding
-    au Filetype vim set foldmethod=marker
+    au Filetype vim setlocal foldmethod=marker
 
     " use shift+enter to start a new line with a \ for continuing lines in vim
     au Filetype vim inoremap <S-CR> <CR>\ 
@@ -38,13 +38,12 @@
     au Filetype perl,python match OverLength /\%>80v.\+/
 
     " html should treat - as a keyword
-    au Filetype html,css set iskeyword+=-
+    au Filetype html,css setlocal iskeyword+=-
 
     " perl should treat : as a keyword
-    au Filetype perl set iskeyword+=:
+    au Filetype perl setlocal iskeyword+=:
 
-    " yaml files should fold by indentation
-    au Filetype yaml set foldmethod=indent | set foldnestmax=2
+    au Filetype tex,latex syn match Delimeter /&/ containedin=texEnv | highlight Delimeter ctermfg='DarkCyan'
 
     " highlight Perl subroutine names
     au Filetype perl syn match Function /\<[a-zA-Z_]\{3,}(/he=e-1
