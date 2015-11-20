@@ -61,9 +61,13 @@
     inoremap <silent> <Down> <C-o>gj
     inoremap <silent> <Up> <C-o>gk
     inoremap <silent> <End> <C-o>g<End>
-    vnoremap <silent> <Down> <C-o>gj
-    vnoremap <silent> <Up> <C-o>gk
-    vnoremap <silent> <End> <C-o>g<End>
+    " vnoremap <silent> <Down> <C-o>gj
+    vnoremap <silent> <Down> j
+    vnoremap <silent> <Left> h
+    vnoremap <silent> <Up> k
+    vnoremap <silent> <Right> l
+    " vnoremap <silent> <Up> <C-o>gk
+    " vnoremap <silent> <End> <C-o>g<End>
     nnoremap <silent> <Down> gj
     nnoremap <silent> <Up> gk
     nnoremap <silent> <End> g<End>
@@ -121,10 +125,10 @@
 
     " Moving back and forth between lines of same or lower indentation.
     " http://vim.wikia.com/wiki/Move_to_next/previous_line_with_same_indentation
-    nnoremap <silent> i :<C-U>call NextIndent(0, 0, 0, 1)<CR>
-    nnoremap <silent> k :<C-U>call NextIndent(0, 1, 0, 1)<CR>
-    nnoremap <silent> I :<C-U>call NextIndent(0, 0, 1, 1)<CR>_
-    nnoremap <silent> K :<C-U>call NextIndent(0, 1, 1, 1)<CR>_
+    noremap <silent> i :<C-U>call NextIndent(0, 0, 0, 1)<CR>
+    noremap <silent> k :<C-U>call NextIndent(0, 1, 0, 1)<CR>
+    noremap <silent> I :<C-U>call NextIndent(0, 0, 1, 1)<CR>_
+    noremap <silent> K :<C-U>call NextIndent(0, 1, 1, 1)<CR>_
     onoremap <silent> i V:<C-U>call NextIndent(0, 0, 0, 1)<CR>
     onoremap <silent> k V:<C-U>call NextIndent(0, 1, 0, 1)<CR>
     onoremap <silent> I V:<C-U>call NextIndent(0, 0, 1, 1)<CR>_
