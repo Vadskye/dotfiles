@@ -128,6 +128,9 @@
     nnoremap <cr> o
     nnoremap <S-cr> O
 
+    " enter blockwise visual mode
+    nnoremap <Leader>v <C-v>
+
 " Functions:
     function! AppendToUnnamedRegister(motion_type, operator)
         let unnamed_register = getreg('"')
