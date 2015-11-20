@@ -7,7 +7,7 @@
     let g:airline_right_sep=''
 
     " load specific third party extensions rather than all of them
-    let g:airline_extensions = ['ctrlp', 'whitespace']
+    let g:airline_extensions = ['ctrlp', 'syntastic', 'whitespace']
 
     " display full path with tagbar
     let g:airline#extensions#tagbar#flags = 'f'
@@ -44,6 +44,7 @@
         " don't show column information
         let g:airline_section_x = '%3p%%%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#'
         " let g:airline_section_z = '%{ShortDirectoryName(getcwd())}'
+        let g:airline_section_y = ''
         let g:airline_section_z = ''
 
     endfunction
@@ -114,7 +115,7 @@
     let g:filesight_ctags_extra_args = ['--tex-kinds=-l']
     let g:filesight_ctags_bin = expand("$USERPROFILE") . "/Utilities/ctags58/ctags.exe"
     let g:filesight_window_size = 30
-    let g:filesight_run_on_startup = 1
+    let g:filesight_run_on_startup = 0
     " let g:filesight_highlight_current_tag = "SpellRare"
     " let g:filesight_ctags_extra_args =
     "     \ '--regex-tex=//\\1/f,feat/e'
@@ -229,6 +230,19 @@
 " Pydiction:
     let g:pydiction_location = 'C:/Program Files/Vim/vimfiles/ftplugin/pydiction/complete-dict'
     let g:pydiction_menu_height = 10
+
+" Syntastic:
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_check_on_open = 0
+    let g:syntastic_enable_perl_checker = 1
+    let g:syntastic_mode_map = {
+        \ 'mode': 'passive',
+    \ }
+    let g:syntastic_perl_checkers = ['perl']
+    " check syntax ('help check')
+    nnoremap hc :SyntasticCheck<CR>
+    " check errors ('help errors')
+    nnoremap he :Errors<CR>
 
 " Tagbar:
     let g:tagbar_skip_ctags_validation = 1
