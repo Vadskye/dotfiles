@@ -273,8 +273,9 @@
     highlight Pmenu ctermbg=black ctermfg=darkgreen
     highlight PmenuSel ctermbg=darkgray ctermfg=black
 
-    let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-    let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+    " up and down should always go up and down, not control the menu
+    let g:ycm_key_list_select_completion = ['<C-n>']
+    let g:ycm_key_list_previous_completion = ['<C-p>']
     let g:SuperTabDefaultCompletionType = '<C-n>'
 
     " better key bindings for UltiSnipsExpandTrigger
@@ -284,7 +285,3 @@
 
     " don't eat CR?
     let g:SuperTabCrMapping = 0
-
-    " up and down should always go up and down, not control the menu
-    let g:ycm_key_list_select_completion = ['<TAB>']
-    let g:ycm_key_list_previous_completion = ['<S-TAB>']
