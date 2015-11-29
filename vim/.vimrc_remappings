@@ -43,34 +43,34 @@
 
     " redesign delete/copy/replace
     " delete
-    nnoremap dd dd
-    nnoremap <silent> D :set opfunc=AppendDeleteToUnnamedRegister<CR>g@
-    nnoremap <silent> DD :set opfunc=AppendDeleteToUnnamedRegister<CR>g@V<Space>
-    nnoremap <Leader>d "*d
-    nnoremap <Leader>dd "*dd
+    noremap dd dd
+    noremap <silent> D :set opfunc=AppendDeleteToUnnamedRegister<CR>g@
+    noremap <silent> DD :set opfunc=AppendDeleteToUnnamedRegister<CR>g@V<Space>
+    noremap <Leader>d "*d
+    noremap <Leader>dd "*dd
     " copy
-    nnoremap c y
-    nnoremap cc yy
-    nnoremap <silent> C :set opfunc=AppendCopyToUnnamedRegister<CR>g@
-    nnoremap <silent> CC :set opfunc=AppendCopyToUnnamedRegister<CR>g@V<Space>
-    nnoremap <Leader>c "*y
-    nnoremap <Leader>cc "*yy
+    noremap c y
+    noremap cc yy
+    noremap <silent> C :set opfunc=AppendCopyToUnnamedRegister<CR>g@
+    noremap <silent> CC :set opfunc=AppendCopyToUnnamedRegister<CR>g@V<Space>
+    noremap <Leader>c "*y
+    noremap <Leader>cc "*yy
     " replace
-    nnoremap r c
-    nnoremap rr cc
-    nnoremap <silent> R :set opfunc=AppendChangeToUnnamedRegister<CR>g@
-    nnoremap <silent> RR :set opfunc=AppendChangeToUnnamedRegister<CR>g@V<Space>
-    nnoremap <Leader>r "*c
-    nnoremap <Leader>rr "*cc
+    noremap r c
+    noremap rr cc
+    noremap <silent> R :set opfunc=AppendChangeToUnnamedRegister<CR>g@
+    noremap <silent> RR :set opfunc=AppendChangeToUnnamedRegister<CR>g@V<Space>
+    noremap <Leader>r "*c
+    noremap <Leader>rr "*cc
     " paste
-    nnoremap <Leader>p "*p
+    noremap <Leader>p "*p
     " paste from copied text
-    nnoremap cp "0p
-    nnoremap cP "0P
+    noremap cp "0p
+    noremap cP "0P
 
     " change single character
-    " nnoremap b r
-    " nnoremap B R
+    " noremap b r
+    " noremap B R
 
     " redesign word manipulation
     onoremap w iw
@@ -101,10 +101,6 @@
 
     " Increment numbers with alt-A
     nnoremap <A-a> <C-a>
-
-    " Way to quickly exit insert mode
-    inoremap jk <Esc>
-    inoremap jj <Esc>
 
     " both methods of entering insert mode should use the same key
     nnoremap e i
