@@ -2,6 +2,8 @@
     " if mainfile is not set, default to the first file opened
     let g:mainfile = '"' . expand('%:p') . '"'
 
+    let g:python_flavor = get(g:, 'python_flavor', 'pypy')
+
 " Functions:
     function! PreviewSys(command, ...) abort
         let args = join(a:000, ' ')
@@ -24,12 +26,12 @@
     command! -nargs=* Execute silent call PreviewSysCurrentFile("", <f-args>)
     " Perl files don't like showing output when executed normally
     command! -nargs=* ExecutePerl silent call PreviewSysCurrentFile('perl', <f-args>)
-    command! -nargs=* ExecutePython silent call PreviewSysCurrentFile('python', <f-args>)
+    command! -nargs=* ExecutePython silent call PreviewSysCurrentFile(g:python_flavor, <f-args>)
     " set and use a 'main file' that can be executed regardless of current file location
     command! SetMainFile silent! let g:mainfile = expand('%:p')
     command! -nargs=* ExecuteMain silent call PreviewSys(g:mainfile, <f-args>)
     command! -nargs=* ExecuteMainPerl silent call PreviewSys('perl', g:mainfile, <f-args>)
-    command! -nargs=* ExecuteMainPython silent call PreviewSys('python', g:mainfile, <f-args>)
+    command! -nargs=* ExecuteMainPython silent call PreviewSys(g:python_flavor, g:mainfile, <f-args>)
 
     " profiling
     command! -nargs=* ExecuteProfile silent call PreviewSysCurrentFile('profile', <f-args>)
