@@ -31,6 +31,11 @@
     command! -nargs=* ExecuteMainPerl silent call PreviewSys('perl', g:mainfile, <f-args>)
     command! -nargs=* ExecuteMainPython silent call PreviewSys('python', g:mainfile, <f-args>)
 
+    " java compilation/testing
+    command! -nargs=* ExecuteCompile silent call PreviewSysCurrentFile('javac', <f-args>)
+    command! -nargs=* ExecuteMainCompile silent call PreviewSys('javac', g:mainfile, <f-args>)
+    command! -nargs=* ExecuteTest silent call PreviewSys('java', 'org.junit.runner.JUnitCore', expand('%:t:r') . 'Test')
+
     " profiling
     command! -nargs=* ExecuteProfile silent call PreviewSysCurrentFile('profile', <f-args>)
     command! -nargs=* ExecuteProfileMain silent call PreviewSys('profile', g:mainfile, <f-args>)
@@ -60,6 +65,14 @@
     nnoremap xyh :ExecutePythonHere
     nnoremap xe :call VnewTemp() \| read !
     nnoremap x<Esc> <Esc>
+
+    " compile
+    nnoremap xc :ExecuteCompile<CR>
+    nnoremap xmc :ExecuteMainCompile<CR>
+
+    " test
+    nnoremap xt :ExecuteTest<CR>
+    " nnoremap xmt :ExecuteMainTest<CR>
 
     " profile
     nnoremap xf :ExecuteProfile
