@@ -34,7 +34,7 @@
             \ 'Constant':  { 'ctermfg': 'DarkRed', 'ctermbg': 'NONE'},
             \ 'CursorColumn':{'ctermfg': 'Black', 'ctermbg': 'DarkGray'},
             \ 'CursorLine':{ 'ctermfg': 'Black', 'ctermbg': 'Gray'},
-            \ 'Delimiter': { 'ctermfg': 'DarkCyan', 'ctermbg': 'NONE'},
+            \ 'Delimeter': { 'ctermfg': 'DarkCyan', 'ctermbg': g:bold},
             \ 'DiffDelete':{ 'ctermfg': 'White', 'ctermbg': 'DarkRed'},
             \ 'DiffText':  { 'ctermfg': 'Black', 'ctermbg': 'LightBlue'},
             \ 'Folded':    { 'ctermfg': 'Gray', 'ctermbg': 'DarkGray'},
@@ -70,6 +70,8 @@
             \ 'TexMatcher':{ 'ctermfg': 'DarkGreen', 'ctermbg': g:bold},
             \ 'Todo'     : { 'ctermfg': 'White', 'ctermbg': g:bold},
             \ 'VertSplit': { 'ctermfg': 'Gray', 'ctermbg': 'DarkGray'},
+            \ 'vimFunction':{'ctermfg': 'DarkYellow', 'ctermbg' :'NONE'},
+            \ 'vimUserFunc':{'ctermfg': 'DarkYellow', 'ctermbg' :'NONE'},
             \ 'Visual'   : { 'ctermfg': 'White', 'ctermbg': 'DarkGray'},
             \ 'VisualNOS': { 'ctermfg': 'Gray', 'ctermbg': g:bold},
         \ }
@@ -90,6 +92,9 @@
     execute "highlight Italic ctermbg=" . g:italics . " ctermfg=NONE guifg=NONE guibg=NONE gui=italic "
     execute "highlight OverLength ctermbg=" . g:italics . " ctermfg=gray guifg=gray guibg=NONE gui=italic "
     " highlight OverLength ctermbg=darkgray ctermfg=white guibg=#592929
+
+    " use a smaller preview window
+    set previewheight=6
 
 " Mappings:
     " clear highlighting

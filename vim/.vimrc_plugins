@@ -69,13 +69,18 @@
     " nmap <silent> <Leader>sdt <Plug>DBDescribeTable
 
 " EasierMotion:
+    let g:easiermotion_basic_mapping_prefix = ''
+    let g:easiermotion_color_config = 'alternating'
+    let g:easiermotion_create_ijkl_mappings = 1
+    let g:easiermotion_ijkl_mapping_prefix = '<Leader>'
+
     let g:EasyMotion_leader_key = '~~~~'
     " let g:EasierMotion_mapping_prefix = '~~'
-    let g:EasierMotion_create_default_mappings = 0
+    " let g:EasierMotion_create_default_mappings = 0
     " let g:EasierMotion_keys = 'qwertyuiopasdghklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMfj;'
-    let g:EasierMotion_force_uppercase = 1
+    " let g:EasierMotion_force_uppercase = 1
     " let g:EasierMotion_keys = 'uiojklm,.'
-    let g:EasierMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'
+    " let g:EasierMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'
     " let g:EasierMotion_keys = 'abcdefghijklmnopqrstuvwxyz;'
     " let g:EasierMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     " let g:EasierMotion_keys = 'ASDFGQWERTZXCVBYNMPOIUHJKL'
@@ -172,7 +177,7 @@
 " Fugitive:
     " commit changes to the current file
     command Gadd Git add "%"
-    command! -nargs=1 GC silent! Git add "%" | !git commit -m "<args>"
+    command! -nargs=1 GC silent! Git add "%" | execute "!git commit -m " . shellescape('<args>')
 
     " open git status the same way we open NerdTree
     " use 'u' for 'statUs'
@@ -197,6 +202,16 @@
     let NERDTreeQuitOnOpen=1
     " show hidden files
     let NERDTreeShowHidden=1
+    " disable 'press ? for help' text
+    let NERDTreeMinimalUI=1
+    " avoid confirmation for file manipulation
+    let NERDTreeAutoDeleteBuffer=1
+    " navigate directories easily
+    let NERDTreeMapActivateNode="<CR>"
+    let NERDTreeMapOpenRecursively="<S-CR>"
+    let NERDTreeMapUpdirKeepOpen="j"
+    let NERDTreeMapCloseDir="<Left>"
+    let NERDTreeMapOpenRecursively="<Right>"
 
 " Supertab:
     " let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
@@ -239,6 +254,9 @@
         \ 'mode': 'passive',
     \ }
     let g:syntastic_perl_checkers = ['perl']
+    let g:syntastic_python_checkers = ['flake8']
+    let g:syntastic_python_flake8_args = '--ignore=E131'
+    let g:syntastic_yaml_checkers = ['yamlxs']
     " check syntax ('help check')
     nnoremap hc :SyntasticCheck<CR>
     " check errors ('help errors')

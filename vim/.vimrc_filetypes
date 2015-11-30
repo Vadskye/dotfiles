@@ -1,6 +1,7 @@
 " Settings:
     " enable full highlighting
     let g:python_highlight_all = 1
+    let g:python_version_2 = 1
 
 " Autocommands:
     " Use multiline friendly "home" command on text-based file types
@@ -35,7 +36,7 @@
     au Filetype vim inoremap <S-CR> <CR>\ 
 
     " highlight long lines
-    au Filetype perl,python match OverLength /\%>80v.\+/
+    au Filetype perl,python syn match OverLength /\%>80v.\+/
 
     " html should treat - as a keyword
     au Filetype html,css setlocal iskeyword+=-
@@ -43,7 +44,9 @@
     " perl should treat : as a keyword
     au Filetype perl setlocal iskeyword+=:
 
-    au Filetype tex,latex syn match Delimeter /&/ containedin=texEnv | highlight Delimeter ctermfg='DarkCyan'
+    au Filetype tex,latex syn match Delimeter /&/ containedin=texEnv
+
+    au Filetype python syn match Delimeter /\v[+=]+/
 
     " highlight Perl subroutine names
     au Filetype perl syn match Function /\<[a-zA-Z_]\{3,}(/he=e-1
