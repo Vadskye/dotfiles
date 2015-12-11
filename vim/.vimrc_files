@@ -43,6 +43,22 @@
         endif
     endfunction
 
+    function! EditRelativePath(pattern, replacement)
+        let current_file_path = expand('%:p')
+        let new_file_path = substitute(current_file_path, a:pattern, a:replacement, "")
+        if filereadable(new_file_path)
+            execute 'edit ' . new_file_path
+        else
+            let new_directory_path = fnamemodify(new_file_path, ":h")
+            if finddir(new_directory_path) == new_directory_path
+                execute 'edit ' . new_directory_path
+            else
+                echohl WarningMsg
+                echomsg "Replaced path '" . new_directory_path . "' not found"
+            endif
+        endif
+    endfunction
+
 " Commands:
     command! -nargs=1 W call SaveAs('<args>')
     command! -nargs=1 Write call SaveAs('<args>')
@@ -63,6 +79,8 @@
     endif
 
     command! -nargs=* Go call Go(<f-args>)
+
+    command! -nargs=* EditRelativePath call EditRelativePath(<f-args>)
 
 " Mappings:
     " File operation remappings with ;
@@ -114,6 +132,10 @@
     nnoremap ;ce :e %:p:h/
     " grep in current directory
     nnoremap ;cg :noautocmd vimgrep "" %:p:h/*<Home><C-Right><C-Right><Right><Right>
+
+    " edit file with relative path
+    nnoremap ;Re :EditRelativePath 
+    nnoremap ;RE :EditRelativePath 
 
     " use go to retrieve files from anywhere
     nnoremap ;g :Go 
