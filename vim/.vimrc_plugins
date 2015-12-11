@@ -71,32 +71,31 @@
     " nmap <silent> <Leader>sp vip<Plug>DBExecVisualSQL
     " nmap <silent> <Leader>sdt <Plug>DBDescribeTable
 
-" EasierMotion:
-    let g:easiermotion_basic_mapping_prefix = ''
-    let g:easiermotion_color_config = 'alternating'
-    let g:easiermotion_create_ijkl_mappings = 1
-    let g:easiermotion_ijkl_mapping_prefix = '<Leader>'
+" Emotions:
+    let g:emotions_create_ijkl_mappings = 1
+    let g:emotions_find_mapping_prefix = ''
+    let g:emotions_ijkl_mapping_prefix = '<Leader>'
 
     let g:EasyMotion_leader_key = '~~~~'
-    " let g:EasierMotion_mapping_prefix = '~~'
-    " let g:EasierMotion_create_default_mappings = 0
-    " let g:EasierMotion_keys = 'qwertyuiopasdghklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMfj;'
-    " let g:EasierMotion_force_uppercase = 1
-    " let g:EasierMotion_keys = 'uiojklm,.'
-    " let g:EasierMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'
-    " let g:EasierMotion_keys = 'abcdefghijklmnopqrstuvwxyz;'
-    " let g:EasierMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    " let g:EasierMotion_keys = 'ASDFGQWERTZXCVBYNMPOIUHJKL'
-    " let g:EasierMotion_smartcase = 1
-    " let g:EasierMotion_use_smartsign_us = 1
-    " let g:EasierMotion_target_highlight_group = 'ErrorMsg'
-    " let g:EasierMotion_first_target_highlight_group = 'Comment'
-    " let g:EasierMotion_second_target_highlight_group = 'ErrorMsg'
-    " hi link EasierMotionTargetGroup ErrorMsg
-    " hi link EasierMotionFirstTargetGroup ErrorMsg
-    " hi link EasierMotionSecondTargetGroup ErrorMsg
-    " let g:EasierMotion_space_jump_first = 1
-    " let g:EasierMotion_enter_jump_first = 1
+    " let g:emotions_mapping_prefix = '~~'
+    " let g:emotions_create_default_mappings = 0
+    " let g:emotions_keys = 'qwertyuiopasdghklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMfj;'
+    " let g:emotions_force_uppercase = 1
+    " let g:emotions_keys = 'uiojklm,.'
+    " let g:emotions_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'
+    " let g:emotions_keys = 'abcdefghijklmnopqrstuvwxyz;'
+    " let g:emotions_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    " let g:emotions_keys = 'ASDFGQWERTZXCVBYNMPOIUHJKL'
+    " let g:emotions_smartcase = 1
+    " let g:emotions_use_smartsign_us = 1
+    " let g:emotions_target_highlight_group = 'ErrorMsg'
+    " let g:emotions_first_target_highlight_group = 'Comment'
+    " let g:emotions_second_target_highlight_group = 'ErrorMsg'
+    " hi link emotionsTargetGroup ErrorMsg
+    " hi link emotionsFirstTargetGroup ErrorMsg
+    " hi link emotionsSecondTargetGroup ErrorMsg
+    " let g:emotions_space_jump_first = 1
+    " let g:emotions_enter_jump_first = 1
 
 " easy-align
     nmap ga <Plug>(EasyAlign)v
