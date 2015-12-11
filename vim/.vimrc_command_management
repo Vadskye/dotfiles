@@ -21,6 +21,22 @@
         call PreviewSys(a:command, args)
     endfunction
 
+    let g:file_type_command_mapping = {
+        \ 'perl': 'perl ',
+        \ 'python': 'python ',
+        \ 'vim': "",
+    \ }
+    function! ExecuteParagraph() abort
+        " copy the text of the paragraph
+        normal! "zyip
+        let command = get(g:file_type_command_mapping, &filetype, "")
+        redir! > ~/.termout
+        silent! execute command . getreg('z')
+        redir END
+        pedit ~/.termout
+        let g:last_cmd_previewed = getreg('z')
+    endfunction
+
 " Commands:
     " Execute current file in new vsplit
     command! -nargs=* Execute silent call PreviewSysCurrentFile("", <f-args>)
@@ -83,3 +99,6 @@
     nnoremap <silent> vv :execute getline('.')<CR>
 
     nnoremap <silent> hq :call PreviewSys('perl', expand('%:p'))<CR>
+
+    " execute code within vim
+    nnoremap <Leader>x :call ExecuteParagraph()<CR>

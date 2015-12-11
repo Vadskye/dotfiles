@@ -37,12 +37,11 @@
     endfunction
 
 " Mappings:
-    nnoremap <silent> <Leader>p ^"xy$:python terminal_thread = TerminalThread('<C-r>x')<CR>
+    " nnoremap <silent> <Leader>p ^"xy$:python terminal_thread = TerminalThread('<C-r>x')<CR>
     " we're actually mapping control-enter, but it's registered as C-J
-    " inoremap <silent> <C-J> <Esc>^"xy$:python terminal_thread = TerminalThread('<C-r>x')<CR>
-    nnoremap <silent> <Leader>x ^"xy$:python run_terminal_command('<C-r>x')<CR>
-    nnoremap <silent> <Leader>X ^"xy$:python run_terminal_command('<C-r>x', clear_buffer = True)<CR>
-    inoremap <silent> <C-J> <Esc>^"xy$:python run_terminal_command('<C-r>x')<CR>$a
+    " nnoremap <silent> <Leader>x ^"xy$:python run_terminal_command('<C-r>x')<CR>
+    " nnoremap <silent> <Leader>X ^"xy$:python run_terminal_command('<C-r>x', clear_buffer = True)<CR>
+    " inoremap <silent> <C-J> <Esc>^"xy$:python run_terminal_command('<C-r>x')<CR>$a
 
 function LoadTerminalPython()
     python << EOPYTHON
