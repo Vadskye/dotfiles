@@ -50,6 +50,9 @@
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
 
+" Commentary:
+    autocmd FileType jproperties setlocal commentstring=#\ %s
+
 " CtrlP:
     let g:ctrlp_map = ';/'
     let g:ctrlp_working_path_mode = 'ra'
