@@ -1,5 +1,7 @@
 " Settings:
 
+    let g:java_highlight_all = 1
+
     set previewheight=6
 
     " ConEmu can use bold and italic backgrounds

@@ -32,6 +32,19 @@ function cdc() {
     # but the error message will be what the user expects
     builtin cd "$@" && return
 }
+
+# cd relative to current path
+# Args:
+#   pattern (string): pattern to replace from current path
+#   replacement (string): replacement for the pattern
+function cr() {
+    local pattern=$1
+    local replacement=$2
+    local path=$(pwd)
+    path=${path/$pattern/$replacement}
+    cd $path
+}
+
 function ucfirst() {
     echo $(perl -e "print ucfirst \"$1\n\"")
 }
