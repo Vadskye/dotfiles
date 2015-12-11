@@ -210,8 +210,13 @@
     let NERDTreeMapActivateNode="<CR>"
     let NERDTreeMapOpenRecursively="<S-CR>"
     let NERDTreeMapUpdirKeepOpen="j"
+    let NERDTreeMapChangeRoot="l"
     let NERDTreeMapCloseDir="<Left>"
     let NERDTreeMapOpenRecursively="<Right>"
+    " prevent remapping ik
+    let NERDTreeMapOpenSplit="~"
+    let NERDTreeMapJumpFirstChild="~~"
+    let NERDTreeMapToggleHidden="H"
 
 " Supertab:
     " let g:SuperTabDefaultCompletionType = "<c-x><c-u>"

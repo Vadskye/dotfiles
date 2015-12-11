@@ -119,7 +119,7 @@
 
     function CaptureEx(command)
         redir => output
-        execute a:command
+        silent! execute a:command
         redir END
         return output
     endfunction
