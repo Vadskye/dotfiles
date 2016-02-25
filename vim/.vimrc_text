@@ -3,6 +3,8 @@
     command Nobreak set wrap|set textwidth=0|set wrapmargin=0
     command Break set nowrap|set textwidth=80|set wrapmargin=0
 
+    command! -nargs=1 -range SortByColumn <line1>,<line2>!sort -k <args>
+
 " Mappings:
     " more consistent Ctrl-R
     nnoremap <C-r> i<C-r><Esc>
