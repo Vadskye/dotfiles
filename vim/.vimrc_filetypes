@@ -51,6 +51,9 @@
     " highlight Perl subroutine names
     au Filetype perl syn match Function /\<[a-zA-Z_]\{3,}(/he=e-1
 
+    " jsp files should indent correctly
+    let g:html_indent_inctags = 'c:if,c:when,style,c:otherwise,option,p,script'
+
 " Functions:
     function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
       let ft=toupper(a:filetype)
@@ -78,8 +81,9 @@
     endfunction
 
     function EspHighlight()
-        setf html
-        call TextEnableCodeSnip('perl', '<%', '%>', 'SpecialComment')
+        setf aspperl
+        " call TextEnableCodeSnip('perl', '<%', '%>', 'SpecialComment')
+        syn match htmlPreAttr contained "\w\+=[^"][^-]\+" contains=htmlPreProcAttrError,htmlPreProcAttrName
     endfunction
 
     function SetAutoFoldColumn(fold_column_value)
