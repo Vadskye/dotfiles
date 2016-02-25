@@ -35,6 +35,7 @@ function SourceVimrcFile(name, ...)
     endif
 endfunction
 
+source $VIMRUNTIME/macros/matchit.vim
 call SourceVimrcFile("basic")
 call SourceVimrcFile("remappings")
 call SourceVimrcFile("appearance")
