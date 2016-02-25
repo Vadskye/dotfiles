@@ -28,9 +28,9 @@
     endfunction
 
     function! AirlineInit()
-         let g:airline_section_a = "%{airline#util#prepend(airline#parts#crypt(),0)}%{airline#util#prepend(airline#parts#paste(),0)}%{ShortDirectoryName(expand('%:p:h'))}"
+         let g:airline_section_b = "%{airline#util#prepend(airline#parts#crypt(),0)}%{airline#util#prepend(airline#parts#paste(),0)}%{ShortDirectoryName(expand('%:p:h'))}"
         " never display full path
-        let g:airline_section_b = '%{expand("%:t")} %#__accent_red#%m%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+        let g:airline_section_a = '%{expand("%:t")} %#__accent_red#%m%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
         if get(g:, 'loaded_filesight', 0)
             let g:airline_section_c = '%{filesight#get_current_tag_name(1)}'
         elseif get(g:, 'loaded_tagbar', 0)
