@@ -106,8 +106,10 @@
     " let g:emotions_space_jump_first = 1
     " let g:emotions_enter_jump_first = 1
 
-" easy-align
+" easy-align:
     nmap ga <Plug>(EasyAlign)v
+    nmap <Leader>= <Plug>(EasyAlign)v
+    nmap + <Plug>(EasyAlign)v
     " align latex tables
     nmap gat <Plug>(EasyAlign)vK*&
 
