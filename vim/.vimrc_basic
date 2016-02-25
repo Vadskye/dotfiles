@@ -128,3 +128,34 @@
         let output = CaptureEx(a:command)
         put=output
     endfunction
+
+    function! SetVerbose(level) abort
+        if a:level > 0
+            " if we're doing verbose for the first time, clear the existing log
+            if &verbosefile == ""
+                silent! !rm $DOTFILES/vim/verbose.log
+            endif
+            set verbosefile=$DOTFILES/vim/verbose.log
+        else
+            let &verbosefile = ""
+        endif
+        execute "set verbose=" . a:level
+    endfunction
+
+    function! ProfileStart() abort
+        profile start profile.log
+        profile func *
+        profile file *
+    endfunction
+
+    function! ProfileQuit() abort
+        profile pause
+        noautocmd qall!
+    endfunction
+
+" Commands:
+    command! -nargs=1 SetVerbose call SetVerbose(<f-args>)
+    command! ViewVerbose edit $DOTFILES/vim/verbose.log
+
+    command! ProfileStart call ProfileStart()
+    command! ProfileQuit call ProfileQuit()
