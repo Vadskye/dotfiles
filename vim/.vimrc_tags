@@ -4,7 +4,7 @@
 
     " search for tags in an upward search by default
     set tags=./tags;/
-    autocmd BufEnter,BufNewFile $P4_HOME/* call TagsFromRelease()
+    autocmd BufEnter,BufNewFile $P4_HOME/*.pm,$P4_HOME/*.pl call TagsFromRelease()
 
     " Run ctags on save
     " need to figure out how to make it work with javascript, exclude libraries
