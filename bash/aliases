@@ -45,6 +45,16 @@ function cr() {
     cd $path
 }
 
+# mv relative to the current path
+function mr() {
+    local file=$1
+    local pattern=$2
+    local replacement=$3
+    local path=$(pwd)
+    path=${path/$pattern/$replacement}
+    mv "$file" "$path/$file"
+}
+
 function ucfirst() {
     echo $(perl -e "print ucfirst \"$1\n\"")
 }
