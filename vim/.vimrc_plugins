@@ -215,6 +215,9 @@
     let marvim_register = 'j'       " change used register from 'q' to 'c'
     " let marvim_prefix = 0           " disable default syntax based prefix
 
+" Meta:
+    let g:meta_directory = $DOTFILES . '/vim/meta'
+
 " NERDTree:
     " automatically quit after opening a file
     let NERDTreeQuitOnOpen=1
