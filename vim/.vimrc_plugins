@@ -79,6 +79,12 @@
     let g:emotions_find_mapping_prefix = ''
     let g:emotions_ijkl_mapping_prefix = '<Leader>'
 
+    let g:emotions_max_targets = 26
+
+    " let g:emotions_target_highlight_group_primary = 'Identifier'
+    " let g:emotions_target_highlight_group_secondary = 'Function'
+    let g:emotions_highlight_type = 'primary'
+
     let g:EasyMotion_leader_key = '~~~~'
     " let g:emotions_mapping_prefix = '~~'
     " let g:emotions_create_default_mappings = 0
