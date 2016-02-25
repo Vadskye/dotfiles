@@ -206,10 +206,8 @@
     " let marvim_prefix = 0           " disable default syntax based prefix
 
 " NERDTree:
-    " automatically quit after opening a file
-    let NERDTreeQuitOnOpen=1
-    " show hidden files
-    let NERDTreeShowHidden=1
+    " don't automatically quit after opening a file
+    let NERDTreeQuitOnOpen=0
     " disable 'press ? for help' text
     let NERDTreeMinimalUI=1
     " avoid confirmation for file manipulation
