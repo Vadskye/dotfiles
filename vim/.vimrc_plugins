@@ -189,6 +189,15 @@
     omap si <Plug>IndentObject-aI
     omap sI <Plug>IndentObject-ai
 
+" MatchTagAlways:
+    let g:mta_filetypes = {
+        \ 'html'  : 1,
+        \ 'jsp'   : 1,
+        \ 'xhtml' : 1,
+        \ 'xml'   : 1,
+        \ 'jinja' : 1,
+    \ }
+
 " Marvim:
     let marvim_store = $HOME . '/vimfiles/bundle/marvim/macros'
     let marvim_find_key = '<Leader>qf' " change find key from <F2> to 'space'
