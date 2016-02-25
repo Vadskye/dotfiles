@@ -103,7 +103,7 @@
     " last file
     nnoremap ;# :e "#"<Enter>
     " file tree (from current file)
-    nnoremap ;t :NERDTree %:p:h<Enter>
+    nnoremap ;t :NERDTree "%:p:h"<Enter>
     " file bookmark
     nnoremap ;b :NERDTreeFromBookmark 
     " file diff windows

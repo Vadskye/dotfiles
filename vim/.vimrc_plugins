@@ -47,6 +47,9 @@
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
 
+" Checkpoint:
+    let g:checkpoint_directory = $DOTFILES . '/vim/checkpoints'
+
 " Commentary:
     autocmd FileType jproperties setlocal commentstring=#\ %s
 
@@ -73,6 +76,12 @@
     let g:emotions_find_mapping_prefix = ''
     let g:emotions_ijkl_mapping_prefix = '<Leader>'
 
+    let g:emotions_max_targets = 26
+
+    " let g:emotions_target_highlight_group_primary = 'Identifier'
+    " let g:emotions_target_highlight_group_secondary = 'Function'
+    let g:emotions_highlight_type = 'primary'
+
     let g:EasyMotion_leader_key = '~~~~'
     " let g:emotions_mapping_prefix = '~~'
     " let g:emotions_create_default_mappings = 0
@@ -94,8 +103,10 @@
     " let g:emotions_space_jump_first = 1
     " let g:emotions_enter_jump_first = 1
 
-" easy-align
+" easy-align:
     nmap ga <Plug>(EasyAlign)v
+    nmap <Leader>= <Plug>(EasyAlign)v
+    nmap + <Plug>(EasyAlign)v
     " align latex tables
     nmap gat <Plug>(EasyAlign)vK*&
 
@@ -115,7 +126,7 @@
       let g:fastfold_fold_movement_commands = []
 
 " Filesight:
-    let g:filesight_file_types = ['vim', 'perl', 'python', 'tex', 'java']
+    " let g:filesight_file_types = ['html', 'vim', 'perl', 'python', 'tex', 'java']
     let g:filesight_ctags_extra_args = ['--tex-kinds=-l']
     let g:filesight_ctags_bin = expand("$USERPROFILE") . "/Utilities/ctags58/ctags.exe"
     let g:filesight_window_size = 30
@@ -123,6 +134,11 @@
     " let g:filesight_highlight_current_tag = "SpellRare"
     " let g:filesight_ctags_extra_args =
     "     \ '--regex-tex=//\\1/f,feat/e'
+    let g:filesight_sort_tags = 'name'
+    let g:filesight_use_conceal = 1
+
+    let g:filesight_log_file_ctags = expand('$HOME/filesight_ctags.log')
+    let g:filesight_log_file_debug = expand('$HOME/filesight_debug.log')
 
     let g:filesight_custom_tags = {
         \ 'perl': [
@@ -204,6 +220,9 @@
     let marvim_store_key = '<Leader>qs'     " change store key from <F3> to 'ms'
     let marvim_register = 'j'       " change used register from 'q' to 'c'
     " let marvim_prefix = 0           " disable default syntax based prefix
+
+" Meta:
+    let g:meta_directory = $DOTFILES . '/vim/meta'
 
 " NERDTree:
     " don't automatically quit after opening a file

@@ -127,6 +127,9 @@
     " enter blockwise visual mode
     nnoremap <Leader>v <C-v>
 
+    " quick access to the expression register
+    nnoremap <C-=> a<C-R>=
+
 " Functions:
     function! AppendToUnnamedRegister(motion_type, operator)
         let unnamed_register = getreg('"')
