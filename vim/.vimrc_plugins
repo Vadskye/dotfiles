@@ -129,7 +129,7 @@
       let g:fastfold_fold_movement_commands = []
 
 " Filesight:
-    let g:filesight_file_types = ['vim', 'perl', 'python', 'tex', 'java']
+    " let g:filesight_file_types = ['html', 'vim', 'perl', 'python', 'tex', 'java']
     let g:filesight_ctags_extra_args = ['--tex-kinds=-l']
     let g:filesight_ctags_bin = expand("$USERPROFILE") . "/Utilities/ctags58/ctags.exe"
     let g:filesight_window_size = 30
