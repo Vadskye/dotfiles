@@ -50,6 +50,9 @@
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
 
+" Checkpoint:
+    let g:checkpoint_directory = $DOTFILES . '/vim/checkpoints'
+
 " Commentary:
     autocmd FileType jproperties setlocal commentstring=#\ %s
 
