@@ -3,8 +3,6 @@
     " use most of the file to determine syntax highlighting
     syntax sync minlines=1000
 
-    set previewheight=6
-
     " ConEmu can use bold and italic backgrounds
     let g:italics=11
     let g:bold=12
