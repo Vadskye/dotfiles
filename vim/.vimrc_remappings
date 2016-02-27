@@ -43,18 +43,18 @@
 
     " redesign delete/copy/replace
     " delete
-    noremap dd dd
+    nnoremap dd dd
     noremap <silent> D :set opfunc=AppendDeleteToUnnamedRegister<CR>g@
-    noremap <silent> DD :set opfunc=AppendDeleteToUnnamedRegister<CR>g@V<Space>
+    nnoremap <silent> DD :set opfunc=AppendDeleteToUnnamedRegister<CR>g@V<Space>
     noremap <Leader>d "*d
-    noremap <Leader>dd "*dd
+    nnoremap <Leader>dd "*dd
     " copy
     noremap c y
-    noremap cc yy
+    nnoremap cc yy
     noremap <silent> C :set opfunc=AppendCopyToUnnamedRegister<CR>g@
-    noremap <silent> CC :set opfunc=AppendCopyToUnnamedRegister<CR>g@V<Space>
+    nnoremap <silent> CC :set opfunc=AppendCopyToUnnamedRegister<CR>g@V<Space>
     noremap <Leader>c "*y
-    noremap <Leader>cc "*yy
+    nnoremap <Leader>cc "*yy
     " replace
     noremap r c
     noremap rr cc
@@ -65,8 +65,8 @@
     " paste
     noremap <Leader>p "*p
     " paste from copied text
-    noremap cp "0p
-    noremap cP "0P
+    nnoremap cp "0p
+    nnoremap cP "0P
 
     " change single character
     " noremap b r
