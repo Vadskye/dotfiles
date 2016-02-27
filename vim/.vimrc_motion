@@ -110,12 +110,6 @@
     nnoremap <silent> O :GoToWordEnd<CR>
     onoremap <silent> O v:GoToWordEnd<CR>
 
-    " general EasierMotion navigation
-    map <Leader><Up> <Plug>(easiermotion-k)
-    map <Leader><Right> <Plug>(easiermotion-W)
-    map <Leader><Down> <Plug>(easiermotion-j)
-    map <Leader><Left> <Plug>(easiermotion-B)
-
     " rapid back/forth navigation: C-u to go back, C-o to go forward
     noremap <C-u> <C-o>
     inoremap <C-u> <C-o><C-o>
