@@ -57,11 +57,11 @@
     nnoremap <Leader>cc "*yy
     " replace
     noremap r c
-    noremap rr cc
+    nnoremap rr cc
     noremap <silent> R :set opfunc=AppendChangeToUnnamedRegister<CR>g@
-    noremap <silent> RR :set opfunc=AppendChangeToUnnamedRegister<CR>g@V<Space>
+    nnoremap <silent> RR :set opfunc=AppendChangeToUnnamedRegister<CR>g@V<Space>
     noremap <Leader>r "*c
-    noremap <Leader>rr "*cc
+    nnoremap <Leader>rr "*cc
     " paste
     noremap <Leader>p "*p
     " paste from copied text
