@@ -1,7 +1,5 @@
 " Settings:
 
-    let g:java_highlight_all = 1
-
     " use most of the file to determine syntax highlighting
     syntax sync minlines=1000
 
