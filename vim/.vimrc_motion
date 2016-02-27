@@ -100,15 +100,29 @@
     noremap L E
     onoremap L E
     " nnoremap E E
-    " onoremap E E
-    nnoremap <silent> u :GoToWordStartBackwards<CR>
-    onoremap <silent> u :GoToWordStartBackwards<CR>
-    nnoremap <silent> U :GoToWordEndBackwards<CR>
-    onoremap <silent> U v:GoToWordEndBackwards<CR>
-    nnoremap <silent> o :GoToWordStart<CR>
-    onoremap <silent> o :GoToWordStart<CR>
-    nnoremap <silent> O :GoToWordEnd<CR>
-    onoremap <silent> O v:GoToWordEnd<CR>
+    " onoremap E e
+    call MultiMap({
+        \ 'map_keys': 'u',
+        \ 'command': 'GoToWordStartBackwards',
+        \ 'map_args': '<silent>',
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'U',
+        \ 'command': 'GoToWordEndBackwards',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'v',
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'o',
+        \ 'command': 'GoToWordStart',
+        \ 'map_args': '<silent>',
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'O',
+        \ 'command': 'GoToWordEnd',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'v',
+    \ })
 
     " rapid back/forth navigation: C-u to go back, C-o to go forward
     noremap <C-u> <C-o>
