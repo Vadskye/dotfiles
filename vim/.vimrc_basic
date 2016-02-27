@@ -122,6 +122,19 @@
         noautocmd qall!
     endfunction
 
+    " Map the same command in all modes: normal, operator-pending, and visual
+    " Required args:
+    "   map_keys (string): mapping for the command
+    "   command (string): command to execute
+    " Optional args:
+    "   map_args (string): arguments for the map command, like '<silent>'
+    "   operator_prefix: prefix before operator-pending mapping, like 'V'
+    function! MultiMap(args)
+        execute "nnoremap " . get(a:args, 'map_args', "") . " " . a:args.map_keys . " :<C-U>" . a:args.command . "<CR>"
+        execute "onoremap " . get(a:args, 'map_args', "") . " " . a:args.map_keys . " " . get(a:args, 'operator_prefix', "") . ":<C-U>" . a:args.command . "<CR>"
+        execute "xnoremap " . get(a:args, 'map_args', "") . " " . a:args.map_keys . " :<C-U> execute 'normal! gv' <Bar>" . a:args.command . "<CR>"
+    endfunction
+
 " Commands:
     command! -nargs=1 SetVerbose call SetVerbose(<f-args>)
     command! ViewVerbose edit $DOTFILES/vim/verbose.log

@@ -6,7 +6,7 @@
 " Functions:
     " Jump to the next or previous line that has the same level or a lower
     " level of indentation than the current line.
-    " 
+    "
     " exclusive (bool): true: Motion is exclusive
     " false: Motion is inclusive
     " fwd (bool): true: Go to next line
@@ -32,8 +32,7 @@
                         if (a:exclusive)
                             let line = line - stepvalue
                         endif
-                        exe line
-                        exe "normal " column . "|"
+                        call cursor(line, column)
                         break
                     endif
                 endif
@@ -125,14 +124,30 @@
 
     " Moving back and forth between lines of same or lower indentation.
     " http://vim.wikia.com/wiki/Move_to_next/previous_line_with_same_indentation
-    noremap <silent> i :<C-U>call NextIndent(0, 0, 0, 1)<CR>
-    noremap <silent> k :<C-U>call NextIndent(0, 1, 0, 1)<CR>
-    noremap <silent> I :<C-U>call NextIndent(0, 0, 1, 1)<CR>_
-    noremap <silent> K :<C-U>call NextIndent(0, 1, 1, 1)<CR>_
-    onoremap <silent> i V:<C-U>call NextIndent(0, 0, 0, 1)<CR>
-    onoremap <silent> k V:<C-U>call NextIndent(0, 1, 0, 1)<CR>
-    onoremap <silent> I V:<C-U>call NextIndent(0, 0, 1, 1)<CR>_
-    onoremap <silent> K V:<C-U>call NextIndent(0, 1, 1, 1)<CR>_
+    call MultiMap({
+        \ 'map_keys': 'i',
+        \ 'command': 'call NextIndent(0, 0, 0, 1)',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'V'
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'k',
+        \ 'command': 'call NextIndent(0, 1, 0, 1)',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'V'
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'I',
+        \ 'command': 'call NextIndent(0, 0, 1, 1)',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'V'
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'K',
+        \ 'command': 'call NextIndent(0, 1, 1, 1)',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'V'
+    \ })
 
     if has("unix")
         "fix control-left/right mapping
