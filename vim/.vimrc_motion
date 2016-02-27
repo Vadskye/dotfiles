@@ -158,27 +158,17 @@
     endif
 
     " navigate between braces
-    nnoremap <C-j>{ [M
-    onoremap <C-j>{ [M
-    nnoremap <C-j>} [M
-    onoremap <C-j>} [M
-    nnoremap <C-j><C-9> [M
-    onoremap <C-j><C-9> [M
-    nnoremap <C-j><C-0> [M
-    onoremap <C-j><C-0> [M
-    nnoremap <C-j>b [M
-    onoremap <C-j>b [M
+    noremap <C-j>{ [M
+    noremap <C-j>} [M
+    noremap <C-j><C-9> [M
+    noremap <C-j><C-0> [M
+    noremap <C-j>b [M
 
-    nnoremap <C-l>{ ]M
-    onoremap <C-l>{ ]M
-    nnoremap <C-l>} ]M
-    onoremap <C-l>} ]M
-    nnoremap <C-l><C-9> ]M
-    onoremap <C-l><C-9> ]M
-    nnoremap <C-l><C-0> ]M
-    onoremap <C-l><C-0> ]M
-    nnoremap <C-l>b ]M
-    onoremap <C-l>b ]M
+    noremap <C-l>{ ]M
+    noremap <C-l>} ]M
+    noremap <C-l><C-9> ]M
+    noremap <C-l><C-0> ]M
+    noremap <C-l>b ]M
 
     " definition jumps should be case sensitive
     " nnoremap gd :set noignorecase<CR>gd:set ignorecase<CR>
