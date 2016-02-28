@@ -1,7 +1,7 @@
 " Commands:
     " Line breaking commands
-    command Nobreak set wrap|set textwidth=0|set wrapmargin=0
-    command Break set nowrap|set textwidth=80|set wrapmargin=0
+    command Nobreak setlocal wrap|setlocal textwidth=0|setlocal wrapmargin=0
+    command Break setlocal nowrap|setlocal textwidth=80|setlocal wrapmargin=0
 
     command! -nargs=1 -range SortByColumn <line1>,<line2>!sort -k <args>
 
