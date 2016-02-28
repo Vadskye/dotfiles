@@ -29,17 +29,9 @@
 
     " Swap [] and {}
     noremap [ {
-    onoremap [ {
     noremap ] }
-    onoremap ] }
     noremap { [
-    onoremap { [
     noremap } ]
-    onoremap } ]
-    " nunmap <buffer> [[
-    " nunmap <buffer> ]]
-    " nunmap <buffer> [m
-    " nunmap <buffer> ]m
 
     " redesign delete/copy/replace
     " delete
