@@ -87,13 +87,10 @@
 
     " map directional word jumps so end-of-word motions are uppercase
     noremap j B
-    onoremap j B
     noremap J gE
     onoremap J vgE
     noremap l W
-    onoremap l W
     noremap L E
-    onoremap L E
     " nnoremap E E
     " onoremap E e
     call MultiMap({
