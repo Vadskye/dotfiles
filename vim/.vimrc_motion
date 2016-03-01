@@ -14,8 +14,13 @@
     " skipblanks (bool): true: Skip blank lines
     " false: Don't skip blank lines
     function! NextIndent(fwd, lowerlevel, skipblanks)
-        let i = 0
         let motion_count = v:count1
+
+        " set the context before the jump so the motion can be navigated with
+        " context markers
+        normal! m`
+
+        let i = 0
         while i < motion_count
             let line = line('.')
             let column = col('.')
