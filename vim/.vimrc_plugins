@@ -161,26 +161,7 @@
         \ 'tex': [
             \ {
                 \ 'highlight': 'Identifier',
-                \ 'name': 'spell',
-                \ 'short_name': 'L',
-                \ 'tag_pattern': '^\\\\begin[{]spellsection[}][{]([^}]+)[}](\\[[0-9]+\\])?',
-                \ 'tag_output' : '\\1 \\2',
-            \ },
-            \ {
-                \ 'highlight': 'Identifier',
-                \ 'name': 'feat',
-                \ 'tag_pattern': '^\\\\feat[{]([^}]+)[}]',
-                \ 'tag_output' : '\\1',
-            \ },
-            \ {
-                \ 'highlight': 'Identifier',
-                \ 'name': 'skill',
-                \ 'short_name': 'K',
-                \ 'tag_pattern': '^\\\\skill[{]([^}]+)[}]',
-                \ 'tag_output' : '\\1',
-            \ },
-            \ {
-                \ 'highlight': 'Identifier',
+                \ 'in_statusline': 0,
                 \ 'name': 'table',
                 \ 'short_name': 'T',
                 \ 'tag_pattern': '^ +\\\\lcaption[{]([^}]+)[}]',
