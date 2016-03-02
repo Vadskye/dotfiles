@@ -1,3 +1,6 @@
+" treat - as a keyword
+setlocal iskeyword+=-
+
 " turn a single line of CSS into multiple lines of properly formatted CSS
 function! BreakCSS() abort
     " break the commands into multiple lines

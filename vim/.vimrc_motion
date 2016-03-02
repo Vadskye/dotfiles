@@ -6,18 +6,21 @@
 " Functions:
     " Jump to the next or previous line that has the same level or a lower
     " level of indentation than the current line.
-    " 
-    " exclusive (bool): true: Motion is exclusive
-    " false: Motion is inclusive
+    "
     " fwd (bool): true: Go to next line
     " false: Go to previous line
     " lowerlevel (bool): true: Go to line with lower indentation level
     " false: Go to line with the same indentation level
     " skipblanks (bool): true: Skip blank lines
     " false: Don't skip blank lines
-    function! NextIndent(exclusive, fwd, lowerlevel, skipblanks)
-        let i = 0
+    function! NextIndent(fwd, lowerlevel, skipblanks)
         let motion_count = v:count1
+
+        " set the context before the jump so the motion can be navigated with
+        " context markers
+        normal! m`
+
+        let i = 0
         while i < motion_count
             let line = line('.')
             let column = col('.')
@@ -29,11 +32,7 @@
                 if ( ! a:lowerlevel && indent(line) == indent ||
                             \ a:lowerlevel && indent(line) < indent)
                     if (! a:skipblanks || strlen(getline(line)) > 0)
-                        if (a:exclusive)
-                            let line = line - stepvalue
-                        endif
-                        exe line
-                        exe "normal " column . "|"
+                        call cursor(line, column)
                         break
                     endif
                 endif
@@ -93,29 +92,34 @@
 
     " map directional word jumps so end-of-word motions are uppercase
     noremap j B
-    onoremap j B
     noremap J gE
     onoremap J vgE
     noremap l W
-    onoremap l W
     noremap L E
-    onoremap L E
     " nnoremap E E
-    " onoremap E E
-    nnoremap <silent> u :GoToWordStartBackwards<CR>
-    onoremap <silent> u :GoToWordStartBackwards<CR>
-    nnoremap <silent> U :GoToWordEndBackwards<CR>
-    onoremap <silent> U v:GoToWordEndBackwards<CR>
-    nnoremap <silent> o :GoToWordStart<CR>
-    onoremap <silent> o :GoToWordStart<CR>
-    nnoremap <silent> O :GoToWordEnd<CR>
-    onoremap <silent> O v:GoToWordEnd<CR>
-
-    " general EasierMotion navigation
-    map <Leader><Up> <Plug>(easiermotion-k)
-    map <Leader><Right> <Plug>(easiermotion-W)
-    map <Leader><Down> <Plug>(easiermotion-j)
-    map <Leader><Left> <Plug>(easiermotion-B)
+    " onoremap E e
+    call MultiMap({
+        \ 'map_keys': 'u',
+        \ 'command': 'GoToWordStartBackwards',
+        \ 'map_args': '<silent>',
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'U',
+        \ 'command': 'GoToWordEndBackwards',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'v',
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'o',
+        \ 'command': 'GoToWordStart',
+        \ 'map_args': '<silent>',
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'O',
+        \ 'command': 'GoToWordEnd',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'v',
+    \ })
 
     " rapid back/forth navigation: C-u to go back, C-o to go forward
     noremap <C-u> <C-o>
@@ -125,14 +129,30 @@
 
     " Moving back and forth between lines of same or lower indentation.
     " http://vim.wikia.com/wiki/Move_to_next/previous_line_with_same_indentation
-    noremap <silent> i :<C-U>call NextIndent(0, 0, 0, 1)<CR>
-    noremap <silent> k :<C-U>call NextIndent(0, 1, 0, 1)<CR>
-    noremap <silent> I :<C-U>call NextIndent(0, 0, 1, 1)<CR>_
-    noremap <silent> K :<C-U>call NextIndent(0, 1, 1, 1)<CR>_
-    onoremap <silent> i V:<C-U>call NextIndent(0, 0, 0, 1)<CR>
-    onoremap <silent> k V:<C-U>call NextIndent(0, 1, 0, 1)<CR>
-    onoremap <silent> I V:<C-U>call NextIndent(0, 0, 1, 1)<CR>_
-    onoremap <silent> K V:<C-U>call NextIndent(0, 1, 1, 1)<CR>_
+    call MultiMap({
+        \ 'map_keys': 'i',
+        \ 'command': 'call NextIndent(0, 0, 1)',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'V'
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'k',
+        \ 'command': 'call NextIndent(1, 0, 1)',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'V'
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'I',
+        \ 'command': 'call NextIndent(0, 1, 1)',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'V'
+    \ })
+    call MultiMap({
+        \ 'map_keys': 'K',
+        \ 'command': 'call NextIndent(1, 1, 1)',
+        \ 'map_args': '<silent>',
+        \ 'operator_prefix': 'V'
+    \ })
 
     if has("unix")
         "fix control-left/right mapping
@@ -143,78 +163,18 @@
     endif
 
     " navigate between braces
-    nnoremap <C-j>{ [M
-    onoremap <C-j>{ [M
-    nnoremap <C-j>} [M
-    onoremap <C-j>} [M
-    nnoremap <C-j><C-9> [M
-    onoremap <C-j><C-9> [M
-    nnoremap <C-j><C-0> [M
-    onoremap <C-j><C-0> [M
-    nnoremap <C-j>b [M
-    onoremap <C-j>b [M
+    noremap <C-j>{ [M
+    noremap <C-j>} [M
+    noremap <C-j><C-9> [M
+    noremap <C-j><C-0> [M
+    noremap <C-j>b [M
 
-    nnoremap <C-l>{ ]M
-    onoremap <C-l>{ ]M
-    nnoremap <C-l>} ]M
-    onoremap <C-l>} ]M
-    nnoremap <C-l><C-9> ]M
-    onoremap <C-l><C-9> ]M
-    nnoremap <C-l><C-0> ]M
-    onoremap <C-l><C-0> ]M
-    nnoremap <C-l>b ]M
-    onoremap <C-l>b ]M
+    noremap <C-l>{ ]M
+    noremap <C-l>} ]M
+    noremap <C-l><C-9> ]M
+    noremap <C-l><C-0> ]M
+    noremap <C-l>b ]M
 
     " definition jumps should be case sensitive
     " nnoremap gd :set noignorecase<CR>gd:set ignorecase<CR>
     " nnoremap gD :set noignorecase<CR>gD:set ignorecase<CR>
-
-    " all the motion ('go') mappings you could possibly want
-    " WORD-based motions
-    try
-        call EasierMotion#KeyMappingHelper('', {
-            \ 'f': 'f',
-            \ 'F': 'F',
-            \ 't': 't',
-            \ 'T': 'T',
-            \ ',': 'repeat',
-            \ 'y': 'w-text-fullscreen',
-            \ 'Y': 'W-fullscreen',
-        \ })
-
-        call EasierMotion#KeyMappingHelper('g', {
-            \ 'l': 'W',
-            \ 'L': 'E',
-            \ 'j': 'B',
-            \ 'J': 'gE',
-            \ 'o': 'w-text',
-            \ 'O': 'e-text',
-            \ 'u': 'b-text',
-            \ 'U': 'ge-text',
-            \ 'i': 'k',
-            \ 'k': 'j',
-            \ "\<Up>": 'k',
-            \ "\<Down>": 'j',
-            \ 'n': 'n-last-direction',
-            \ 'N': 'N-last-direction',
-            \ '/': 'search',
-        \ })
-
-        call EasierMotion#KeyMappingHelper('<Leader>', {
-            \ 'l': 'W',
-            \ 'L': 'E',
-            \ 'j': 'B',
-            \ 'J': 'gE',
-            \ 'o': 'w-text',
-            \ 'O': 'e-text',
-            \ 'u': 'b-text',
-            \ 'U': 'ge-text',
-            \ 'i': 'k',
-            \ 'k': 'j',
-            \ "\<Up>": 'k',
-            \ "\<Down>": 'j',
-            \ 'n': 'n-last-direction',
-            \ 'N': 'N-last-direction',
-        \ })
-    catch
-    endtry

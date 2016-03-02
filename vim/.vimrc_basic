@@ -74,8 +74,6 @@
     set fileformats=unix,dos
     set fileformat=unix
 
-    " set diffexpr=MyDiff()
-
     " don't redraw unnecessarily
     set lazyredraw
 
@@ -88,35 +86,6 @@
     endif
 
 " Functions:
-    function MyDiff()
-        let opt = '-a --binary '
-        if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-        if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-        let arg1 = v:fname_in
-        if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-        let arg2 = v:fname_new
-        if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-        let arg3 = v:fname_out
-        if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-        if $VIMRUNTIME =~ ' '
-            if &sh =~ '\<cmd'
-                if empty(&shellxquote)
-                    let l:shxq_sav = ''
-                    set shellxquote&
-                endif
-                let cmd = '"' . $VIMRUNTIME . '\diff"'
-            else
-                let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-            endif
-        else
-            let cmd = $VIMRUNTIME . '\diff'
-        endif
-        silent execute 'silent !' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-        if exists('l:shxq_sav')
-            let &shellxquote=l:shxq_sav
-        endif
-    endfunction
-
     function CaptureEx(command)
         redir => output
         silent! execute a:command
@@ -151,6 +120,19 @@
     function! ProfileQuit() abort
         profile pause
         noautocmd qall!
+    endfunction
+
+    " Map the same command in all modes: normal, operator-pending, and visual
+    " Required args:
+    "   map_keys (string): mapping for the command
+    "   command (string): command to execute
+    " Optional args:
+    "   map_args (string): arguments for the map command, like '<silent>'
+    "   operator_prefix: prefix before operator-pending mapping, like 'V'
+    function! MultiMap(args)
+        execute "nnoremap " . get(a:args, 'map_args', "") . " " . a:args.map_keys . " :<C-U>" . a:args.command . "<CR>"
+        execute "onoremap " . get(a:args, 'map_args', "") . " " . a:args.map_keys . " " . get(a:args, 'operator_prefix', "") . ":<C-U>" . a:args.command . "<CR>"
+        execute "xnoremap " . get(a:args, 'map_args', "") . " " . a:args.map_keys . " :<C-U> execute 'normal! gv' <Bar>" . a:args.command . "<CR>"
     endfunction
 
 " Commands:

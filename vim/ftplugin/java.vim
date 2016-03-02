@@ -1,3 +1,6 @@
+" enable full highlighting
+let g:java_highlight_all = 1
+
 function! ExtractGS() abort
     let line_text = getline('.')
     let pattern = '\v^(\s*)private\s+([^ ]+)\s+(\w+)'
