@@ -14,3 +14,7 @@ function! SetAutoFoldColumn(fold_column_value)
     return
 endfunction
 call SetAutoFoldColumn(2)
+
+" use multiline friendly "home"
+noremap <silent><buffer> <home> g<home>
+inoremap <silent><buffer> <home> <C-o>g<home>
