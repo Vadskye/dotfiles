@@ -87,6 +87,7 @@
 
     " memory access is mapped to M to mirror mark access
     nnoremap M "
+    xnoremap M "
 
     " map line joining to " to retain functionality
     nnoremap " J
