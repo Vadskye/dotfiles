@@ -1,13 +1,14 @@
 " Airline:
     let g:airline_theme="jam"
     let g:airline#extensions#branch#enabled=0
+    let g:airline#extensions#tabline#enabled=1
 
     " don't use separator symbols
     let g:airline_left_sep=''
     let g:airline_right_sep=''
 
     " load specific third party extensions rather than all of them
-    let g:airline_extensions = ['ctrlp', 'syntastic', 'whitespace']
+    let g:airline_extensions = ['ctrlp', 'syntastic', 'tabline', 'whitespace']
 
     " display full path with tagbar
     let g:airline#extensions#tagbar#flags = 'f'
@@ -264,6 +265,8 @@
     let g:syntastic_mode_map = {
         \ 'mode': 'passive',
     \ }
+    let g:syntastic_css_checkers = ['csslint']
+    let g:syntastic_css_csslint_args = "--ignore=ids"
     let g:syntastic_perl_checkers = ['perl']
     let g:syntastic_python_checkers = ['flake8']
     let g:syntastic_python_flake8_args = '--ignore=E131'
