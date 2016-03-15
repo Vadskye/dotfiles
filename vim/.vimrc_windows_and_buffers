@@ -51,8 +51,6 @@
         noremap <M-k> <C-w>j
         noremap <M-j> <C-w>h
         noremap <M-l> <C-w>l
-        noremap <M-u> :bprevious<CR>
-        noremap <M-o> :bnext<CR>
     else
         if has("unix")
             "easier window navigation
