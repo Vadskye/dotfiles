@@ -95,6 +95,7 @@
         silent! unmap <buffer> ]]
         silent! unmap <buffer> ][
         silent! unmap <buffer> ]"
+        autocmd! TempVimAutoGroup
         augroup! TempVimAutoGroup
     endfunction
     autocmd TempVimAutoGroup FileType vim call FixVimMappings()
