@@ -7,7 +7,7 @@
     let g:airline_right_sep=''
 
     " load specific third party extensions rather than all of them
-    let g:airline_extensions = ['ctrlp', 'syntastic', 'whitespace']
+    let g:airline_extensions = ['ctrlp', 'eclim', 'syntastic', 'whitespace']
 
     " display full path with tagbar
     let g:airline#extensions#tagbar#flags = 'f'
@@ -43,7 +43,6 @@
         " let g:airline_section_z = '%{ShortDirectoryName(getcwd())}'
         let g:airline_section_y = ''
         let g:airline_section_z = ''
-
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
 
@@ -109,6 +108,14 @@
     nmap + <Plug>(EasyAlign)v
     " align latex tables
     nmap gat <Plug>(EasyAlign)vK*&
+
+" Eclim:
+    let g:EclimCompletionMethod = 'omnifunc'
+    let g:EclimFileTypeValidate = 1
+    let g:EclimMavenPomClasspathUpdate = 1
+    let g:EclimProjectRefreshFiles = 1
+    let g:EclimKeepLocalHistory = 0
+    let g:EclimProjectTreeAutoOpen = 0
 
 " Enchanted:
     " make sure vim is always very magic
@@ -179,12 +186,23 @@
     " use 'u' for 'statUs'
     nnoremap ;u :Gstatus<CR>
 
+" Go:
+    let g:go_fmt_autosave = 0
+    let g:go_dispatch_enabled = 1
+    let g:go_textobj_enabled = 0
+    let g:go_doc_keywordprg_enabled = 0
+
+
 " Indent Object:
     let g:indent_object_no_mappings=1
     omap ai <Plug>IndentObject-ii
     omap aI <Plug>IndentObject-ii
     omap si <Plug>IndentObject-aI
     omap sI <Plug>IndentObject-ai
+
+" Javascript:
+    let javascript_enable_domhtmlcss = 1
+    let javascript_fold = 0
 
 " MatchTagAlways:
     let g:mta_filetypes = {
