@@ -1,33 +1,33 @@
 #!/bin/bash
 
 function _initial_setup() {
-    if [ "$(type -t go)" = "function" ]; then
-        echo "Go is already present in your environment"
+    if [ "$(type -t goto)" = "function" ]; then
+        echo "Goto is already present in your environment"
     else
-        echo "if [ -f $DOTFILES/bash/go ]; then
+        echo "if [ -f $DOTFILES/bash/goto ]; then
     unset go_bookmarks
-    source $DOTFILES/bash/go
+    source $DOTFILES/bash/goto
     declare -A go_bookmarks=$($DOTFILES/bash/go_bookmarks)
 fi" >> ~/.bash_profile
-        echo "Go is added to your .bash_profile. Make sure to run 'source ~/.bash_profile'!"
+        echo "Goto is added to your .bash_profile. Make sure to run 'source ~/.bash_profile'!"
     fi
 }
 
 if [ "$1" = "--setup" ]; then
     _initial_setup
 elif [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-    echo "Execute 'bash go --setup' to run setup for go. Execute 'go -h' to see how to use go."
+    echo "Execute 'bash goto --setup' to run setup for goto. Execute 'goto -h' to see how to use goto."
 fi
 
-function go() {
+function goto() {
     local usage="Usage:
-    go bookmark
-    go [--create|-c --delete|-d] bookmark
-    go [--list|-l]
-    go [--release|-r] release"
+    goto bookmark
+    goto [--create|-c --delete|-d] bookmark
+    goto [--list|-l]
+    goto [--release|-r] release"
 
     local behavior="Behavior:
-    Go to the indicated bookmark (if it exists) or directory (if no such bookmark exists)
+    Goto to the indicated bookmark (if it exists) or directory (if no such bookmark exists)
     With --create, create a bookmark with the given name that points to the current directory
     With --delete, delete the bookmark with the given name
     With --list, list all currently existing bookmarks
