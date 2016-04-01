@@ -45,6 +45,7 @@ Temporary Items
 # BASH
 bash/local
 bash/go_bookmarks
+bash/.pw
 
 # VIM
 vim/.vimrc_local
