@@ -1,0 +1,23 @@
+snippet ## "create subroutine block comment"
+################################################################################
+# ${1:function_name}
+#
+# Description:
+#       ${2:description}
+#
+# Parameters:
+#       Required:
+#       ${3:VARNAME=>description}
+#
+#       Optional:
+#       ${4:VARNAME=>description}
+#
+# Return Value:
+#       ${5:hashkey=>description}
+################################################################################
+endsnippet
+
+snippet usedump "use Data::Dumper::Concise and dump data"
+use Data::Dumper::Concise;
+print Dumper(${1:data});
+endsnippet

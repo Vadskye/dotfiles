@@ -1,0 +1,24 @@
+snippet option "option within a <select>"
+<option value="${1:value}"></option>
+endsnippet
+
+snippet ifmobile "test to determine whether the browser is a mobile browser"
+<c:if test = "\${isMobile && isMobileOptimizedDesign}">
+endsnippet
+
+snippet ifnotmobile "test to determine whether the browser is not a mobile browser"
+<c:if test = "\${! (isMobile && isMobileOptimizedDesign)}">
+endsnippet
+
+snippet endif "end an if statement"
+</c:if>
+endsnippet
+
+snippet ifnotpremium "test to see whether user is not premium user"
+<c:if test = "\${!isPremium}">${1:stuff}</c:if>
+endsnippet
+
+snippet jsptracker "note the current page for tracking purposes"
+<%@ taglib uri="/rxWebTaglib" prefix="rxWeb" %>
+<rxWeb:JSPTracker componentIdentifier="${1:pagename}" />
+endsnippet
