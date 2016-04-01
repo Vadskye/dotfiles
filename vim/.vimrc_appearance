@@ -31,7 +31,7 @@
         \ }
     else
         let g:jellybeans_overrides = {
-            \ 'Comment':   { 'ctermfg': 'DarkGray', 'ctermbg': g:italics},
+            \ 'Comment':   { 'ctermfg': 'Gray', 'ctermbg': g:italics},
             \ 'Constant':  { 'ctermfg': 'DarkRed', 'ctermbg': 'NONE'},
             \ 'CursorColumn':{'ctermfg': 'Black', 'ctermbg': 'DarkGray'},
             \ 'CursorLine':{ 'ctermfg': 'Black', 'ctermbg': 'Gray'},
