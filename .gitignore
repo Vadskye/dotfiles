@@ -50,3 +50,4 @@ bash/.pw
 # VIM
 vim/.vimrc_local
 vim/bundle
+vim/checkpoints
