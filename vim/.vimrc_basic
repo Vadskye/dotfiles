@@ -85,21 +85,6 @@
         set shellslash
     endif
 
-    augroup TempVimAutoGroup
-    function! FixVimMappings()
-        silent! unmap ]%
-        silent! unmap [%
-        silent! unmap <buffer> [[
-        silent! unmap <buffer> []
-        silent! unmap <buffer> ["
-        silent! unmap <buffer> ]]
-        silent! unmap <buffer> ][
-        silent! unmap <buffer> ]"
-        autocmd! TempVimAutoGroup
-        augroup! TempVimAutoGroup
-    endfunction
-    autocmd TempVimAutoGroup FileType vim call FixVimMappings()
-
 " Functions:
     function CaptureEx(command)
         redir => output
