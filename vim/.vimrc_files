@@ -22,27 +22,6 @@
         execute "e ".a:arg
     endfunction
 
-    function Go(bookmark, ...)
-        if a:0 >= 1
-            let file_name = a:1
-        endif
-        if $TERM =~# "^xterm"
-            let destination = system('bash ~/.get_bookmark_destination.sh ' . a:bookmark)
-            " strip weird /c/ issue
-            let destination = substitute(destination, '\V\^/c', '', '')
-            " strip terminal whitespace
-            let destination = substitute(destination, '\v\W+$', '', '')
-            " echomsg destination
-            " add the filename
-            if exists("file_name")
-                let destination = destination . '/' . file_name
-            endif
-            execute "e " . destination
-        else
-            echoerr "Not supported yet"
-        endif
-    endfunction
-
     function! EditRelativePath(pattern, replacement)
         let current_file_path = expand('%:p')
         let new_file_path = substitute(current_file_path, a:pattern, a:replacement, "")
