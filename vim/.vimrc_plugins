@@ -135,7 +135,7 @@
 
 " Eclim:
     let g:EclimCompletionMethod = 'omnifunc'
-    let g:EclimFileTypeValidate = 1
+    let g:EclimFileTypeValidate = 0
     let g:EclimMavenPomClasspathUpdate = 1
     let g:EclimProjectRefreshFiles = 1
     let g:EclimKeepLocalHistory = 0
