@@ -2,7 +2,7 @@
     " if mainfile is not set, default to the first file opened
     let g:mainfile = '"' . expand('%:p') . '"'
 
-    let g:python_flavor = get(g:, 'python_flavor', 'pypy')
+    let g:python_flavor = get(g:, 'python_flavor', 'python')
 
 " Functions:
     function! PreviewSys(command, ...) abort
