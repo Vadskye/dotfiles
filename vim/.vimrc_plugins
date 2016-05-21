@@ -96,6 +96,7 @@
 
 " Emotions:
     let g:emotions_create_ijkl_mappings = 1
+    let g:emotions_create_word_mappings = 0
     let g:emotions_find_mapping_prefix = ''
     let g:emotions_ijkl_mapping_prefix = '<Leader>'
 
