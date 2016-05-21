@@ -103,3 +103,7 @@ function cdl() {
 function pathogit() {
     git clone "https://github.com/$1" "$DOTFILES/vim/bundle/$2"
 }
+
+function eh() {
+    explorer .
+}
