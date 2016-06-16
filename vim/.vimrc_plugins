@@ -267,6 +267,67 @@
     let NERDTreeMapJumpFirstChild="~~"
     let NERDTreeMapToggleHidden="H"
 
+    " add the current file as a bookmark in NERDTree
+    function! NTBookmark(bookmark_name, bookmark_type) abort
+        if a:bookmark_type ==# "file"
+            NERDTreeFind
+        elseif a:bookmark_type ==# "dir"
+            NERDTree
+        else
+            echoerr "Unable to recognize bookmark type '" + a:bookmark_type + "'"
+        endif
+        try
+            execute "Bookmark " . a:bookmark_name
+            NERDTreeClose
+        catch /\VUndefined variable: nerdtree/
+            NERDTreeClose
+            redraw
+            echomsg "A bookmark named '" . a:bookmark_name . "' already exists"
+        endtry
+    endfunction
+    command! -nargs=1 NTBookmarkFile call NTBookmark(<f-args>, "file")
+    command! -nargs=1 NTBookmarkDir call NTBookmark(<f-args>, "dir")
+
+    " go to the given bookmark
+    function! NTGoToBookmark(bookmark_name, bookmark_type) abort
+        if a:bookmark_type ==# "file"
+            NERDTree
+            execute "OpenBookmark " . a:bookmark_name
+            NERDTreeClose
+        elseif a:bookmark_type ==# "dir"
+            execute "NERDTreeFromBookmark " . a:bookmark_type
+        else
+            echoerr "Unable to recognize bookmark type '" + a:bookmark_type + "'"
+        endif
+    endfunction
+    command! -nargs=1 NTGoToBookmarkFile call NTGoToBookmark(<f-args>, "file")
+
+    " bookmark mappings
+    nnoremap ;b :NERDTreeFromBookmark 
+    nnoremap ;B :NTGoToBookmarkFile 
+    nnoremap ;m :NTBookmarkFile 
+    nnoremap ;M :NTBookmarkDir 
+
+    " run a command in the current directory
+    function! NTRun(command) abort
+        if exists("b:NERDTree")
+            execute "! cd " . shellescape(b:NERDTree['root']['path']['str']()) . " && " . a:command
+        else
+            NERDTree
+            execute "! cd " . shellescape(b:NERDTree['root']['path']['str']()) . " && " . a:command
+            NERDTreeClose
+        endif
+    endfunction
+    command! -nargs=1 NTRun call NTRun(<f-args>)
+
+    autocmd Filetype nerdtree nmap ! :NTRun 
+
+" Repeat:
+    " prevent mapping 'u'
+    nmap :~~~~u <Plug>(RepeatUndo)
+    nmap :~~~~U <Plug>(RepeatUndoLine)
+    nmap :~~~~R <Plug>(RepeatRedo)
+
 " Supertab:
     " let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
     " let g:SuperTabDefaultCompletionType = "context"
@@ -309,6 +370,7 @@
     \ }
     let g:syntastic_css_checkers = ['csslint']
     let g:syntastic_css_csslint_args = "--ignore=ids"
+    let g:syntastic_go_checkers = ['go']
     let g:syntastic_perl_checkers = ['perl']
     let g:syntastic_python_checkers = ['flake8']
     let g:syntastic_yaml_checkers = ['yamlxs']
@@ -373,7 +435,7 @@
     let g:SuperTabDefaultCompletionType = '<C-n>'
 
     " better key bindings for UltiSnipsExpandTrigger
-    let g:UltiSnipsExpandTrigger = "<tab>"
+    let g:UltiSnipsExpandTrigger = "<S-Enter>"
     let g:UltiSnipsJumpForwardTrigger = "<tab>"
     let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
