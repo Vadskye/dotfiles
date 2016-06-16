@@ -1,0 +1,5 @@
+" This file is for setting internal to vim
+" such as profiling and debugging
+
+" Commands:
+    command! LogVerbose set verbosefile=verbose.log | set verbose=9
