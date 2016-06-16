@@ -267,6 +267,8 @@
     let NERDTreeMapJumpFirstChild="~~"
     let NERDTreeMapToggleHidden="H"
 
+    let NERDTreeIgnore = ['\~$', '__pycache__', '__init__.py']
+
 " Supertab:
     " let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
     " let g:SuperTabDefaultCompletionType = "context"
