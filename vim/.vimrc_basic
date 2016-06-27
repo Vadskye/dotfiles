@@ -85,6 +85,9 @@
         set shellslash
     endif
 
+    " use utf8
+    set encoding=utf-8
+
 " Functions:
     function CaptureEx(command)
         redir => output
@@ -141,3 +144,15 @@
 
     command! ProfileStart call ProfileStart()
     command! ProfileQuit call ProfileQuit()
+
+function! Matchaddpos(group, pos, ...) abort
+    let patterns = []
+    for location in a:pos
+        call add(patterns, '\v%' . location[0] . 'l%' . location[1] . 'c'
+            \ . '.{1,' . get(location, 2, 1) . '}'
+        \ )
+        echomsg string(a:pos)
+    endfor
+    let pattern = '\v(' . join(patterns, '|') . ')'
+    return call('matchadd', [a:group, pattern] + a:000)
+endfunction
