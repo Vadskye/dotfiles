@@ -311,11 +311,18 @@
 
     " run a command in the current directory
     function! NTRun(command) abort
-        if exists("b:NERDTree")
-            execute "! cd " . shellescape(b:NERDTree['root']['path']['str']()) . " && " . a:command
-        else
+        let close_tree = 0
+        if ! exists("b:NERDTree")
             NERDTree
-            execute "! cd " . shellescape(b:NERDTree['root']['path']['str']()) . " && " . a:command
+            let close_tree = 1
+        endif
+
+        let path = b:NERDTree['root']['path']['str']()
+        if &shellslash && has('win32')
+            let path = substitute(path, '\', '\\', 'g')
+        endif
+        execute "! cd " . shellescape(path) . " && " . a:command
+        if close_tree == 1
             NERDTreeClose
         endif
     endfunction
