@@ -104,7 +104,7 @@
 
     " let g:emotions_target_highlight_group_primary = 'Identifier'
     " let g:emotions_target_highlight_group_secondary = 'Function'
-    let g:emotions_highlight_type = 'primary'
+    let g:emotions_highlight_type = 'conceal'
 
     let g:EasyMotion_leader_key = '~~~~'
     " let g:emotions_mapping_prefix = '~~'
