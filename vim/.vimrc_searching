@@ -139,6 +139,8 @@
     " f for function
     nnoremap <Leader>/f /<C-R>=<SID>ScopeSearch('[{', 0)<CR>
     nnoremap <Leader>*f /<C-R>=<SID>ScopeSearch('[{', 1)<CR><CR>
+    " s for single
+    nnoremap <Leader>/s /\v<><Left>
 
     " search and replace easily.
     " s is from current location in the file, <leader>s is full file.
