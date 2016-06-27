@@ -453,5 +453,3 @@
 
     " force completion
     let g:ycm_key_invoke_completion = '<S-Enter>'
-    console.log(res);
-    console.log(res.end());
