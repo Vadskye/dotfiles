@@ -30,9 +30,11 @@ function SourceVimrcFile(name, ...)
     endif
 
     let filename = expand(l:directory . "/" . l:prefix . "vimrc_" . a:name)
-    if filereadable(filename)
+    try
         exec "source " . filename
-    endif
+    catch
+        echo "Sourcing '" . filename . "' failed: " . string(v:exception)
+    endtry
 endfunction
 
 source $VIMRUNTIME/macros/matchit.vim
