@@ -168,6 +168,8 @@
     "     \ '--regex-tex=//\\1/f,feat/e'
     let g:filesight_sort_tags = 'name'
     let g:filesight_use_conceal = 1
+    let g:filesight_update_on_enter = 0
+    let g:filesight_update_on_save = 0
 
     let g:filesight_log_file_ctags = expand('$HOME/filesight_ctags.log')
     let g:filesight_log_file_debug = expand('$HOME/filesight_debug.log')
@@ -328,7 +330,7 @@
     endfunction
     command! -nargs=1 NTRun call NTRun(<f-args>)
 
-    autocmd Filetype nerdtree nmap ! :NTRun 
+    autocmd Filetype nerdtree nmaplocal ! :NTRun 
 
 " Repeat:
     " prevent mapping 'u'
