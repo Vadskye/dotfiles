@@ -85,6 +85,8 @@
         set shellslash
     endif
 
+    set encoding=utf-8
+
 " Functions:
     function CaptureEx(command)
         redir => output
