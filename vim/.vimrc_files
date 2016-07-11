@@ -105,8 +105,6 @@
     " navigate files in vimgrep search
     nnoremap ;n :cnext<Enter>zvzz
     nnoremap ;N :cprev<Enter>zvzz
-    " remote file commands
-    nnoremap ;rw :WriteToServer<Enter>
     " edit file from same directory as current file
     nnoremap ;ce :e %:p:h/
     " grep in current directory
