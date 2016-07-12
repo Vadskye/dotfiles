@@ -270,7 +270,7 @@
     let NERDTreeMapJumpFirstChild="~~"
     let NERDTreeMapToggleHidden="H"
 
-    let NERDTreeIgnore = ['\~$', '__pycache__', '__init__.py']
+    let NERDTreeIgnore = ['\~$', '__pycache__', '__init__.py', 'node_modules']
     " add the current file as a bookmark in NERDTree
     function! NTBookmark(bookmark_name, bookmark_type) abort
         if a:bookmark_type ==# "file"
