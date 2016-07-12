@@ -230,6 +230,7 @@
 " Javascript:
     let javascript_enable_domhtmlcss = 1
     let javascript_fold = 0
+    let g:javascript_plugin_jsdoc = 1
 
 " MatchTagAlways:
     let g:mta_filetypes = {
