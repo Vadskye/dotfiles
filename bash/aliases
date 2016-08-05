@@ -1,5 +1,6 @@
 #!/bin/bash
 
+alias g="goto"
 alias ge="goto -e"
 alias ls="ls --color"
 alias ll="ls --color=auto -aFlh"
