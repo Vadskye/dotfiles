@@ -213,6 +213,9 @@
     " use 'u' for 'statUs'
     nnoremap ;u :Gstatus<CR>
 
+" FZF:
+    nnoremap ;f :FZF<CR>
+
 " Go:
     let g:go_fmt_autosave = 0
     let g:go_dispatch_enabled = 1
