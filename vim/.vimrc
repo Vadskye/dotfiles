@@ -14,16 +14,16 @@ Plug 'vadskye/vim-emotions'
 Plug 'coot/EnchantedVim'
 Plug 'Konfekt/Fastfold'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go'
-Plug 'vim-scripts/groovyindent'
+Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'vim-scripts/groovyindent', {'for': 'javascript'}
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'vim-scripts/L9'
 Plug 'vim-scripts/mru.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree'
 Plug 'moll/vim-node'
-Plug 'vim-perl/vim-perl'
+Plug 'vim-perl/vim-perl', {'for': 'perl'}
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
@@ -31,7 +31,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
 if has('win32')
-    Plug 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe' 
 endif
 call plug#end()
 
