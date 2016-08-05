@@ -49,5 +49,7 @@ bash/.pw
 
 # VIM
 vim/.vimrc_local
+vim/.netrwhist
 vim/bundle
 vim/checkpoints
+vim/plugged

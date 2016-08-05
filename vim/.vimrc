@@ -1,5 +1,37 @@
 set nocompatible
-silent! call pathogen#infect()
+
+" vim-plug
+call plug#begin(expand('$DOTFILES/vim/plugged'))
+Plug 'tpope/vim-abolish'
+Plug 'vim-airline/vim-airline'
+Plug 'vadskye/vim-checkpoint'
+Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/Conque-Shell'
+Plug 'coot/CRDispatcher'
+Plug 'kien/ctrlp.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'vadskye/vim-emotions'
+Plug 'coot/EnchantedVim'
+Plug 'Konfekt/Fastfold'
+Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go'
+Plug 'vim-scripts/groovyindent'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/mru.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'scrooloose/nerdtree'
+Plug 'moll/vim-node'
+Plug 'vim-perl/vim-perl'
+Plug 'tpope/vim-repeat'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/syntastic'
+Plug 'tomtom/tlib_vim'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe'
+call plug#end()
 
 source $VIMRUNTIME/mswin.vim
 
