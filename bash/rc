@@ -11,3 +11,6 @@ shopt -s globstar
 
 export PROMPT_COMMAND="history -a; history -r;"
 export PS1="$NS_Cyan[\\w$NS_Cyan]\n$NS_Yellow\$$NS_Nocolor "
+
+# enable fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
