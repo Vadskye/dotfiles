@@ -81,7 +81,7 @@
     let g:ctrlp_working_path_mode = 'ra'
     " let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
     let g:ctrlp_cmd = 'CtrlPMixed'
-    let g:ctrlp_cache_dir = $HOME.'/vimfiles/cache/ctrlp'
+    let g:ctrlp_cache_dir = expand('$DOTFILES/vim/cache/ctrlp')
     let g:ctrlp_user_command = 'es %s'
     " always open files in a new instance
     let g:ctrlp_switch_buffer = 0
