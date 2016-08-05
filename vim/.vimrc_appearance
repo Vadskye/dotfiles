@@ -4,8 +4,13 @@
     syntax sync minlines=1000
 
     " ConEmu can use bold and italic backgrounds
-    let g:italics=11
-    let g:bold=12
+    if &term == "win32"
+        let g:italics = 11
+        let g:bold = 12
+    else
+        let g:italics = 'NONE'
+        let g:bold = 'NONE'
+    endif
 
     " Change font
     if has("gui_running")

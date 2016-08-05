@@ -1,0 +1,28 @@
+snippet fdoc "Documentation for a function"
+/**
+ * ${1:Explanation}
+ * ${0}
+ */
+endsnippet
+
+snippet param "Parameter in documentation"
+@param {${1:type}} ${2:name} ${3:Explanation}
+endsnippet
+
+snippet returns "Returns in documentation"
+@returns {${1:type}} ${2:Explanation}
+endsnippet
+
+snippet itprop "It function that tests a property"
+it("should have a '${1:prop}' field", function() {
+	instance.should.have.property("${2:prop}");
+});
+endsnippet
+
+snippet disable "Disable ESLint temporarily"
+/* eslint-disable ${1:rule} */
+endsnippet
+
+snippet enable "Re-enable ESLint"
+/* eslint-enable ${1:rule} */
+endsnippet

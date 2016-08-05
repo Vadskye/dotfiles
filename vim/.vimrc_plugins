@@ -81,7 +81,7 @@
     let g:ctrlp_working_path_mode = 'ra'
     " let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
     let g:ctrlp_cmd = 'CtrlPMixed'
-    let g:ctrlp_cache_dir = $HOME.'/vimfiles/cache/ctrlp'
+    let g:ctrlp_cache_dir = expand('$DOTFILES/vim/cache/ctrlp')
     let g:ctrlp_user_command = 'es %s'
     " always open files in a new instance
     let g:ctrlp_switch_buffer = 0
@@ -168,6 +168,8 @@
     "     \ '--regex-tex=//\\1/f,feat/e'
     let g:filesight_sort_tags = 'name'
     let g:filesight_use_conceal = 1
+    let g:filesight_update_on_enter = 0
+    let g:filesight_update_on_save = 0
 
     let g:filesight_log_file_ctags = expand('$HOME/filesight_ctags.log')
     let g:filesight_log_file_debug = expand('$HOME/filesight_debug.log')
@@ -211,6 +213,9 @@
     " use 'u' for 'statUs'
     nnoremap ;u :Gstatus<CR>
 
+" FZF:
+    nnoremap ;f :FZF<CR>
+
 " Go:
     let g:go_fmt_autosave = 0
     let g:go_dispatch_enabled = 1
@@ -228,6 +233,7 @@
 " Javascript:
     let javascript_enable_domhtmlcss = 1
     let javascript_fold = 0
+    let g:javascript_plugin_jsdoc = 1
 
 " MatchTagAlways:
     let g:mta_filetypes = {
@@ -267,7 +273,7 @@
     let NERDTreeMapJumpFirstChild="~~"
     let NERDTreeMapToggleHidden="H"
 
-    let NERDTreeIgnore = ['\~$', '__pycache__', '__init__.py']
+    let NERDTreeIgnore = ['\~$', '__pycache__', '__init__.py', 'node_modules']
     " add the current file as a bookmark in NERDTree
     function! NTBookmark(bookmark_name, bookmark_type) abort
         if a:bookmark_type ==# "file"
@@ -328,7 +334,7 @@
     endfunction
     command! -nargs=1 NTRun call NTRun(<f-args>)
 
-    autocmd Filetype nerdtree nmap ! :NTRun 
+    autocmd Filetype nerdtree nmap <buffer> ! :NTRun 
 
 " Repeat:
     " prevent mapping 'u'
@@ -453,3 +459,6 @@
 
     " force completion
     let g:ycm_key_invoke_completion = '<S-Enter>'
+
+    " enable logging
+    let g:ycm_server_keep_logfiles = 1

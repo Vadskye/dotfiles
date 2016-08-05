@@ -1,5 +1,39 @@
 set nocompatible
-silent! call pathogen#infect()
+
+" vim-plug
+call plug#begin(expand('$DOTFILES/vim/plugged'))
+Plug 'tpope/vim-abolish'
+Plug 'vim-airline/vim-airline'
+Plug 'vadskye/vim-checkpoint'
+Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/Conque-Shell'
+Plug 'coot/CRDispatcher'
+Plug 'kien/ctrlp.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'vadskye/vim-emotions'
+Plug 'coot/EnchantedVim'
+Plug 'Konfekt/Fastfold'
+Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'vim-scripts/groovyindent', {'for': 'javascript'}
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/mru.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'scrooloose/nerdtree'
+Plug 'moll/vim-node'
+Plug 'vim-perl/vim-perl', {'for': 'perl'}
+Plug 'tpope/vim-repeat'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/syntastic'
+Plug 'tomtom/tlib_vim'
+Plug 'SirVer/ultisnips'
+if has('win32')
+    Plug 'Valloric/YouCompleteMe' 
+endif
+call plug#end()
 
 source $VIMRUNTIME/mswin.vim
 
@@ -30,9 +64,11 @@ function SourceVimrcFile(name, ...)
     endif
 
     let filename = expand(l:directory . "/" . l:prefix . "vimrc_" . a:name)
-    if filereadable(filename)
+    try
         exec "source " . filename
-    endif
+    catch
+        echo "Sourcing '" . filename . "' failed: " . string(v:exception)
+    endtry
 endfunction
 
 source $VIMRUNTIME/macros/matchit.vim
