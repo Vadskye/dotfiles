@@ -30,7 +30,9 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'
 Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe'
+if has('win32')
+    Plug 'Valloric/YouCompleteMe'
+endif
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
