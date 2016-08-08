@@ -16,3 +16,21 @@ def main():
 if __name__ == "__main__":
 	main()
 endsnippet
+
+snippet nosetest "create boilerplate for a nose test"
+from nose.tools import *
+import ${1:test_module}
+
+def setup():
+	pass
+
+def teardown():
+	pass
+
+def test_something():
+	${2:pass}
+endsnippet
+
+snippet pdb "set a breakpoint with pdb"
+import pdb; pdb.set_trace()
+endsnippet
