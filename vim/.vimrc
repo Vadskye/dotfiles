@@ -19,17 +19,20 @@ Plug 'vim-scripts/groovyindent', {'for': 'javascript'}
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'vim-scripts/L9'
+Plug 'vim-latex/vim-latex', {'for': ['tex', 'latex']}
 Plug 'vim-scripts/mru.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree'
 Plug 'moll/vim-node'
 Plug 'vim-perl/vim-perl', {'for': 'perl'}
+Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'
 Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
+Plug 'stephpy/vim-yaml'
 if has('win32')
     Plug 'Valloric/YouCompleteMe' 
 endif
