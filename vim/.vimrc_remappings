@@ -58,7 +58,10 @@
     noremap <Leader>p "*p
     " paste from copied text
     nnoremap cp "0p
-    nnoremap cP "0P
+    nnoremap cP "0P`.
+
+    " 'paste after' should keep cursor position
+    nnoremap P P`.
 
     " change single character
     " noremap b r
