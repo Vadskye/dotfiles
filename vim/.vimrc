@@ -36,6 +36,9 @@ Plug 'stephpy/vim-yaml'
 if has('win32')
     Plug 'Valloric/YouCompleteMe' 
 endif
+" local stuff
+Plug './vim-filesight'
+Plug './vim-meta'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
