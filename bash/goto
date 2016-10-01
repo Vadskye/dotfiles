@@ -7,7 +7,7 @@ function _initial_setup() {
         echo "if [ -f $DOTFILES/bash/goto ]; then
     unset go_bookmarks
     source $DOTFILES/bash/goto
-    declare -A go_bookmarks=$($DOTFILES/bash/go_bookmarks)
+    declare -A go_bookmarks=$(~/.go_bookmarks)
 fi" >> ~/.bash_profile
         echo "Goto is added to your .bash_profile. Make sure to run 'source ~/.bash_profile'!"
     fi
@@ -224,7 +224,7 @@ function _save_bookmarks() {
 	done
 	array_text=$array_text")'"
 
-	echo -e $array_text > $DOTFILES/bash/go_bookmarks
+	echo -e $array_text > ~/.go_bookmarks
 }
 
 function _echo_bookmark() {
