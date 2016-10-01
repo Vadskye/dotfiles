@@ -60,14 +60,14 @@
       set mouse=a
     endif
 
-    " fix insert mode navigation in Unix
+    " fix arrow key navigation in Unix
     if has('unix')
-        imap <Esc>OA <Up>
-        imap <Esc>OB <Down>
-        imap <Esc>OC <Right>
-        imap <Esc>OD <Left>
-        imap <80>K1 <Home>
-        imap <80>K4 <End>
+        map <silent> <Esc>OA <Up>
+        map <silent> <Esc>OB <Down>
+        map <silent> <Esc>OC <Right>
+        map <silent> <Esc>OD <Left>
+        map <silent> <80>K1 <Home>
+        map <silent> <80>K4 <End>
     endif
 
     " use unix line endings by default
