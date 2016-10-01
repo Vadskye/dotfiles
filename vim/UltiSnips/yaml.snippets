@@ -1,0 +1,36 @@
+snippet cf "Class feature"
+${1:name}:
+	$ref: FEATURE
+	buffs:
+		- ${2:properties}
+endsnippet
+
+snippet dig "Domain Invocation Greater"
+domain invocation greater - ${1:name}:
+	${2:properties}
+endsnippet
+
+snippet wa "Wild Aspect"
+wild aspect ${1:level} - ${2:name}:
+	$ref: FEATURE
+	buffs:
+		- ${3:properties}
+endsnippet
+
+snippet na "Natural Aspect"
+natural aspect ${1:level} - ${2:name}:
+	$ref: FEATURE
+	buffs:
+		- ${3:properties}
+endsnippet
+
+snippet dinv "Divine invocation"
+divine invocation, ${1:name}:
+	${0}
+endsnippet
+
+snippet smite "Divine invocation, smite"
+divine invocation, ${1:name} smite:
+	$ref: SMITE
+	${0}
+endsnippet
