@@ -33,9 +33,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
 Plug 'stephpy/vim-yaml'
-if has('win32')
-    Plug 'Valloric/YouCompleteMe' 
-endif
+Plug 'Shougo/neocomplete.vim'
 " local stuff
 Plug './vim-filesight'
 Plug './vim-meta'

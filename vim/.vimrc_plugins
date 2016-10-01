@@ -254,6 +254,25 @@
 " Meta:
     let g:meta_directory = $DOTFILES . '/vim/meta'
 
+" Neocomplete:
+
+    highlight Pmenu ctermbg=black ctermfg=darkgreen
+    highlight PmenuSel ctermbg=darkgray ctermfg=black
+
+    " use Tab for completion
+    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<Tab>"
+    " use BS to close the popup
+    " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    " Use S-Enter to force completion
+    inoremap <expr><S-Enter> neocomplete#start_manual_complete()
+    " ignore tex files
+    let g:neocomplete#ignore_source_files = ['.tex']
+
+    " use neocomplete at startup
+    let g:acp_enableAtStartup = 0
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
+
 " NERDTree:
     " don't automatically quit after opening a file
     let NERDTreeQuitOnOpen=0
@@ -439,26 +458,9 @@
     imap :~~~~ <Plug>IMAP_JumpForward
     let g:Tex_Folding = 0
 
-"YouCompleteMe
 
-    highlight Pmenu ctermbg=black ctermfg=darkgreen
-    highlight PmenuSel ctermbg=darkgray ctermfg=black
-
-    " up and down should always go up and down, not control the menu
-    let g:ycm_key_list_select_completion = ['<C-n>']
-    let g:ycm_key_list_previous_completion = ['<C-p>']
-    let g:SuperTabDefaultCompletionType = '<C-n>'
-
+" UltiSnips:
     " better key bindings for UltiSnipsExpandTrigger
     let g:UltiSnipsExpandTrigger = "<S-Enter>"
     let g:UltiSnipsJumpForwardTrigger = "<tab>"
     let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-    " don't eat CR?
-    let g:SuperTabCrMapping = 0
-
-    " force completion
-    let g:ycm_key_invoke_completion = '<S-Enter>'
-
-    " enable logging
-    let g:ycm_server_keep_logfiles = 1
