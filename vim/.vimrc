@@ -20,6 +20,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'vim-scripts/L9'
 Plug 'vim-latex/vim-latex', {'for': ['tex', 'latex']}
+Plug 'vadskye/vim-meta'
 Plug 'vim-scripts/mru.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree'
@@ -38,7 +39,6 @@ if has('lua')
 endif
 " local stuff
 Plug './vim-filesight'
-Plug './vim-meta'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
