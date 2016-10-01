@@ -75,7 +75,7 @@
     set fileformat=unix
 
     " don't redraw unnecessarily
-    set lazyredraw
+    " set lazyredraw
 
     " always show status line
     set laststatus=2
