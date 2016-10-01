@@ -53,4 +53,5 @@ vim/.netrwhist
 vim/bundle
 vim/cache
 vim/checkpoints
+vim/meta
 vim/plugged
