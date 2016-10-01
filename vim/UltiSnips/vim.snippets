@@ -1,0 +1,9 @@
+snippet expect "An Expect test"
+Expect ${1:this} == ${2:that}
+endsnippet
+
+snippet explug "An Expect test for <Plug> mappings"
+Expect maparg('<Plug>(emotions-${1:map})', 'n') == 
+Expect maparg('<Plug>(emotions-${2:map})', 'o') == 
+Expect maparg('<Plug>(emotions-${3:map})', 'v') == 
+endsnippet
