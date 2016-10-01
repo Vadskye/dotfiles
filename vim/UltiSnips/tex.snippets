@@ -1,0 +1,205 @@
+snippet mid "Define a new magic item"
+\begin{magicitemdef}{${1:name}}[${2:price}]{${3:spelllevel}}[${4:location}]{${5:school}}{${7:crafting}}
+endsnippet
+
+snippet emid "End a magic item definition"
+\end{magicitemdef}
+endsnippet
+
+snippet mis "Define a new simple magic item without optional fields"
+\begin{magicitemdef}{${1:name}}{${2:spelllevel}}{${3:school}}{${4:crafting}}
+endsnippet
+
+snippet map "Magic item passive ability"
+\magicitemability{Passive} ${0}
+endsnippet
+
+snippet mat "Magic item triggered ability"
+\magicitemability{Triggered}[Immediate action] ${0}
+endsnippet
+
+snippet maa "Magic item active ability"
+\magicitemability{Active}[Standard action] ${0}
+endsnippet
+
+snippet spellsection "Make a new spell"
+\begin{spellsection}{${1:name}}[${2:level}]
+	\begin{spellheader}
+		\spelldesc{${3:description}}
+	\end{spellheader}
+	\begin{spellcontent}
+		\begin{spelltargetinginfo}
+			${4:targeting}
+		\end{spelltargetinginfo}
+		\begin{spelleffects}
+			${5:effects}
+		\end{spelleffects}
+	\end{spellcontent}
+	\begin{spellfooter}
+		\spellinfo{schools}{lists}
+		\miscastexplode
+	\end{spellfooter}
+\end{spellsection}
+endsnippet
+
+snippet spellavatar "Make a new 'avatar' spell"
+\begin{spellsection}{${1:name}}[${2:level}]
+	\begin{spellheader}
+		\spelldesc{${3:description}}
+	\end{spellheader}
+	\begin{spellcontent}
+		\begin{spelltargetinginfo}
+			\spelltgt{You}
+		\end{spelltargetinginfo}
+		\begin{spelleffects}
+			\spelleffect At any time during the spell's duration, you can concentrate as a standard action. If you do, ${4:EFFECT}, as described below.
+			\spelldur \durlong
+		\end{spelleffects}
+	\end{spellcontent}
+	\begin{spellsubcontent}
+		\begin{spelltargetinginfo}
+			\spellquicktargeting{${5:TARGET}}{${6:RANGE}}
+		\end{spelltargetinginfo}
+		\begin{spelleffects}
+			${7:EFFECT}
+		\end{spelleffects}
+	\end{spellsubcontent}
+	\begin{spellfooter}
+		\spellinfo{schools}{lists}
+		\miscastexplode
+	\end{spellfooter}
+\end{spellsection}
+endsnippet
+
+snippet tfeat "A feat entry in a feat table"
+\featref{${1:name}} & ${3:prerequisites} & ${4:benefit} & \x & \featpref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet dfeat "A feat definition"
+\feat{${1:name}}{${2:types}}
+\featpre ${3:prerequisite}
+\featben ${4:benefit}
+endsnippet
+
+snippet augments "A group of spell augmentations"
+\begin{spellaugments}
+	${0}
+\end{spellaugments}
+endsnippet
+
+snippet aug "A spell augmentation"
+\spellaugment{${1:level}}{${2:name}}{${3:effect}}
+endsnippet
+
+snippet augmass "A spell augmentation - Mass"
+\spellaugment{3}{Mass}{The spell can affect up to five targets.}
+endsnippet
+
+snippet augextended "A spell augmentation - Extended"
+\spellaugment{1}{Extended}{The spell's range becomes ${1:range}.}
+endsnippet
+
+snippet augperm "A ritual augmentation - Permanent"
+\spellaugment{${1:level}}{Permanent}{The ritual's duration becomes permanent.}
+endsnippet
+
+snippet augrapid "A ritual augment - Rapid"
+\spellaugment{1}{Rapid}{The ritual's casting time becomes ${1:time}.}
+endsnippet
+
+snippet augwidened "A spell augmentation - Widened"
+\spellaugment{${1:level}}{Widened}{The spell's area becomes a ${2:area}.}
+endsnippet
+
+snippet beg "Begin an environment"
+\begin{${1:name}}
+endsnippet
+
+snippet end "End an environment"
+\end{${1:name}}
+endsnippet
+
+snippet env "Begin and end an environment"
+\begin{${1:name}}
+	${0}
+\end{${2:name}}
+endsnippet
+
+snippet cspell "Create a new LaTeX spell shortcut"
+\createspell{\SL`!p snip.rv = t[1].lower().replace(' ', '')`}{${1:longname}}
+	{${3:description}}
+${0}
+endsnippet
+
+snippet sl "A spell in a spell list"
+\SL${1:spell}
+endsnippet
+
+snippet frage "A rage feat"
+\feat{${1:name} Rage}{Class, Rage}
+\featpre Rage ability, barbarian level ${2:prereq}
+\featben When you enter a rage, you can use this feat. If you do, during the rage ${3:benefit}.
+\parhead{Special} You can only gain the benefit of one Rage feat at a time.
+endsnippet
+
+snippet trage "An entry in the feat table for a rage feat"
+\featref{${1:name}} & Rage, barbarian ${3:L} & ${4:description} & \featpref{${2:name}} \\\\
+endsnippet
+
+snippet fki "A ki feat"
+\feat{${1:name} Ki}{Class, Ki}
+\featpre Manifest \ki ability, monk level ${2:prereq}.
+\featben As long as you have at least one \ki point remaining, ${3:benefit}.
+endsnippet
+
+snippet tki "An entry in the feat table for a ki feat"
+\featref{${1:name}} & Manifest ki, monk ${2:L} & ${3:description} & Ki & \featpref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet ph "A paragraph header"
+\\parhead{${0}}
+endsnippet
+
+snippet gt "A glossary term"
+\\glossterm{${0}}
+endsnippet
+
+snippet tap "Table entry for apparel"
+\\mitemref{${1:name}} & ${2:benefit} & \\mitempricetable{Active}{${3:level}} & ${4:location} & \\mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet tapp "Table entry for apparel"
+\\mitemref{${1:name}} & ${2:benefit} & \\mitempricetable{Passive}{${3:level}} & ${4:location} & \\mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet tapm "Table entry for apparel"
+\\mitemref{${1:name}} & ${2:benefit} & ${3:price} gp & ${4:level} & ${5:location} & \\mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet tap1 "Table entry for apparel - plus1 bonus"
+\mitemref{${1:name}} \\plus1 & Grants \\plus1 ${2:effect} & 100 gp & 2nd & ${3:location} & \mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+snippet tap2 "Table entry for apparel - plus2 bonus"
+\mitemref*{${1:name}} \\plus2 & Grants \\plus2 ${2:effect} & 500 gp & 4th & ${3:location} & \mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+snippet tap3 "Table entry for apparel - plus3 bonus"
+\mitemref*{${1:name}} \\plus3 & Grants \\plus3 ${2:effect} & 2,500 gp & 8th & ${3:location} & \mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+snippet tap4 "Table entry for apparel - plus4 bonus"
+\mitemref*{${1:name}} \\plus4 & Grants \\plus4 ${2:effect} & 12,500 gp & 12th & ${3:location} & \mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+snippet tap5 "Table entry for apparel - plus5 bonus"
+\mitemref*{${1:name}} \\plus5 & Grants \\plus5 ${2:effect} & 62,500 gp & 16th & ${3:location} & \mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet tim "Table entry for implement"
+\\mitemref{${1:name}} & ${2:benefit} & \\mitempricetable{Active}{${3:level}} & \\mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet timp "Table entry for passive implement"
+\\mitemref{${1:name}} & ${2:benefit} & \\mitempricetable{Passive}{${3:level}} & \\mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet timm "Table entry for manually priced implement"
+\\mitemref{${1:name}} & ${2:benefit} & ${3:price} gp & ${4:level} & \\mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
