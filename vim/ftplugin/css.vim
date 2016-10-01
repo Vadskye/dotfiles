@@ -14,3 +14,5 @@ function! BreakCSS() abort
 endfunction
 
 command! BreakCSS call BreakCSS()
+
+setlocal omnifunc=csscomplete#CompleteCSS noci
