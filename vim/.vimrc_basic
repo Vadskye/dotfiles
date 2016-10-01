@@ -88,6 +88,9 @@
     " use utf8
     set encoding=utf-8
 
+    " use case-insensitive filename completion
+    set wildignorecase
+
 " Functions:
     function CaptureEx(command)
         redir => output
