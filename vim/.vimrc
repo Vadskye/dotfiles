@@ -33,7 +33,9 @@ Plug 'scrooloose/syntastic'
 Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
 Plug 'stephpy/vim-yaml'
-Plug 'Shougo/neocomplete.vim'
+if has('lua')
+    Plug 'Shougo/neocomplete.vim'
+endif
 " local stuff
 Plug './vim-filesight'
 Plug './vim-meta'
