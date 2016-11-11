@@ -72,6 +72,7 @@
             \ 'texArgsSpclSpclReq':{ 'ctermfg': 'DarkGreen', 'ctermbg': 'NONE'},
             \ 'texArgsSpclSpclOpt':{ 'ctermfg': 'Green', 'ctermbg': 'NONE'},
             \ 'texArgsNormNorm':{ 'ctermfg': 'DarkGreen', 'ctermbg': 'NONE'},
+            \ 'texItalStyle': {'ctermfg': 'White', 'ctermbg': g:italics},
             \ 'TexBeginEndName':{ 'ctermfg': 'DarkGreen', 'ctermbg': g:bold},
             \ 'TexMatcher':{ 'ctermfg': 'DarkGreen', 'ctermbg': g:bold},
             \ 'Todo'     : { 'ctermfg': 'White', 'ctermbg': g:bold},
