@@ -265,6 +265,9 @@
     " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
     " Use S-Enter to force completion
     inoremap <expr><S-Enter> neocomplete#start_manual_complete()
+    " Enter should always start a new line
+    " This seems dumb; can this be changed elsewhere?
+    inoremap <expr><CR> pumvisible()? "\<CR>\<CR>" : "\<CR>"
     " ignore tex files
     let g:neocomplete#ignore_source_files = ['.tex']
 
