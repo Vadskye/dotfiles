@@ -23,12 +23,8 @@
     let g:airline_detect_modified=0
 
     function! ShortDirectoryName(dir)
-        let dir = substitute(a:dir, '\v^.*epoc_([0-9]+\.[0-9]+)/(.*)', 'e\1 \2', '')
-        let dir = substitute(dir, '\v^.*build_([0-9]+\.[0-9]+)/(.*)', 'a\1 \2', '')
-        let dir = substitute(dir, '\va([0-9]+\.[0-9]+) perllib/Athena/(.*)', 'a\1/lib \2', '')
-        let dir = substitute(dir, '\vp4/([^/]+)/?(.*)', '\1 \2', '')
-        let dir = substitute(dir, '\v^.*/home/(Kevin|kejohnson)', '~', '')
-        let dir = substitute(dir, '\v^.*[/\\]Users[/\\](Kevin|kejohnson)', '~~', '')
+        let dir = substitute(dir, '\v^.*/home/Kevin', '~', '')
+        let dir = substitute(dir, '\v^.*[/\\]Users[/\\]Kevin', '~~', '')
         let dir = substitute(dir, '\V\^' . expand('$DOTFILES') . '\[\\/]\?', 'dotfiles ', '')
         let dir = substitute(dir, '\v^dotfiles vim[\\/]bundle[\\/]', 'vlugins ', '')
         return dir
@@ -168,8 +164,8 @@
     "     \ '--regex-tex=//\\1/f,feat/e'
     let g:filesight_sort_tags = 'name'
     let g:filesight_use_conceal = 1
-    let g:filesight_update_on_enter = 0
-    let g:filesight_update_on_save = 0
+    let g:filesight_update_on_enter = 1
+    let g:filesight_update_on_save = 1
 
     let g:filesight_log_file_ctags = expand('$HOME/filesight_ctags.log')
     let g:filesight_log_file_debug = expand('$HOME/filesight_debug.log')
