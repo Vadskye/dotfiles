@@ -23,7 +23,7 @@
     let g:airline_detect_modified=0
 
     function! ShortDirectoryName(dir)
-        let dir = substitute(dir, '\v^.*/home/Kevin', '~', '')
+        let dir = substitute(a:dir, '\v^.*/home/Kevin', '~', '')
         let dir = substitute(dir, '\v^.*[/\\]Users[/\\]Kevin', '~~', '')
         let dir = substitute(dir, '\V\^' . expand('$DOTFILES') . '\[\\/]\?', 'dotfiles ', '')
         let dir = substitute(dir, '\v^dotfiles vim[\\/]bundle[\\/]', 'vlugins ', '')
