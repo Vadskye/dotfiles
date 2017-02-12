@@ -126,7 +126,20 @@
     " quick access to the expression register
     nnoremap <C-=> a<C-R>=
 
+    " use b to navigate the location list
+    nnoremap bb :call CycleLocationList()<CR>
+    nnoremap bn :lnext<CR>
+    nnoremap bN :lprevious<CR>
+
 " Functions:
+    function! CycleLocationList()
+        try
+            lnext
+        catch
+            lfirst
+        endtry
+    endfunction
+
     function! AppendToUnnamedRegister(motion_type, operator)
         let unnamed_register = getreg('"')
         let setreg_mode = ''
