@@ -108,3 +108,16 @@ function pathogit() {
 function eh() {
     explorer .
 }
+
+function setdest() {
+    echo $(pwd) > ~/.config/local/dest || (mkdir -p ~/.config/local/dest && echo $(pwd) > ~/.config/local/dest)
+}
+
+function dest() {
+    cat ~/.config/local/dest
+}
+
+function v() {
+    "$@" 2>&1 | tee /tmp/v
+    vim /tmp/v
+}
