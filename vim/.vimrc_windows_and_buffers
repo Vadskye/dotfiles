@@ -77,6 +77,10 @@
     nnoremap wk <C-E>
     nnoremap wb zb
     nnoremap wt zt
+    " hide the current window (like closing, but easier to open)
+    nnoremap wh :vertical resize 1<CR>
+    " make the current window the main window
+    nnoremap wm :vertical resize 9999<CR>
 
     " ws controls window size
     nnoremap ws= <C-w>=
