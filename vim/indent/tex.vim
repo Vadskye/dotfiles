@@ -173,8 +173,9 @@ function! GetTeXIndent() " {{{
         return 0 
     endif
 
-    let line = substitute(getline(lnum), '%.*', ' ','g')     " last line
-    let cline = substitute(getline(v:lnum), '%.*', ' ', 'g') " current line
+    " kevin fixed: ignore % prefixed with backslash
+    let line = substitute(getline(lnum), '\v([^\\])\%.*', '\1 ','g')     " last line
+    let cline = substitute(getline(v:lnum), '\v([^\\])\%.*', '\1 ', 'g') " current line
 
     "  We are in verbatim, so do what our user what.
     if synIDattr(synID(v:lnum, indent(v:lnum), 1), "name") == "texZone"
