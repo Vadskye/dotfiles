@@ -72,7 +72,7 @@ snippet spellavatar "Make a new 'avatar' spell"
 endsnippet
 
 snippet tfeat "A feat entry in a feat table"
-\featref{${1:name}} & ${3:prerequisites} & ${4:benefit} & \x & \featpref{`!p snip.rv = t[1]`} \\\\
+\featref{${1:name}} & ${3:prerequisites} & ${4:benefit} & \tdash & \featpref{`!p snip.rv = t[1]`} \\\\
 endsnippet
 
 snippet dfeat "A feat definition"
@@ -202,4 +202,96 @@ endsnippet
 
 snippet timm "Table entry for manually priced implement"
 \\mitemref{${1:name}} & ${2:benefit} & ${3:price} gp & ${4:level} & \\mitempref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet ss "Subsection"
+\\subsection{${0}}
+endsnippet
+
+snippet nc "New LaTeX command"
+\DeclareDocumentCommand{\\${1:name}}{${2:args}}
+{
+	${0}
+}
+endsnippet
+
+snippet monsection "New section for a monster"
+\\begin{monsection}{${1:name}}{${2:level}}
+	\\begin{spellcontent}
+		\\begin{spelltargetinginfo}
+			\\pari \\mb{Senses} Awareness \plus${3:senses}
+			\\pari \\mb{Movement} ${4:land} ft.\\ land speed
+			\\pari \\mb{Size} ${5:Size}; \\mb{Reach} ${6:reach} ft.
+		\\end{spelltargetinginfo}
+		\\begin{spelleffects}
+			\\pari \\mb{HP} ${14:hp}; \\mb{Defenses} ${7:defenses}
+			\\pari \\mb{Attacks} ${8:attacks}; \\mb{Strikes} ${9:strikes}
+			\\pari \\mb{Attributes} ${10:attributes}
+		\\end{spelleffects}
+	\\end{spellcontent}
+	\\begin{spellfooter}
+		\\pari \\mb{Levels} ${11:levels}
+		\\pari \\mb{Environment} ${12:environment}
+		\\pari \\mb{Organization} ${13:organization}
+		\\pari \\mb{Traits} ${15:traits}
+	\\end{spellfooter}
+\\end{monsection}
+endsnippet
+
+snippet mondefenses "Monster defenses"
+AD ${1}, MD ${2}, Fort ${3}, Ref ${4}, Ment ${5}
+endsnippet
+
+snippet monattributes "Monster attributes"
+Str ${1}, Dex ${2}, Con ${3}, Int ${4}, Per ${5}, Wil ${6}
+endsnippet
+
+snippet ttrait "A trait entry in a trait table"
+\\featref{${1:name}} & ${3:prerequisites} & ${4:benefit} & \\tdash & \\featpref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet dtrait "A trait definition"
+\\feat{${1:name}}{${2:types}}
+\\featpre ${3:prerequisite}
+\\featben ${4:benefit}
+endsnippet
+
+snippet staff "A magic staff"
+\\begin{magicitemdef}[${5:Arcane, Nature}]{${1:name}}[Active]{${2:spelllevel}}{${3:school}}{as staff}
+	\magicitemability{Attuned} You gain \spell{${4:spellname}} as a spell known.
+	In addition, you can use item uses in place of spell slots to cast spells known from this staff.
+\\end{magicitemdef}
+endsnippet
+
+snippet staffs "A magic staff"
+\\begin{magicitemdef}[${5:Arcane, Nature}]{${1:name}}[Active]{${2:spelllevel}}{${3:school}}{as staff}
+	\magicitemability{Attuned} You gain \spell{${4:spellname}} as spells known.
+	In addition, you can use item uses in place of spell slots to cast spells known from this staff.
+\\end{magicitemdef}
+endsnippet
+
+snippet imp "A magic implement"
+\\begin{magicitemdef}[${5:Arcane, Nature}]{${1:name}}[Active]{${2:spelllevel}}{${3:school}}{as implement}
+	\magicitemability{Attuned} You gain \spell{${4:spellname}} as a spell known.
+	In addition, you can use item uses in place of spell slots to cast spells known from this item.
+\\end{magicitemdef}
+endsnippet
+
+snippet imps "A magic implement"
+\\begin{magicitemdef}[${5:Arcane, Nature}]{${1:name}}[Active]{${2:spelllevel}}{${3:school}}{as implement}
+	\magicitemability{Attuned} You gain \spell{${4:spellname}} as spells known.
+	In addition, you can use item uses in place of spell slots to cast spells known from this item.
+\\end{magicitemdef}
+endsnippet
+
+snippet mastery "A skill mastery feat"
+\feat{${1:name} Mastery}{Skill}
+\featpre `!p snip.rv = t[1]` 5 ranks.
+\featben Whenever you make a `!p snip.rv = t[1]` check, you may roll twice and take the higher result.
+
+At 3rd level, ${0}
+
+At 7th level, if you have 10 ranks in `!p snip.rv = t[1]`, you gain a \plus5 bonus to `!p snip.rv = t[1]` checks.
+
+At 11th level, if you have 14 ranks in `!p snip.rv = t[1]`, 
 endsnippet
