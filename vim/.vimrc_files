@@ -15,6 +15,16 @@
     " automatically sync files in vim sync directory
     autocmd BufRead,BufNewFile $HOME/AppData/Local/Vim/scp/* nmap :w :w \|silent! !vsync %:p
 
+    " enable fzf
+    if has('unix')
+        set rtp+=~/.fzf
+    endif
+
+    " use ag if possible
+    if executable('ag')
+        set grepprg=ag\ --nogroup\ --nocolor
+    endif
+
 " Functions:
     " save as a new filename and open the new file
     function SaveAs(arg)
@@ -56,8 +66,6 @@
         command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
                     \ | wincmd p | diffthis
     endif
-
-    command! -nargs=* Go call Go(<f-args>)
 
     command! -nargs=* EditRelativePath call EditRelativePath(<f-args>)
 
@@ -107,12 +115,13 @@
     nnoremap ;N :cprev<Enter>zvzz
     " edit file from same directory as current file
     nnoremap ;ce :e %:p:h/
+    " grep in root directory
+    " nnoremap <expr> ;rg ':noautocmd vimgrep "" ' . projectroot#guess() . '/**<Home><C-Right><C-Right><Right><Right>'
     " grep in current directory
-    nnoremap ;cg :noautocmd vimgrep "" %:p:h/*<Home><C-Right><C-Right><Right><Right>
+    nnoremap ;g :noautocmd vimgrep "" %:p:h/*<Home><C-Right><C-Right><Right><Right>
+    " grep hidden files in current directory
+    nnoremap ;G :noautocmd vimgrep "" %:p:h/.*<Home><C-Right><C-Right><Right><Right>
 
-    " edit file with relative path
+    " edit file with relative pa<Right>th
     nnoremap ;Re :EditRelativePath 
     nnoremap ;RE :EditRelativePath 
-
-    " use go to retrieve files from anywhere
-    nnoremap ;g :Go 
