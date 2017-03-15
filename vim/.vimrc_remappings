@@ -27,12 +27,6 @@
     noremap ' `
     noremap ` '
 
-    " Swap [] and {}
-    noremap [ {
-    noremap ] }
-    noremap { [
-    noremap } ]
-
     " redesign delete/copy/replace
     " delete
     nnoremap dd dd
