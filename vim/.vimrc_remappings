@@ -121,9 +121,9 @@
     nnoremap <C-=> a<C-R>=
 
     " use b to navigate the location list
-    nnoremap bb :call CycleLocationList()<CR>
-    nnoremap bn :lnext<CR>
-    nnoremap bN :lprevious<CR>
+    nnoremap bb :call CycleLocationList()<CR>zz
+    nnoremap bn :lnext<CR>zz
+    nnoremap bN :lprevious<CR>zz
 
 " Functions:
     function! CycleLocationList()
