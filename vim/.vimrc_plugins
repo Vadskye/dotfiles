@@ -215,7 +215,14 @@
     nnoremap ;u :Gstatus<CR>
 
 " FZF:
-    nnoremap ;f :FZF<CR>
+    " https://github.com/junegunn/fzf.vim/issues/47
+    function! s:find_git_root()
+      return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+    endfunction
+
+    command! ProjectFiles execute 'Files' s:find_git_root()
+
+    nnoremap ;f :ProjectFiles<CR>
 
 " Go:
     let g:go_fmt_autosave = 0
