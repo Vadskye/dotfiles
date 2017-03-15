@@ -34,6 +34,8 @@
             \ 'IncSearch': { 'guifg': '000000', 'guibg': 'FFFF00'},
             \ 'Search':    { 'guifg': '000000', 'guibg': 'BBBB00'},
         \ }
+    elseif &t_Co == 256
+        " this actually seems pretty good
     else
         let g:jellybeans_overrides = {
             \ 'Comment':   { 'ctermfg': 'Gray', 'ctermbg': g:italics},
