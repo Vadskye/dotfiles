@@ -7,11 +7,6 @@
     set hlsearch
     set incsearch
 
-    " enable fzf
-    if has('unix')
-        set rtp+=~/.fzf
-    endif
-
 " Functions:
     " Search within a scope (a {...} program block).
     " Version 2010-02-28 from http://vim.wikia.com/wiki/VimTip1530
