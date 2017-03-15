@@ -4,20 +4,23 @@ set nocompatible
 call plug#begin(expand('$DOTFILES/vim/plugged'))
 Plug 'tpope/vim-abolish'
 Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
 Plug 'vadskye/vim-checkpoint'
 Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/Conque-Shell'
 Plug 'coot/CRDispatcher'
-Plug 'kien/ctrlp.vim'
+Plug 'chrisbra/csv.vim'
+Plug 'vim-scripts/dbext.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'vadskye/vim-emotions'
 Plug 'coot/EnchantedVim'
 Plug 'Konfekt/Fastfold'
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', {'for': 'go'}
-Plug 'vim-scripts/groovyindent', {'for': 'javascript'}
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
+Plug 'mxw/vim-jsx' " for: javascript doesn't work here
 Plug 'vim-scripts/L9'
 Plug 'vim-latex/vim-latex', {'for': ['tex', 'latex']}
 Plug 'vadskye/vim-meta'
@@ -30,7 +33,7 @@ Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/syntastic'
+Plug 'ternjs/tern_for_vim'
 Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
 Plug 'stephpy/vim-yaml'
