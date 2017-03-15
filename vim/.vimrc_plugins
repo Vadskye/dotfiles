@@ -76,15 +76,11 @@
 " Commentary:
     autocmd FileType jproperties setlocal commentstring=#\ %s
 
-" CtrlP:
-    let g:ctrlp_map = ';/'
-    let g:ctrlp_working_path_mode = 'ra'
-    " let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
-    let g:ctrlp_cmd = 'CtrlPMixed'
-    let g:ctrlp_cache_dir = expand('$DOTFILES/vim/cache/ctrlp')
-    let g:ctrlp_user_command = 'es %s'
-    " always open files in a new instance
-    let g:ctrlp_switch_buffer = 0
+" CSV:
+    hi link CSVColumnOdd Question
+    hi link CSVColumnEven Identifier
+    hi link CSVDelimiter Number
+    let g:csv_no_conceal=1
 
 " DBExt:
     " let g:dbext_default_usermaps = 0
