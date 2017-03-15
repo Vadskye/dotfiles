@@ -156,7 +156,12 @@
 " Filesight:
     " let g:filesight_file_types = ['html', 'vim', 'perl', 'python', 'tex', 'java']
     let g:filesight_ctags_extra_args = ['--tex-kinds=-l']
-    let g:filesight_ctags_bin = expand("$USERPROFILE") . "/Utilities/ctags58/ctags.exe"
+    if has('unix')
+        let g:filesight_ctags_bin = '/usr/bin/ctags'
+    else
+        let g:filesight_ctags_bin = expand("$USERPROFILE") . "/Utilities/ctags58/ctags.exe"
+    endif
+
     let g:filesight_window_size = 30
     let g:filesight_run_on_startup = 0
     " let g:filesight_highlight_current_tag = "SpellRare"
