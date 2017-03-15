@@ -97,4 +97,3 @@ call SourceVimrcFile("windows_and_buffers")
 if has('python')
     call SourceVimrcFile("terminal")
 endif
-call SourceVimrcFile("local")
