@@ -161,20 +161,3 @@
         noremap [C W
         inoremap [C <C-o>Wx <C-w>q
     endif
-
-    " navigate between braces
-    noremap <C-j>{ [M
-    noremap <C-j>} [M
-    noremap <C-j><C-9> [M
-    noremap <C-j><C-0> [M
-    noremap <C-j>b [M
-
-    noremap <C-l>{ ]M
-    noremap <C-l>} ]M
-    noremap <C-l><C-9> ]M
-    noremap <C-l><C-0> ]M
-    noremap <C-l>b ]M
-
-    " definition jumps should be case sensitive
-    " nnoremap gd :set noignorecase<CR>gd:set ignorecase<CR>
-    " nnoremap gD :set noignorecase<CR>gD:set ignorecase<CR>
