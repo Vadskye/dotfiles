@@ -91,10 +91,6 @@
             execute 'nnoremap S'        . key . " " . dict.before . ":.,$Subvert%%%cg<Left><Left><Left><Left>" . dict.after
             execute 'nnoremap <Leader>s'. key . " " . dict.before . ":%s%%%cg<Left><Left><Left><Left>" . dict.after
             execute 'nnoremap <Leader>S'. key . " " . dict.before . ":%Subvert%%%cg<Left><Left><Left><Left>" . dict.after
-
-            " multifile substitutions work similarly
-            execute 'nnoremap ;s' . key . ' ' . dict.before . ":MultiFileSubstituteAll  <Left>" . dict.after . "<Right> %:p:h/*<Left><Left><Left><Left><Left><Left><Left><Left>"
-            execute 'nnoremap ;S' . key . ' ' . dict.before . ":MultiFileSubstitute  <Left>" . dict.after . "<Right>"
         endfor
     endfunction
 
