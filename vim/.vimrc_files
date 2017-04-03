@@ -123,9 +123,9 @@
     " grep in root directory
     " nnoremap <expr> ;rg ':noautocmd vimgrep "" ' . projectroot#guess() . '/**<Home><C-Right><C-Right><Right><Right>'
     " grep in current directory
-    nnoremap ;g :noautocmd vimgrep "" %:p:h/*<Home><C-Right><C-Right><Right><Right>
+    " nnoremap ;g :noautocmd vimgrep "" %:p:h/*<Home><C-Right><C-Right><Right><Right>
     " grep hidden files in current directory
-    nnoremap ;G :noautocmd vimgrep "" %:p:h/.*<Home><C-Right><C-Right><Right><Right>
+    " nnoremap ;G :noautocmd vimgrep "" %:p:h/.*<Home><C-Right><C-Right><Right><Right>
 
     " edit file with relative pa<Right>th
     nnoremap ;Re :EditRelativePath 
