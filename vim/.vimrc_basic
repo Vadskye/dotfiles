@@ -3,7 +3,11 @@
     filetype plugin indent on
     syntax on
 
-    behave mswin
+    " undo option setting from mswin
+    set selectmode=""
+    set mousemodel=extend
+    set keymodel=""
+    set selection=inclusive
 
     " changes from vim-sensible
     set ruler
