@@ -115,8 +115,6 @@
     " change working directory
     nnoremap ;cd :cd %:p:h<Enter>
     nnoremap ;lcd :lcd %:p:h<Enter>
-    " file history
-    nnoremap ;h :MRU<Enter>
     " navigate files in vimgrep search
     nnoremap ;n :cnext<Enter>zvzz
     nnoremap ;N :cprev<Enter>zvzz

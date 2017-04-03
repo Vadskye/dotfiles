@@ -273,6 +273,9 @@
 " Meta:
     let g:meta_directory = $DOTFILES . '/vim/meta'
 
+" MRU:
+    nnoremap ;h :MRU<Enter>
+
 " Neocomplete:
 
     highlight Pmenu ctermbg=black ctermfg=darkgreen
