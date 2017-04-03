@@ -9,8 +9,8 @@
     inoremap <C-z> <C-o>u
     " this doesn't work properly. need to figure out how <C-r> works.
     " map <C-y> <C-r>
-    nnoremap <C-v> "*p
-    inoremap <C-v> <C-o>"*P
+    nnoremap <C-v> "+p
+    inoremap <C-v> <C-o>"+P
 
     " keep Literal character input functionality
     inoremap <C-l> <C-v>
@@ -32,24 +32,24 @@
     nnoremap dd dd
     noremap <silent> D :set opfunc=AppendDeleteToUnnamedRegister<CR>g@
     nnoremap <silent> DD :set opfunc=AppendDeleteToUnnamedRegister<CR>g@V<Space>
-    noremap <Leader>d "*d
-    nnoremap <Leader>dd "*dd
+    noremap <Leader>d "+d
+    nnoremap <Leader>dd "+dd
     " copy
     noremap c y
     nnoremap cc yy
     noremap <silent> C :set opfunc=AppendCopyToUnnamedRegister<CR>g@
     nnoremap <silent> CC :set opfunc=AppendCopyToUnnamedRegister<CR>g@V<Space>
-    noremap <Leader>c "*y
-    nnoremap <Leader>cc "*yy
+    noremap <Leader>c "+y
+    nnoremap <Leader>cc "+yy
     " replace
     noremap r c
     nnoremap rr cc
     noremap <silent> R :set opfunc=AppendChangeToUnnamedRegister<CR>g@
     nnoremap <silent> RR :set opfunc=AppendChangeToUnnamedRegister<CR>g@V<Space>
-    noremap <Leader>r "*c
-    nnoremap <Leader>rr "*cc
+    noremap <Leader>r "+c
+    nnoremap <Leader>rr "+cc
     " paste
-    noremap <Leader>p "*p
+    noremap <Leader>p "+p
     " paste from copied text
     nnoremap cp "0p
     nnoremap cP "0P`.
