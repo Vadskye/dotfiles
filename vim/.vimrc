@@ -3,18 +3,22 @@ set nocompatible
 " vim-plug
 call plug#begin(expand('$DOTFILES/vim/plugged'))
 Plug 'tpope/vim-abolish'
+Plug 'mileszs/ack.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
+Plug 'skywind3000/asyncrun.vim'
 Plug 'vadskye/vim-checkpoint'
 Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/Conque-Shell'
 Plug 'coot/CRDispatcher'
 Plug 'chrisbra/csv.vim'
 Plug 'vim-scripts/dbext.vim'
+Plug 'chrisbra/vim-diff-enhanced'
 Plug 'junegunn/vim-easy-align'
 Plug 'vadskye/vim-emotions'
 Plug 'coot/EnchantedVim'
 Plug 'Konfekt/Fastfold'
+Plug 'dag/vim-fish', {'for': ['fish']}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', {'for': 'go'}
@@ -29,6 +33,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree'
 Plug 'moll/vim-node'
 Plug 'vim-perl/vim-perl', {'for': 'perl'}
+Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
@@ -36,12 +41,12 @@ Plug 'tpope/vim-surround'
 Plug 'ternjs/tern_for_vim'
 Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
-Plug 'stephpy/vim-yaml'
 if has('lua')
     Plug 'Shougo/neocomplete.vim'
 endif
 " local stuff
 Plug './vim-filesight'
+Plug './vim-psql'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim

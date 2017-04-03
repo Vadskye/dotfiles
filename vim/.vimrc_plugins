@@ -1,5 +1,15 @@
-" Ale:
-    let ale_javascript_eslint_use_global = 1
+" Ack:
+    if executable('ag')
+        let g:ackprg = 'ag --vimgrep'
+    endif
+    nnoremap ;g :Ack 
+
+" ALE:
+    let ale_lint_on_text_changed = 0
+    let ale_lint_on_enter = 1
+    let ale_lint_on_save = 1
+    let ale_javascript_eslint_use_global = 0
+    let ale_javascript_eslint_options = '--cache'
 
 " Airline:
     let g:airline_theme="jam"
@@ -16,7 +26,7 @@
     let g:airline_inactive_collapse = 0
 
     " load specific third party extensions rather than all of them
-    let g:airline_extensions = ['ale']
+    let g:airline_extensions = []
 
     if get(g:, 'eclim_loaded')
         call add(g:airline_extensions, 'eclim')
@@ -24,14 +34,6 @@
 
     " since we handle modified manually, don't autodetect it
     " let g:airline_detect_modified=0
-
-    function! ShortDirectoryName(dir)
-        let dir = substitute(a:dir, '\v^.*/home/Kevin', '~', '')
-        let dir = substitute(dir, '\v^.*[/\\]Users[/\\]Kevin', '~~', '')
-        let dir = substitute(dir, '\V\^' . expand('$DOTFILES') . '\[\\/]\?', 'dotfiles ', '')
-        let dir = substitute(dir, '\v^dotfiles vim[\\/]bundle[\\/]', 'vlugins ', '')
-        return dir
-    endfunction
 
     function! AbbreviatePath(path)
         " convert a path into two-letter abbreviations
@@ -50,25 +52,34 @@
 
     function! AirlineInit()
         " section a displays the relative path
-        let g:airline_section_a = "%{airline#util#prepend(airline#parts#crypt(),0)}%{airline#util#prepend(airline#parts#paste(),0)}%{AbbreviatePath(ShortDirectoryName(expand('%')))}"
+        let g:airline_section_a = "%{AbbreviatePath(expand('%'))}"
         " section b displays the absolute path to the current working directory
-        let g:airline_section_b = '%{AbbreviatePath(ShortDirectoryName(getcwd()))}'
+        let g:airline_section_b = '%{AbbreviatePath(getcwd())}'
         " section c displays file tags, if available
         if get(g:, 'loaded_filesight', 0)
             let g:airline_section_c = '%{filesight#get_current_tag_name(1)} %#__accent_red#%m%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
         elseif get(g:, 'loaded_tagbar', 0)
             let g:airline_section_c = '%{airline#extensions#tagbar#currenttag()} %#__accent_red#%m%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
         else
-            let g:airline_section_c = '%#__accent_red#%m%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+            let g:airline_section_c = '%{airline#parts#readonly()}'
         endif
         " don't show column information
-        let g:airline_section_x = '%3p%%%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#'
-        " let g:airline_section_z = '%{ShortDirectoryName(getcwd())}'
+        let g:airline_section_x = '%4l'
         let g:airline_section_y = ''
         let g:airline_section_z = ''
-        " let g:airline_section_warning = "%#__accent_red#%{airline#extensions#whitespace#check()}"
+        " let g:airline_section_warning = "airline#extensions#whitespace#check()"
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
+
+" AsyncRun:
+    " show the quickfix menu
+    nnoremap ,q :copen<CR><C-W>p
+    " run a shell command
+    nnoremap ,s :AsyncRun 
+    " run the current file
+    nnoremap ,c :AsyncRun % 
+    " run the last command
+    nnoremap ,, :AsyncRun<Up><CR>
 
 " Checkpoint:
     let g:checkpoint_directory = $DOTFILES . '/vim/checkpoints'
