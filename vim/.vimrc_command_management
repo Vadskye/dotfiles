@@ -4,6 +4,8 @@
 
     let g:python_flavor = get(g:, 'python_flavor', 'python')
 
+    let &shellpipe = '2>&1 >'
+
 " Functions:
     function! PreviewSys(command, ...) abort
         let args = join(a:000, ' ')
@@ -38,6 +40,7 @@
     endfunction
 
 " Commands:
+    command! -nargs=* ShellExecute silent call PreviewSys(<f-args>)
     " Execute current file in new vsplit
     command! -nargs=* Execute silent call PreviewSysCurrentFile("", <f-args>)
     " Perl files don't like showing output when executed normally
@@ -70,6 +73,7 @@
     noremap <Leader><Leader> :
 
     " rapid execution
+    " nnoremap ;s :ShellExecute 
     nnoremap X :Execute<Up><Enter>
     nnoremap x :Execute
     nnoremap xx :Execute<Up>
