@@ -88,10 +88,13 @@
     autocmd FileType jproperties setlocal commentstring=#\ %s
 
 " CSV:
+    hi link CSVColumnHeaderOdd Question
     hi link CSVColumnOdd Question
+    hi link CSVColumnHeaderEven Identifier
     hi link CSVColumnEven Identifier
     hi link CSVDelimiter Number
     let g:csv_no_conceal=1
+    let g:no_csv_maps=1
 
 " DBExt:
     " let g:dbext_default_usermaps = 0
