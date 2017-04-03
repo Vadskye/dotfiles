@@ -37,7 +37,7 @@
     endfunction
 
 " Mappings:
-    if has("win32")
+    if has("win32") || has("nvim")
         "easier window navigation
         noremap <M-w> <C-w>
         noremap <M-w><M-w> <C-w>w
