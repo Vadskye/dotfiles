@@ -48,6 +48,10 @@
         endif
     endfunction
 
+    function! FTEdit()
+        execute 'vnew ' . expand("$DOTFILES") . '/vim/ftplugin/' . &ft . '.vim'
+    endfunction
+
 " Commands:
     command! -nargs=1 W call SaveAs('<args>')
     command! -nargs=1 Write call SaveAs('<args>')
@@ -68,6 +72,9 @@
     endif
 
     command! -nargs=* EditRelativePath call EditRelativePath(<f-args>)
+
+    " Edit the ftplugin file for the current file type
+    command! FTEdit call FTEdit()
 
 " Mappings:
     " File operation remappings with ;
