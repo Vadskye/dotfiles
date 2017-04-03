@@ -452,6 +452,13 @@
 
 " UltiSnips:
     " better key bindings for UltiSnipsExpandTrigger
-    let g:UltiSnipsExpandTrigger = "<S-Enter>"
-    let g:UltiSnipsJumpForwardTrigger = "<tab>"
-    let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+    if has('unix')
+        " hack to get around inability to detect shift-enter
+        let g:UltiSnipsExpandTrigger = "<Linefeed>"
+        let g:UltiSnipsJumpForwardTrigger = "<Linefeed>"
+        let g:UltiSnipsJumpBackwardTrigger = "<C-Enter>"
+    else
+        let g:UltiSnipsExpandTrigger = "<S-Enter>"
+        let g:UltiSnipsJumpForwardTrigger = "<S-Enter>"
+        let g:UltiSnipsJumpBackwardTrigger = "<C-Enter>"
+    endif
