@@ -359,8 +359,8 @@
     " bookmark mappings
     nnoremap ;b :NERDTreeFromBookmark 
     nnoremap ;B :NTGoToBookmarkFile 
-    nnoremap ;m :NTBookmarkFile 
-    nnoremap ;M :NTBookmarkDir 
+    nnoremap ;m :NTBookmarkDir 
+    nnoremap ;M :NTBookmarkFile 
 
     " run a command in the current directory
     function! NTRun(command) abort
