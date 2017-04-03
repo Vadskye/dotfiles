@@ -21,6 +21,3 @@ inoremap <silent><buffer> <home> <C-o>g<home>
 
 " disable maximum line length
 setlocal textwidth=0
-
-" disable Neocomplete
-silent! NeoCompleteLock
