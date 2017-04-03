@@ -46,3 +46,19 @@ endsnippet
 snippet logv "Console log a variable"
 console.log('${1:name}', `!p snip.rv = t[1]`);
 endsnippet
+
+snippet pbnode "PropType for a bnode"
+bnode: React.PropTypes.shape({
+	select: React.PropTypes.func,
+}).isRequired,
+endsnippet
+
+snippet proptypes "Generic React.PropTypes definition"
+${1:ClassName}.propTypes = {
+	${0}
+};
+endsnippet
+
+snippet dt "DataTypes"
+DataTypes.
+endsnippet
