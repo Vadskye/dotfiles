@@ -46,11 +46,26 @@
         noremap <M-w><M-q> <C-w>q
         noremap <M-q> <C-w>w
         noremap <M-x> <C-w>q
-        "directional window navigation
+        " directional window navigation
         noremap <M-i> <C-w>k
         noremap <M-k> <C-w>j
         noremap <M-j> <C-w>h
         noremap <M-l> <C-w>l
+        if has('nvim')
+            "easier window navigation
+            tnoremap <M-w> <C-\><C-n><C-w>
+            tnoremap <M-w><M-w> <C-\><C-n><C-w>w
+            tnoremap <M-w><M-v> <C-\><C-n><C-w>v
+            tnoremap <M-w><M-s> <C-\><C-n><C-w>s
+            tnoremap <M-w><M-q> <C-\><C-n><C-w>q
+            tnoremap <M-q> <C-\><C-n><C-w>w
+            tnoremap <M-x> <C-\><C-n><C-w>q
+            " directional window navigation
+            tnoremap <M-i> <C-\><C-n><C-w>k
+            tnoremap <M-k> <C-\><C-n><C-w>j
+            tnoremap <M-j> <C-\><C-n><C-w>h
+            tnoremap <M-l> <C-\><C-n><C-w>l
+        endif
     else
         if has("unix")
             "easier window navigation
