@@ -1,6 +1,19 @@
 " Settings:
+    if has('nvim')
+        tnoremap <Esc> <C-\><C-n>
+        nnoremap ;m :vnew \| call termopen('fish') \| startinsert<CR>
+        nnoremap ;p :vnew \| call termopen('python3') \| startinsert<CR>
+    endif
+
+    au BufRead,BufEnter * if &buftype == 'terminal' | call InitTerminal() | endif
 
 " Functions:
+
+    " We do some config every time we enter a terminal window
+    function InitTerminal()
+        startinsert
+    endfunction
+
     function! CreateOutputBuffer()
         execute "botright new | setlocal buftype=nofile bufhidden=hide noswapfile"
         execute "silent! file output"
