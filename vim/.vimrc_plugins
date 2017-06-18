@@ -1,15 +1,30 @@
 " Ack:
     if executable('ag')
-        let g:ackprg = 'ag --vimgrep'
+        let g:ackprg = 'ag --vimgrep --hidden'
     endif
-    nnoremap ;g :Ack 
+    nnoremap ;s :Ack! ''<Left>
+    nnoremap ;g :Ack! '' %:p:h<Left><Left><Left><Left><Left><Left><Left>
+    nnoremap ;G :Ack! --depth=0 '' %:p:h<Left><Left><Left><Left><Left><Left><Left>
 
 " ALE:
-    let ale_lint_on_text_changed = 0
-    let ale_lint_on_enter = 1
-    let ale_lint_on_save = 1
-    let ale_javascript_eslint_use_global = 0
-    let ale_javascript_eslint_options = '--cache'
+    let g:ale_lint_on_text_changed = 0
+    let g:ale_lint_on_enter = 1
+    let g:ale_lint_on_save = 1
+    let g:ale_javascript_eslint_use_global = 0
+    let g:ale_javascript_eslint_options = '--cache'
+    if 1
+        let g:ale_linters = {
+            \ 'go': ['gometalinter'],
+        \ }
+        let g:ale_go_gometalinter_options='--disable-all --enable=deadcode --enable=errcheck --enable=vetshadow --enable=gotype --enable=varcheck --enable=structcheck --enable=ineffassign --enable=goconst'
+        " the interfacer linter is very cool, but not worth the effort right now
+        " gosimple is cool, but too slow
+        " staticcheck is too slow
+    else
+        let g:ale_linters = {
+            \ 'go': ['go build', 'gofmt', 'gosimple', 'go vet', 'staticcheck']
+        \ }
+    endif
 
 " Airline:
     let g:airline_theme="jam"
@@ -19,14 +34,17 @@
     let g:airline_left_sep=''
     let g:airline_right_sep=''
 
-    " skip crypt detection
+    " skip detection for speed
     let g:airline_detect_crypt = 0
+    let g:airline_detect_modified = 0
+    let g:airline_detect_paste = 0
+    let g:airline_detect_spell = 0
 
     " don't collapse, since we use different sections
     let g:airline_inactive_collapse = 0
 
     " load specific third party extensions rather than all of them
-    let g:airline_extensions = []
+    let g:airline_extensions = ['ale']
 
     if get(g:, 'eclim_loaded')
         call add(g:airline_extensions, 'eclim')
@@ -59,7 +77,7 @@
         if get(g:, 'loaded_filesight', 0)
             let g:airline_section_c = '%{filesight#get_current_tag_name(1)} %#__accent_red#%m%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
         elseif get(g:, 'loaded_tagbar', 0)
-            let g:airline_section_c = '%{airline#extensions#tagbar#currenttag()} %#__accent_red#%m%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+            let g:airline_section_c = '%{airline#extensions#tagbar#currenttag()} %{airline#parts#readonly()}'
         else
             let g:airline_section_c = '%{airline#parts#readonly()}'
         endif
@@ -74,6 +92,8 @@
 " AsyncRun:
     " show the quickfix menu
     nnoremap ,q :copen<CR><C-W>p
+    " show the location menu for consistency
+    nnoremap ,l :lopen<CR><C-W>p
     " run a shell command
     nnoremap ,s :AsyncRun 
     " run the current file
@@ -168,6 +188,7 @@
       let g:fastfold_fold_movement_commands = []
 
 " Filesight:
+if get(g:, 'loaded_filesight')
     " let g:filesight_file_types = ['html', 'vim', 'perl', 'python', 'tex', 'java']
     let g:filesight_ctags_extra_args = ['--tex-kinds=-l']
     if has('unix')
@@ -218,6 +239,7 @@
             \ },
         \ ],
     \ }
+endif
 
 " Fugitive:
     " commit changes to the current file
@@ -280,6 +302,7 @@
     nnoremap ;h :MRU<Enter>
 
 " Neocomplete:
+if get(g:, 'loaded_neocomplete', 0)
 
     highlight Pmenu ctermbg=black ctermfg=darkgreen
     highlight PmenuSel ctermbg=darkgray ctermfg=black
@@ -300,6 +323,7 @@
     let g:acp_enableAtStartup = 0
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
+endif
 
 " NERDTree:
     " don't automatically quit after opening a file
@@ -415,6 +439,13 @@
     " nmap <Leader>ss <Plug>Yssurround
     " nmap <Leader>Ss <Plug>YSsurround
     " nmap <Leader>SS <Plug>YSSurround
+
+" Tagbar:
+    nnoremap ;a :Tagbar<CR>
+    let g:tagbar_compact = 1
+    let g:tagbar_indent = 1
+    let g:tagbar_show_visibility = 0
+    let g:tagbar_width=30
 
 " Perl Support:
     " tell perl-support not to override ctrl-j mapping
