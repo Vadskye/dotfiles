@@ -39,3 +39,9 @@ snippet skill "A skill definition"
 ${1:name}:
 	attribute: ${2:attribute}
 endsnippet
+
+snippet ebase "A base 'extreme' creature"
+e/${1:name}:
+	<<: *EXTREME
+	${0}
+endsnippet
