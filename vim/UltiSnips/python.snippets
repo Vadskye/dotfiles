@@ -37,3 +37,48 @@ endsnippet
 snippet pdb "set a breakpoint with pdb"
 import pdb; pdb.set_trace()
 endsnippet
+
+snippet init "Create an __init__ method"
+def __init__(self, ${1:args}):
+	pass
+endsnippet
+
+snippet s "Self-assign an argument"
+self.${1:arg} = `!p snip.rv = t[1]`
+endsnippet
+
+snippet sc "Self-assign an argument that is self-continuing"
+self.${1:arg} = `!p snip.rv = t[1]`
+sc
+endsnippet
+
+snippet aug "Spell augment"
+Augment(
+	level=${1:level},
+	name="${2:name}",
+	description="""
+		${3:description}
+	""",
+),
+endsnippet
+
+snippet spell "Base template for a spell"
+spells.append(Spell(
+	name="${1:name}",
+	header=Header("${2:description}"),
+	targeting=Targeting(
+		${3:targeting}
+	),
+	effects=Effects(
+		${4:effects}
+		tags=[${5:tags}],
+	),
+	schools=[${6:schools}],
+	lists=[${7:lists}],
+	cantrip="${8:cantripeffect}",
+	custom_augments=[
+		${10:aug}
+	],
+	category='${11:category}',
+))
+endsnippet
