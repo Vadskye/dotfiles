@@ -117,19 +117,7 @@ endfunction
 
 " Find the start of a multi-line statement
 function! s:find_start_of_multiline_statement(lnum)
-    let lnum = a:lnum
-    while lnum > 0
-        if getline(lnum - 1) =~ '\\$'
-            let lnum = prevnonblank(lnum - 1)
-        else
-            let [paren_lnum, _] = s:find_opening_paren(lnum)
-            if paren_lnum < 1
-                return lnum
-            else
-                let lnum = paren_lnum
-            endif
-        endif
-    endwhile
+    return a:lnum
 endfunction
 
 " Find the block starter that matches the current line
