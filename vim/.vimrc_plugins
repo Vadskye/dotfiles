@@ -124,6 +124,21 @@
     " nmap <silent> <Leader>sp vip<Plug>DBExecVisualSQL
     " nmap <silent> <Leader>sdt <Plug>DBDescribeTable
 
+" Deoplete:
+if get(g:, 'loaded_deoplete', 1)
+    let g:deoplete#enable_at_startup = 1
+
+    highlight Pmenu ctermbg=black ctermfg=darkgreen
+    highlight PmenuSel ctermbg=darkgray ctermfg=black
+    " Use S-Enter to force completion
+    " inoremap <expr><S-Enter> neocomplete#start_manual_complete()
+    " Fix <CR> completion inconsistency
+    inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
+
+    let g:deoplete#enable_smart_case = 1
+
+endif
+
 " Emotions:
     let g:emotions_create_ijkl_mappings = 1
     let g:emotions_create_word_mappings = 0
