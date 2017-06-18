@@ -41,4 +41,8 @@
     nnoremap hn :tnext<Enter>
     nnoremap hN :tprevious<Enter>
     nnoremap hs :tselect<Enter>
-    nnoremap hp :PyHelp 
+    if has('nvim')
+        nnoremap hp :vnew \| call termopen('python3 -c "help()"') \| startinsert<CR>
+    else
+        nnoremap hp :PyHelp 
+    endif
