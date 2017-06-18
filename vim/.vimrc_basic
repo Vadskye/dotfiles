@@ -65,7 +65,7 @@
     endif
 
     " fix arrow key navigation in Unix
-    if has('unix')
+    if has('unix') && !has('nvim')
         map <silent> <Esc>OA <Up>
         map <silent> <Esc>OB <Down>
         map <silent> <Esc>OC <Right>
