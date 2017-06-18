@@ -154,7 +154,7 @@
         \ 'operator_prefix': 'V'
     \ })
 
-    if has("unix")
+    if has("unix") && !has('nvim')
         "fix control-left/right mapping
         noremap [D B
         inoremap [D <C-o>B
