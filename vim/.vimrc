@@ -1,7 +1,11 @@
 set nocompatible
 
 " vim-plug
-call plug#begin(expand('$DOTFILES/vim/plugged'))
+if has('nvim')
+    call plug#begin('~/.local/share/nvim/plugged')
+else
+    call plug#begin(expand('$DOTFILES/vim/plugged'))
+endif
 Plug 'tpope/vim-abolish'
 Plug 'mileszs/ack.vim'
 Plug 'vim-airline/vim-airline'
@@ -38,10 +42,12 @@ Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
-Plug 'ternjs/tern_for_vim'
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
-if has('lua')
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+elseif has('lua')
     Plug 'Shougo/neocomplete.vim'
 endif
 " local stuff
