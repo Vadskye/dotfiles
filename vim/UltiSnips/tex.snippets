@@ -76,9 +76,12 @@ snippet tfeat "A feat entry in a feat table"
 endsnippet
 
 snippet dfeat "A feat definition"
-\feat{${1:name}}{${2:types}}
-\featpre ${3:prerequisite}
-\featben ${4:benefit}
+\begin{feat}{${1:name}}{${2:types}}
+	\featpre ${3:prerequisite}
+	\featben
+
+	${0}
+\end{feat}
 endsnippet
 
 snippet augments "A group of spell augmentations"
@@ -87,8 +90,12 @@ snippet augments "A group of spell augmentations"
 \end{spellaugments}
 endsnippet
 
-snippet aug "A spell augmentation"
+snippet oldaug "A spell augmentation"
 \spellaugment{${1:level}}{${2:name}}{${3:effect}}
+endsnippet
+
+snippet aug "A new format for a spell augmentation"
+\augment{${1:level}}{${2:name}} ${0}
 endsnippet
 
 snippet augmass "A spell augmentation - Mass"
@@ -122,7 +129,7 @@ endsnippet
 snippet env "Begin and end an environment"
 \begin{${1:name}}
 	${0}
-\end{${2:name}}
+\end{`!p snip.rv = t[1]`}
 endsnippet
 
 snippet cspell "Create a new LaTeX spell shortcut"
@@ -284,20 +291,52 @@ snippet imps "A magic implement"
 \\end{magicitemdef}
 endsnippet
 
-snippet mastery "A skill mastery feat"
-\feat{${1:name} Mastery}{Skill}
-\featpre `!p snip.rv = t[1]` 5 ranks.
-\featben Whenever you make a `!p snip.rv = t[1]` check, you may roll twice and take the higher result.
+snippet spec "A skill specialization feat"
+\begin{feat}{${1:name} Specialization}{Skill}
+	\featpre `!p snip.rv = t[1]` as a mastered skill.
+	\featben
 
-At 3rd level, ${0}
+	\ff[1]{Specialization, Lesser} You gain a \plus2 bonus to `!p snip.rv = t[1]`.
 
-At 7th level, if you have 10 ranks in `!p snip.rv = t[1]`, you gain a \plus5 bonus to `!p snip.rv = t[1]` checks.
+	\ff[2]{${0}}
 
-At 11th level, if you have 14 ranks in `!p snip.rv = t[1]`, 
+	\ff[8]{Specialization} The bonus to `!p snip.rv = t[1]` increases to \plus3.
+
+	\ff[16]{Specialization, Greater} The bonus to `!p snip.rv = t[1]` increases to \plus4.
+\end{feat}
 endsnippet
 
 snippet itemize "Begin an itemize list"
 \begin{itemize}
 	\item ${0}
 \end{itemize}
+endsnippet
+
+snippet staug "Standard Augments"
+\parhead{Standard Augments} Extended, Mass.
+endsnippet
+
+snippet cantrip "Cantrip section"
+\begin{spellcantrip}
+	${0}
+\end{spellcantrip}
+endsnippet
+
+snippet stags "Spell tags"
+\spelltags{${1:tags}}${0}
+endsnippet
+
+snippet ff "Feat feature"
+\\ff[${1:lvl}]{${2:name}} ${0}
+endsnippet
+
+snippet ability "An ability definition"
+\begin{ability}
+	\begin{spelltargetinginfo}
+		${1:targeting}
+	\end{spelltargetinginfo}
+	\begin{spelleffects}
+		${2:effects}
+	\end{spelleffects}
+\end{ability}
 endsnippet
