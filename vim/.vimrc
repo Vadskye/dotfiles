@@ -44,6 +44,7 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tomtom/tlib_vim'
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'SirVer/ultisnips'
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
