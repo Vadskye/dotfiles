@@ -149,6 +149,9 @@
         \ '/'    : {'before': ''     , 'after': '<C-r>/<Right>'},
         \ })
 
+    " count occurrences of word
+    nnoremap sc :%s///gn<Left><Left><Left><Left>
+
     " fix accidental failure to save
     nnoremap s<C-s> <C-s>
     nnoremap <Leader>s<C-s> <C-s>
