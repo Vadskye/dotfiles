@@ -51,6 +51,19 @@
         noremap <M-k> <C-w>j
         noremap <M-j> <C-w>h
         noremap <M-l> <C-w>l
+
+        " repeat for insert mode
+        inoremap <M-w> <C-\><C-o><C-w>
+        inoremap <M-w><M-w> <C-\><C-o><C-w>w
+        inoremap <M-w><M-v> <C-\><C-o><C-w>v
+        inoremap <M-w><M-s> <C-\><C-o><C-w>s
+        inoremap <M-w><M-q> <C-\><C-o><C-w>q
+        inoremap <M-q> <C-\><C-o><C-w>w
+        inoremap <M-x> <C-\><C-o><C-w>q
+        inoremap <M-i> <C-\><C-o><C-w>k
+        inoremap <M-k> <C-\><C-o><C-w>j
+        inoremap <M-j> <C-\><C-o><C-w>h
+        inoremap <M-l> <C-\><C-o><C-w>l
         if has('nvim')
             "easier window navigation
             tnoremap <M-w> <C-\><C-n><C-w>
@@ -93,9 +106,9 @@
     nnoremap wb zb
     nnoremap wt zt
     " hide the current window (like closing, but easier to open)
-    nnoremap wh :vertical resize 1<CR>
+    nnoremap wh :vertical resize 1 \| resize 1<CR>
     " make the current window the main window
-    nnoremap wm :vertical resize 9999<CR>
+    nnoremap wm :vertical resize 9999 \| resize 9999<CR>
 
     " ws controls window size
     nnoremap ws= <C-w>=
