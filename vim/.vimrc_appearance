@@ -35,6 +35,9 @@
             \ 'Search':    { 'guifg': '000000', 'guibg': 'BBBB00'},
         \ }
     elseif &t_Co == 256
+        let g:jellybeans_overrides = {
+            \ 'Folded': { 'guifg': 'FFFFFF', 'guibg': '222222', 'gui': 'italic'},
+        \ }
         " this actually seems pretty good
     else
         let g:jellybeans_overrides = {
@@ -102,8 +105,6 @@
     execute "highlight OverLength ctermbg=" . g:italics . " ctermfg=gray guifg=gray guibg=NONE gui=italic "
     " highlight OverLength ctermbg=darkgray ctermfg=white guibg=#592929
 
-    " use a smaller preview window
-    set previewheight=6
 
 " Mappings:
     " clear highlighting
