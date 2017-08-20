@@ -21,3 +21,14 @@ inoremap <silent><buffer> <home> <C-o>g<home>
 
 " disable maximum line length
 setlocal textwidth=0
+
+let b:Tex_doneCompilerMaps=1
+
+if !exists('*CompileRise')
+    function! CompileRise() abort
+        split
+        call Tex_RunLaTeX()
+        quit
+    endfunction
+endif
+map <buffer> <Leader>ll :call CompileRise()<CR><Esc>
