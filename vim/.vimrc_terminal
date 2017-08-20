@@ -2,6 +2,7 @@
     if has('nvim')
         tnoremap <Esc> <C-\><C-n>
         nnoremap ;m :vnew \| call termopen('fish') \| startinsert<CR>
+        nnoremap ;M :new \| call termopen('fish') \| startinsert<CR>
         nnoremap ;p :vnew \| call termopen('python3') \| startinsert<CR>
     endif
 
