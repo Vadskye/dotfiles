@@ -1,0 +1,21 @@
+! Unmap caps lock
+clear Lock
+keycode 66 = Mode_switch
+
+keycode 31 = i I KP_Up Agrave
+keycode 46 = l L KP_Right Aacute
+keycode 44 = j J KP_Left Acircumflex
+keycode 45 = k K KP_Down Atilde
+keycode 30 = u U Home Adiaeresis
+keycode 32 = o O End Aring
+keycode 58 = m M braceleft Eacute
+keycode 59 = comma less Ecircumflex Ediaeresis
+keycode 60 = period greater braceright Iacute
+keycode 61 = slash question backslash
+
+keycode 41 = f F AE Ccedilla
+keycode 18 = 9 parenleft bracketleft braceleft
+keycode 19 = 0 parenright bracketright braceright
+
+keycode 36 = Return Linefeed Escape
+keycode 65 = space space underscore
