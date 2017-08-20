@@ -52,8 +52,8 @@ self.${1:arg} = `!p snip.rv = t[1]`
 sc
 endsnippet
 
-snippet aug "Spell augment"
-Augment(
+snippet sub "Subspell"
+Subspell(
 	level=${1:level},
 	name="${2:name}",
 	description="""
@@ -65,20 +65,81 @@ endsnippet
 snippet spell "Base template for a spell"
 spells.append(Spell(
 	name="${1:name}",
-	header=Header("${2:description}"),
+	# header=Header("${2:description}"),
 	targeting=Targeting(
 		${3:targeting}
 	),
 	effects=Effects(
-		${4:effects}
+		effect="""
+			${4:effects}
+		""",
 		tags=[${5:tags}],
 	),
 	schools=[${6:schools}],
 	lists=[${7:lists}],
 	cantrip="${8:cantripeffect}",
-	custom_augments=[
+	subspells=[
 		${10:aug}
 	],
 	category='${11:category}',
 ))
+endsnippet
+
+snippet ritual "Base template for a ritual"
+rituals.append(Spell(
+	name="${1:name}",
+	base_level=${2:0},
+	# header=Header("${3:description}"),
+	targeting=Targeting(
+		${4:targeting}
+	),
+	effects=Effects(
+		effect="""
+			${5:effects}
+		""",
+		tags=[${6:tags}],
+	),
+	schools=[${7:schools}],
+	lists=[${8:lists}],
+))
+endsnippet
+
+snippet app "base template for an apparel item"
+apparel.append(MagicItem(
+	name="${1:name}",
+	level=${2:0},
+	material_type='${3:type}',
+	tags=[${4:tag}],
+	description="""
+		${5:effect}
+	""",
+))
+endsnippet
+
+snippet wep "base template for a weapon"
+weapons.append(MagicItem(
+	name="${1:name}",
+	level=${2:0},
+	material_type='weapon',
+	tags=[${3:tag}],
+	description="""
+		${4:effect}
+	""",
+))
+endsnippet
+
+snippet imp "base template for an implement"
+implements.append(MagicItem(
+	name="${1:name}",
+	level=${2:0},
+	material_type='${3:type}',
+	tags=[${4:tag}],
+	description="""
+		${5:effect}
+	""",
+))
+endsnippet
+
+snippet gt "Glossterm"
+\\\\glossterm<${1:term}>
 endsnippet
