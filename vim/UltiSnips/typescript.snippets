@@ -1,0 +1,73 @@
+snippet log "Console log"
+console.log('${0}');
+endsnippet
+
+snippet logv "Console log a variable"
+console.log('${1:name}', `!p snip.rv = t[1]`);
+endsnippet
+
+snippet logj "Console log a JSONified variable"
+console.log('${1:name}', JSON.parse(JSON.stringify(`!p snip.rv = t[1]`)));
+endsnippet
+
+snippet pbnode "PropType for a bnode"
+bnode: React.PropTypes.shape({
+	select: React.PropTypes.func,
+}).isRequired,
+endsnippet
+
+snippet proptypes "Generic React.PropTypes definition"
+${1:ClassName}.propTypes = {
+	${0}
+};
+endsnippet
+
+snippet dt "DataTypes"
+DataTypes.
+endsnippet
+
+snippet componentfile "A template for a file with a basic component"
+import React, {Component} from "react";
+
+class ${1:ClassName} extends Component {
+	render() {
+		return (
+			${2:rendering logic}
+		);
+	}
+}
+`!p snip.rv = t[1]`.propTypes = {
+	${3:props}
+};
+
+module.exports = `!p snip.rv = t[1]`;
+endsnippet
+
+snippet component "A template for a basic component"
+class ${1:ClassName} extends Component {
+	render() {
+		return (
+			${2:rendering logic}
+		);
+	}
+}
+`!p snip.rv = t[1]`.propTypes = {
+	${3:props}
+};
+endsnippet
+
+snippet con "A constructor for a React component"
+constructor(props) {
+	super(props);
+	${1}
+}
+endsnippet
+
+snippet logall "Log all properties of the given object"
+const logall = (obj) => { if (obj == null) { return; }; console.log(Object.getOwnPropertyNames(obj)); logall(Object.getPrototypeOf(obj)); };
+logall(${1:obj});
+endsnippet
+
+snippet tbind "Bind 'this' to a function"
+this.${1:function} = this.`!p snip.rv = t[1]`.bind(this);
+endsnippet
