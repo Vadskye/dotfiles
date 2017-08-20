@@ -12,19 +12,16 @@
     let g:ale_lint_on_save = 1
     let g:ale_javascript_eslint_use_global = 0
     let g:ale_javascript_eslint_options = '--cache'
-    if 1
-        let g:ale_linters = {
-            \ 'go': ['gometalinter'],
-        \ }
-        let g:ale_go_gometalinter_options='--disable-all --enable=deadcode --enable=errcheck --enable=vetshadow --enable=gotype --enable=varcheck --enable=structcheck --enable=ineffassign --enable=goconst'
-        " the interfacer linter is very cool, but not worth the effort right now
-        " gosimple is cool, but too slow
-        " staticcheck is too slow
-    else
-        let g:ale_linters = {
-            \ 'go': ['go build', 'gofmt', 'gosimple', 'go vet', 'staticcheck']
-        \ }
-    endif
+    let g:ale_linters = {
+        \ 'go': [],
+        \ 'tex': ['chktex', 'proselint'],
+        \ 'typescript': ['eslint', 'tslint', 'tsserver'],
+    \ }
+    let g:ale_maximum_file_size = 100000
+    let g:ale_go_gometalinter_options='--disable-all --enable=deadcode --enable=errcheck --enable=vetshadow --enable=varcheck --enable=structcheck --enable=ineffassign --enable=goconst'
+    " the interfacer linter is very cool, but not worth the effort right now
+    " gosimple is cool, but too slow
+    " staticcheck is too slow
 
 " Airline:
     let g:airline_theme="jam"
@@ -398,8 +395,6 @@ endif
     " bookmark mappings
     nnoremap ;b :NERDTreeFromBookmark 
     nnoremap ;B :NTGoToBookmarkFile 
-    nnoremap ;m :NTBookmarkDir 
-    nnoremap ;M :NTBookmarkFile 
 
     " run a command in the current directory
     function! NTRun(command) abort
