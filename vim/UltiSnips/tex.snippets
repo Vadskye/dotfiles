@@ -72,7 +72,11 @@ snippet spellavatar "Make a new 'avatar' spell"
 endsnippet
 
 snippet tfeat "A feat entry in a feat table"
-\featref{${1:name}} & ${3:prerequisites} & ${4:benefit} & \tdash & \featpref{`!p snip.rv = t[1]`} \\\\
+\featref{${1:name}} & ${2:\tdash} & ${3:\tdash} & \featpref{`!p snip.rv = t[1]`} \\\\
+endsnippet
+
+snippet tspec "A feat entry in a feat table for a skill specialization feat"
+\featref{${1:name} Specialization} & Mastered `!p snip.rv = t[1]` & \\tdash & \featpref{`!p snip.rv = t[1]` Specialization} \\\\
 endsnippet
 
 snippet dfeat "A feat definition"
@@ -164,11 +168,19 @@ snippet tki "An entry in the feat table for a ki feat"
 endsnippet
 
 snippet ph "A paragraph header"
-\\parhead{${0}}
+\\parhead{${1:text}}${0}
+endsnippet
+
+snippet sph "A sub-paragraph header"
+\\subparhead{${1:text}}${0}
 endsnippet
 
 snippet gt "A glossary term"
 \\glossterm{${0}}
+endsnippet
+
+snippet it "Italics"
+\\textit{${1:text}}${0}
 endsnippet
 
 snippet tap "Table entry for apparel"
@@ -322,8 +334,18 @@ snippet cantrip "Cantrip section"
 \end{spellcantrip}
 endsnippet
 
+snippet spellattack "Spell attack"
+\begin{spellattack}{${1:accuracy} vs. ${2:defense}}
+	${0}
+\end{spellattack}
+endsnippet
+
 snippet stags "Spell tags"
 \spelltags{${1:tags}}${0}
+endsnippet
+
+snippet cf "Class feature"
+\\cf{${1:cls}}[${2:lvl}]{${3:name}} ${0}
 endsnippet
 
 snippet ff "Feat feature"
@@ -339,4 +361,8 @@ snippet ability "An ability definition"
 		${2:effects}
 	\end{spelleffects}
 \end{ability}
+endsnippet
+
+snippet ap "Action point"
+\glossterm{action point}
 endsnippet
