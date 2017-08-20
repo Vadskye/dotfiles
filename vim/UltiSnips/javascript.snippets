@@ -47,6 +47,10 @@ snippet logv "Console log a variable"
 console.log('${1:name}', `!p snip.rv = t[1]`);
 endsnippet
 
+snippet logj "Console log a JSONified variable"
+console.log('${1:name}', JSON.stringify(`!p snip.rv = t[1]`, null, 2));
+endsnippet
+
 snippet pbnode "PropType for a bnode"
 bnode: React.PropTypes.shape({
 	select: React.PropTypes.func,
@@ -107,4 +111,13 @@ endsnippet
 
 snippet tbind "Bind 'this' to a function"
 this.${1:function} = this.`!p snip.rv = t[1]`.bind(this);
+endsnippet
+
+snippet main "Main function of a script (async)"
+async function main() {
+}
+
+if (require.main === module) {
+	main().catch(console.error);
+}
 endsnippet
