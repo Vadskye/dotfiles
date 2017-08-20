@@ -21,7 +21,7 @@ Plug 'chrisbra/vim-diff-enhanced'
 Plug 'junegunn/vim-easy-align'
 Plug 'vadskye/vim-emotions'
 Plug 'coot/EnchantedVim'
-Plug 'Konfekt/Fastfold'
+" Plug 'Konfekt/Fastfold'
 Plug 'dag/vim-fish', {'for': ['fish']}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
