@@ -1,108 +1,12 @@
 " Settings:
-    " if mainfile is not set, default to the first file opened
-    let g:mainfile = '"' . expand('%:p') . '"'
-
     let g:python_flavor = get(g:, 'python_flavor', 'python')
 
     let &shellpipe = '2>&1 >'
-
-" Functions:
-    function! PreviewSys(command, ...) abort
-        let args = join(a:000, ' ')
-        let cmd = a:command . ' ' . args
-        " keep empty to add an extra newline
-        " this makes it easier to notice separate commands
-        let output = split(system(cmd), '\v[\r\n]+', 1)
-        call writefile(output, expand('~/.termout'), '')
-        pedit ~/.termout
-        let g:last_cmd_previewed = cmd
-    endfunction
-
-    function! PreviewSysCurrentFile(command, ...) abort
-        let args = expand('%:p') . ' ' . join(a:000, ' ')
-        call PreviewSys(a:command, args)
-    endfunction
-
-    let g:file_type_command_mapping = {
-        \ 'perl': 'perl ',
-        \ 'python': 'python ',
-        \ 'vim': "",
-    \ }
-    function! ExecuteParagraph() abort
-        " copy the text of the paragraph
-        normal! "zyip
-        let command = get(g:file_type_command_mapping, &filetype, "")
-        redir! > ~/.termout
-        silent! execute command . getreg('z')
-        redir END
-        pedit ~/.termout
-        let g:last_cmd_previewed = getreg('z')
-    endfunction
-
-" Commands:
-    command! -nargs=* ShellExecute silent call PreviewSys(<f-args>)
-    " Execute current file in new vsplit
-    command! -nargs=* Execute silent call PreviewSysCurrentFile("", <f-args>)
-    " Perl files don't like showing output when executed normally
-    command! -nargs=* ExecutePerl silent call PreviewSysCurrentFile('perl', <f-args>)
-    command! -nargs=* ExecutePython silent call PreviewSysCurrentFile(g:python_flavor, <f-args>)
-    " set and use a 'main file' that can be executed regardless of current file location
-    command! SetMainFile silent! let g:mainfile = expand('%:p')
-    command! -nargs=* ExecuteMain silent call PreviewSys(g:mainfile, <f-args>)
-    command! -nargs=* ExecuteMainPerl silent call PreviewSys('perl', g:mainfile, <f-args>)
-    command! -nargs=* ExecuteMainPython silent call PreviewSys(g:python_flavor, g:mainfile, <f-args>)
-
-    " java compilation/testing
-    command! -nargs=* ExecuteCompile silent call PreviewSysCurrentFile('javac', <f-args>)
-    command! -nargs=* ExecuteMainCompile silent call PreviewSys('javac', g:mainfile, <f-args>)
-    command! -nargs=* ExecuteTest silent call PreviewSys('java', 'org.junit.runner.JUnitCore', expand('%:t:r') . 'Test')
-
-    " profiling
-    command! -nargs=* ExecuteProfile silent call PreviewSysCurrentFile('profile', <f-args>)
-    command! -nargs=* ExecuteProfileMain silent call PreviewSys('profile', g:mainfile, <f-args>)
 
 " Mappings:
     " Run external commands
     nmap ! :!
     nmap !! :!<Up><Enter>
 
-    " quickly repeat last command
-    nnoremap :: :<Up><Enter>
-
     " open command line
     noremap <Leader><Leader> :
-
-    " rapid execution
-    " nnoremap ;s :ShellExecute 
-    nnoremap X :Execute<Up><Enter>
-    nnoremap x :Execute
-    nnoremap xx :Execute<Up>
-    nnoremap xm :ExecuteMain
-    nnoremap xmp :ExecuteMainPerl
-    nnoremap xmy :ExecuteMainPython
-    nnoremap xh :ExecuteHere
-    nnoremap xp :ExecutePerl
-    nnoremap xph :ExecutePerlHere
-    nnoremap xy :ExecutePython
-    nnoremap xyh :ExecutePythonHere
-    nnoremap xe :call VnewTemp() \| read !
-    nnoremap x<Esc> <Esc>
-
-    " compile
-    nnoremap xc :ExecuteCompile<CR>
-    nnoremap xmc :ExecuteMainCompile<CR>
-
-    " test
-    nnoremap xt :ExecuteTest<CR>
-    " nnoremap xmt :ExecuteMainTest<CR>
-
-    " profile
-    nnoremap xf :ExecuteProfile
-    nnoremap xfm :ExecuteProfileMain
-
-    nnoremap <silent> vv :execute getline('.')<CR>
-
-    nnoremap <silent> hq :call PreviewSys('perl', expand('%:p'))<CR>
-
-    " execute code within vim
-    nnoremap <Leader>x :call ExecuteParagraph()<CR>
