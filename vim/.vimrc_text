@@ -2,10 +2,33 @@
     " abbreviations to correct typos
     iabbrev whenver whenever
 
+" Functions:
+    function! CamelCase() abort
+        let underscoreIndex = match(getline('.'), '\v\C_[a-z]')
+        " go to underscoreIndex
+        " call cursor(line('.'), underscoreIndex)
+        " copy the word into the z register
+        " normal! "zyiw
+        
+        while underscoreIndex != -1
+            " go to underscoreIndex
+            call cursor(line('.'), underscoreIndex + 1)
+            " delete it and capitalize the next letter
+            execute "normal! x~"
+
+            let underscoreIndex = match(getline('.'), '\v\C_[a-z]')
+        endwhile
+
+        " copy the new camelCase word into the x register
+        " normal! "xyiw
+    endfunction
+
 " Commands:
     " Line breaking commands
     command Nobreak setlocal wrap|setlocal textwidth=0|setlocal wrapmargin=0
     command Break setlocal nowrap|setlocal textwidth=80|setlocal wrapmargin=0
+
+    command CamelCase call CamelCase()
 
     command! -nargs=1 -range SortByColumn <line1>,<line2>!sort -k <args>
 
