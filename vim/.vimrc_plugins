@@ -434,6 +434,8 @@ endif
     map :~~~~ <Plug>IMAP_JumpForward
     imap :~~~~ <Plug>IMAP_JumpForward
     let g:Tex_Folding = 0
+    " Disable concealing to play more nicely with vim-sneak and similar effects
+    let g:tex_conceal = ""
 
 
 " UltiSnips:
