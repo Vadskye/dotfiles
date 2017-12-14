@@ -57,18 +57,11 @@
     " 'paste after' should keep cursor position
     nnoremap P P`.
 
-    " change single character
-    " noremap b r
-    " noremap B R
-
     " redesign word manipulation
     onoremap w iw
     onoremap W aw
     onoremap e iW
     onoremap E aW
-
-    " faster command mode access
-    nnoremap ; :
 
     " map control-backspace to delete the previous word
     inoremap <C-BS> <C-o>"_db
@@ -82,9 +75,13 @@
     " switch files quickly
     nnoremap # :e #<Enter>
 
-    " memory access is mapped to M to mirror mark access
-    nnoremap M "
-    xnoremap M "
+    " map marks to b ('bookmarks')
+    nnoremap b m
+    xnoremap b m
+
+    " memory access is mapped to B to mirror mark access
+    nnoremap B "
+    xnoremap B "
 
     " map line joining to " to retain functionality
     nnoremap " J
@@ -119,11 +116,6 @@
 
     " quick access to the expression register
     nnoremap <C-=> a<C-R>=
-
-    " use b to navigate the location list
-    nnoremap bb :call CycleLocationList()<CR>zz
-    nnoremap bn :lnext<CR>zz
-    nnoremap bN :lprevious<CR>zz
 
 " Functions:
     function! CycleLocationList()
