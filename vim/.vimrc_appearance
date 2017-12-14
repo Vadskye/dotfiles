@@ -37,6 +37,11 @@
     elseif &t_Co == 256
         let g:jellybeans_overrides = {
             \ 'Folded': { 'guifg': 'FFFFFF', 'guibg': '222222', 'gui': 'italic'},
+            \ 'Normal': { 'guifg': 'e8e8d3' },
+            \ 'pythonBytesEscape': { 'guifg': '008787' },
+            \ 'PythonStrInterpRegion': { 'guifg': 'e8e8d3' },
+            \ 'SpellBad': { 'guibg': '902020', 'attr': 'underline'},
+            \ 'SpellCap': { 'guibg': '00005f', 'attr': 'underline'},
         \ }
         " this actually seems pretty good
     else
