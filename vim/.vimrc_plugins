@@ -15,7 +15,7 @@
     let g:ale_linters = {
         \ 'go': [],
         \ 'tex': ['chktex', 'proselint'],
-        \ 'typescript': ['eslint', 'tslint', 'tsserver'],
+        \ 'typescript': ['tslint', 'tsserver'],
     \ }
     let g:ale_maximum_file_size = 100000
     let g:ale_go_gometalinter_options='--disable-all --enable=deadcode --enable=errcheck --enable=vetshadow --enable=varcheck --enable=structcheck --enable=ineffassign --enable=goconst'
