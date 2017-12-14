@@ -143,3 +143,43 @@ endsnippet
 snippet gt "Glossterm"
 \\\\glossterm<${1:term}>
 endsnippet
+
+snippet mb "Monster Bold"
+\\\\mb<${1:text}>
+endsnippet
+
+snippet cre "Creature generation block"
+Creature(
+	character_class=CharacterClass('${1:class}'),
+	level=${2:level},
+	name='${3:name}',
+	natural_armor=${4:armor},
+	race=Race('${5:race}'),
+	size=Size('${6:medium}'),
+	starting_attributes=[${7:attributes}],
+	weapons=[Weapon('${8:weapon}')],
+)
+endsnippet
+
+snippet mon "Monster generation block"
+monsters.append(get_latex_from_creature(
+	${1:creature_var},
+	acts${0}
+))
+endsnippet
+
+snippet acts "Active abilities"
+active_abilities=[
+	active_ability(
+		'${1:name}',
+		${0}
+	),
+],
+endsnippet
+
+snippet act "Active ability"
+active_ability(
+	'${1:name}',
+	${0}
+),
+endsnippet
