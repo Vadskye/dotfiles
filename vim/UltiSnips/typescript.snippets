@@ -7,7 +7,7 @@ console.log('${1:name}', `!p snip.rv = t[1]`);
 endsnippet
 
 snippet logj "Console log a JSONified variable"
-console.log('${1:name}', JSON.parse(JSON.stringify(`!p snip.rv = t[1]`)));
+console.log('${1:name}', JSON.stringify(`!p snip.rv = t[1]`, null, 2));
 endsnippet
 
 snippet pbnode "PropType for a bnode"
@@ -70,4 +70,40 @@ endsnippet
 
 snippet tbind "Bind 'this' to a function"
 this.${1:function} = this.`!p snip.rv = t[1]`.bind(this);
+endsnippet
+
+snippet main "Main function of a script (async)"
+async function main(): Promise<void> {
+}
+
+if (require.main === module) {
+	main()
+		.then(() => models.sequelize.close())
+		.catch((err: Error) => {
+			models.sequelize.close();
+			throw err;
+		});
+}
+endsnippet
+
+snippet prop "React.PropTypes"
+React.PropTypes.${0}
+endsnippet
+
+snippet desc "Describe test block"
+describe('${1:text}', function(): void {
+	${0}
+});
+endsnippet
+
+snippet it "It test block"
+it('${1:text}', async function(): Promise<void> {
+	${0}
+});
+endsnippet
+
+snippet its "It test block, synchronous"
+it('${1:text}', function(): void {
+	${0}
+});
 endsnippet

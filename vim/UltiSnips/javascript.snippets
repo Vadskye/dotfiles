@@ -118,6 +118,29 @@ async function main() {
 }
 
 if (require.main === module) {
-	main().catch(console.error);
+	main()
+		.then(() => models.sequelize.close())
+		.catch((err: Error) => {
+			models.sequelize.close();
+			throw err;
+		});
 }
+endsnippet
+
+snippet desc "Describe test block"
+describe('${1:text}', function() {
+	${0}
+});
+endsnippet
+
+snippet it "It test block"
+it('${1:text}', async function() {
+	${0}
+});
+endsnippet
+
+snippet its "It test block, synchronous"
+it('${1:text}', function() {
+	${0}
+});
 endsnippet
