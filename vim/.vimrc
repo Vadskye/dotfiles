@@ -38,6 +38,7 @@ Plug 'moll/vim-node'
 Plug 'vim-perl/vim-perl', {'for': 'perl'}
 Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
