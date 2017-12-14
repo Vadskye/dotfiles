@@ -138,3 +138,5 @@
 
     "multimonitor split
     "nnoremap <Leader>wv <C-w>v:13winc <<Enter>
+
+    nnoremap ;j :Buffer<CR>
