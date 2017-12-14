@@ -26,6 +26,7 @@
 " Airline:
     let g:airline_theme="jam"
     let g:airline#extensions#branch#enabled=0
+    let g:airline_highlighting_cache = 1
 
     " don't use separator symbols
     let g:airline_left_sep=''
