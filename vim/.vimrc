@@ -18,7 +18,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'vim-scripts/dbext.vim'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'junegunn/vim-easy-align'
-Plug 'vadskye/vim-emotions'
+" Plug 'vadskye/vim-emotions'
 Plug 'coot/EnchantedVim'
 " Plug 'Konfekt/Fastfold'
 Plug 'dag/vim-fish', {'for': ['fish']}
@@ -40,6 +40,7 @@ Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'tpope/vim-repeat'
+Plug 'justinmk/vim-sneak'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
