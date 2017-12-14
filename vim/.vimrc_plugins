@@ -59,18 +59,6 @@
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
 
-" AsyncRun:
-    " show the quickfix menu
-    nnoremap ,q :copen<CR><C-W>p
-    " show the location menu for consistency
-    nnoremap ,l :lopen<CR><C-W>p
-    " run a shell command
-    nnoremap ,s :AsyncRun 
-    " run the current file
-    nnoremap ,c :AsyncRun % 
-    " run the last command
-    nnoremap ,, :AsyncRun<Up><CR>
-
 " Checkpoint:
     let g:checkpoint_directory = $DOTFILES . '/vim/checkpoints'
 
