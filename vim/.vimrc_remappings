@@ -117,6 +117,14 @@
     " quick access to the expression register
     nnoremap <C-=> a<C-R>=
 
+    " undo
+    nnoremap x u
+    nnoremap X <C-r>
+
+    " save
+    inoremap <F7> <C-\><C-o>:w<CR>
+    nnoremap <F7> :w<CR>
+
 " Functions:
     function! CycleLocationList()
         try
