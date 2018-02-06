@@ -125,6 +125,17 @@
     inoremap <F7> <C-\><C-o>:w<CR>
     nnoremap <F7> :w<CR>
 
+    " Tabs:
+        nnoremap <C-t> :tabnew<CR>
+        " Previous page
+        nnoremap <C-j> <C-PageUp>
+        " Next page
+        nnoremap <C-l> <C-PageDown>
+        " Move left
+        nnoremap <C-i> :tabmove -1<CR>
+        " Move right
+        nnoremap <C-k> :tabmove +1<CR>
+
 " Functions:
     function! CycleLocationList()
         try
