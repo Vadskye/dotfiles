@@ -96,6 +96,12 @@ describe('${1:text}', function(): void {
 });
 endsnippet
 
+snippet before "Before test block"
+before(function(): void {
+	${0}
+});
+endsnippet
+
 snippet it "It test block"
 it('${1:text}', async function(): Promise<void> {
 	${0}
