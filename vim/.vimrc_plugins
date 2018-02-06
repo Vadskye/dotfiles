@@ -436,6 +436,8 @@ endif
     let g:Tex_Folding = 0
     " Disable concealing to play more nicely with vim-sneak and similar effects
     let g:tex_conceal = ""
+    " Disable mapping F7
+    let g:Tex_PromptedCommands = ""
 
 
 " UltiSnips:
