@@ -75,13 +75,13 @@
     " switch files quickly
     nnoremap # :e #<Enter>
 
-    " map marks to b ('bookmarks')
-    nnoremap b m
-    xnoremap b m
+    " map marks to B ('bookmarks')
+    nnoremap B m
+    xnoremap B m
 
-    " memory access is mapped to B to mirror mark access
-    nnoremap B "
-    xnoremap B "
+    " memory access is mapped to b to mirror mark access
+    nnoremap b "
+    xnoremap b "
 
     " map line joining to " to retain functionality
     nnoremap " J
