@@ -10,11 +10,12 @@ Yields:
 endsnippet
 
 snippet main "create boilerplate for a main() function"
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 
 def main():
-	pass
-	${0}
+	${1:pass}
+
 
 if __name__ == "__main__":
 	main()
@@ -53,13 +54,9 @@ sc
 endsnippet
 
 snippet sub "Subspell"
-Subspell(
-	level=${1:level},
-	name="${2:name}",
-	description="""
-		${3:description}
-	""",
-),
+Subspell('${1:name}', ${2:level}, """
+	${3:description}
+"""),
 endsnippet
 
 snippet spell "Base template for a spell"
@@ -113,6 +110,7 @@ apparel.append(MagicItem(
 	description="""
 		${5:effect}
 	""",
+	short_description="${6:description}",
 ))
 endsnippet
 
@@ -125,6 +123,7 @@ weapons.append(MagicItem(
 	description="""
 		${4:effect}
 	""",
+	short_description="${5:description}",
 ))
 endsnippet
 
@@ -137,6 +136,7 @@ implements.append(MagicItem(
 	description="""
 		${5:effect}
 	""",
+	short_description="${6:description}",
 ))
 endsnippet
 
@@ -146,6 +146,10 @@ endsnippet
 
 snippet mb "Monster Bold"
 \\\\mb<${1:text}>
+endsnippet
+
+snippet it "Italics"
+\\\\textit<${1:text}>
 endsnippet
 
 snippet cre "Creature generation block"
@@ -170,16 +174,27 @@ endsnippet
 
 snippet acts "Active abilities"
 active_abilities=[
-	active_ability(
-		'${1:name}',
+	active_ability('${1:name}', f"""
 		${0}
-	),
+	"""),
 ],
 endsnippet
 
 snippet act "Active ability"
-active_ability(
-	'${1:name}',
+active_ability('${1:name}', f"""
 	${0}
-),
+"""),
+endsnippet
+
+snippet p "Print a variable"
+print('${1:name}', `!p snip.rv = t[1]`)
+endsnippet
+
+snippet pp "Pretty Print"
+pprint(${0})
+endsnippet
+
+snippet ppp "Pretty Print a variable with its name"
+print('${1:name}', end=" ")
+pprint(`!p snip.rv = t[1]`)
 endsnippet

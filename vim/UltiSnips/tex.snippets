@@ -352,15 +352,16 @@ snippet ff "Feat feature"
 \\ff[${1:lvl}]{${2:name}} ${0}
 endsnippet
 
-snippet ability "An ability definition"
-\begin{ability}
-	\begin{spelltargetinginfo}
-		${1:targeting}
-	\end{spelltargetinginfo}
-	\begin{spelleffects}
-		${2:effects}
-	\end{spelleffects}
-\end{ability}
+snippet abil "Ability definition"
+\\begin{ability}{${1:name}}
+	${0}
+\\end{ability}
+endsnippet
+
+snippet abilt "Ability definition with tags"
+\\begin{ability}{${1:name}}[\\glossterm{${2:tag}}]
+	${0}
+\\end{ability}
 endsnippet
 
 snippet ap "Action point"
