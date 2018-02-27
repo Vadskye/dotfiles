@@ -22,6 +22,7 @@
     " the interfacer linter is very cool, but not worth the effort right now
     " gosimple is cool, but too slow
     " staticcheck is too slow
+    nnoremap gd :ALEGoToDefinition<CR>
 
 " Airline:
     let g:airline_theme="jam"
@@ -183,7 +184,7 @@ endif
 
 " Fugitive:
     " commit changes to the current file
-    command Gadd Git add "%"
+    command Gadd Gwrite
     command! -nargs=1 GC silent! Git add "%" | execute "!git commit -m " . shellescape('<args>')
 
     " open git status the same way we open NerdTree
