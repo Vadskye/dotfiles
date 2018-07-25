@@ -12,6 +12,7 @@
     " changes from vim-sensible
     set ruler
     set showcmd
+    set wildmode=longest:full,full
     set wildmenu
     set complete-=i
     set smarttab
