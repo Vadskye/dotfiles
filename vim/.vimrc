@@ -44,12 +44,14 @@ Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-sneak'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
-Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+Plug 'majutsushi/tagbar'
 Plug 'tomtom/tlib_vim'
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'SirVer/ultisnips'
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+    Plug 'zchee/deoplete-go', {'do': 'make', 'for': 'go'}
+    Plug 'carlitux/deoplete-ternjs', {'do': 'npm install -g tern'}
 elseif has('lua')
     Plug 'Shougo/neocomplete.vim'
 endif
