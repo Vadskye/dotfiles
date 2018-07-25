@@ -450,7 +450,7 @@ endif
     let g:sneak#s_next = 0
     let g:sneak#use_ic_scs = 1
     let g:sneak#label = 1
-    let g:sneak#target_labels = 'masdfghjkl;qwertyuiopzxcvbn'
+    let g:sneak#target_labels = '1234567890!@#$%^&*()'
 
     " bold black text looks weirdly gray
     autocmd ColorScheme * hi Sneak ctermbg=12 ctermfg=black cterm=NONE gui=NONE
