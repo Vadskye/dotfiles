@@ -30,6 +30,7 @@
     " get help for a part of Python
     command! -nargs=1 PyHelpTab silent! call TabnewTemp() | execute "read !python -c " . shellescape("help('<args>')")
     command! -nargs=1 PyHelp silent! call VnewTemp() | execute "read !" . g:python_flavor . " -c " . shellescape("help('<args>')")
+    command! -nargs=1 PyHelpHoriz silent! call NewTemp() | execute "read !" . g:python_flavor . " -c " . shellescape("help('<args>')")
     " Run ctags
     command Ctags silent! !ctags -R
 
@@ -43,6 +44,8 @@
     nnoremap hs :tselect<Enter>
     if has('nvim')
         nnoremap hp :vnew \| call termopen('python3 -c "help()"') \| startinsert<CR>
+        nnoremap hP :new \| call termopen('python3 -c "help()"') \| startinsert<CR>
     else
         nnoremap hp :PyHelp 
+        nnoremap hP :PyHelpHoriz 
     endif
