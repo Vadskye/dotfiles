@@ -7,22 +7,32 @@
     nnoremap ;G :Ack! --depth=0 '' %:p:h<Left><Left><Left><Left><Left><Left><Left>
 
 " ALE:
-    let g:ale_lint_on_text_changed = 0
+    let g:ale_lint_on_text_changed = 1
+    let g:ale_lint_delay = 500
     let g:ale_lint_on_enter = 1
-    let g:ale_lint_on_save = 1
+    let g:ale_lint_on_save = 0
     let g:ale_javascript_eslint_use_global = 0
     let g:ale_javascript_eslint_options = '--cache'
     let g:ale_linters = {
-        \ 'go': [],
+        \ 'go': ['gosimple'],
+        \ 'javascript': ['eslint', 'tsserver'],
         \ 'tex': ['chktex', 'proselint'],
         \ 'typescript': ['tslint', 'tsserver'],
     \ }
     let g:ale_maximum_file_size = 100000
-    let g:ale_go_gometalinter_options='--disable-all --enable=deadcode --enable=errcheck --enable=vetshadow --enable=varcheck --enable=structcheck --enable=ineffassign --enable=goconst'
+    let g:ale_go_gometalinter_options='--disable-all --enable=errcheck'
     " the interfacer linter is very cool, but not worth the effort right now
     " gosimple is cool, but too slow
     " staticcheck is too slow
     nnoremap gd :ALEGoToDefinition<CR>
+
+    let g:ale_fixers = {}
+    let g:ale_fixers['go'] = ['gofmt']
+    let g:ale_fixers['javascript'] = ['prettier']
+    let g:ale_fixers['typescript'] = ['prettier', 'tslint']
+    " This should be enabled only for particular directories
+    let g:ale_fix_on_save = 0
+    nnoremap ;p :ALEFix<CR>
 
 " Airline:
     let g:airline_theme="jam"
