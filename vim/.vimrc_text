@@ -23,6 +23,14 @@
         " normal! "xyiw
     endfunction
 
+    function! SortLevel() abort
+        let first_line = getline("'<")
+        let last_line = getline("'>")
+        let spaces = matchstr(first_line, '\v^( +)')
+        silent! execute "'<,'>s%\\v\\n" . spaces . " +([^ ].*)\\_$(\\n" . spaces . "([^ ]))?%\\1 \\3%g"
+        '<,'>!sort
+    endfunction
+
 " Commands:
     " Line breaking commands
     command Nobreak setlocal wrap|setlocal textwidth=0|setlocal wrapmargin=0
@@ -82,3 +90,12 @@
     onoremap s` a`
     onoremap si ai
     onoremap sI aI
+
+    " Sort the current selection
+    vnoremap gs :'<,'>!sort<CR>
+
+    " Sort the current indentation level, creactively smashing indented objects
+    " This works best on code that can be automatically parsed back out, such as
+    " with Prettier.
+    nmap gl Vii<Esc>:call SortLevel()<CR>
+    vnoremap gl <Esc>:call SortLevel()<CR>
