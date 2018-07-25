@@ -49,6 +49,14 @@
         endwhile
     endfunction
 
+    function GoHome()
+        if len(getline('.')) > 120
+            execute "normal! g\<home>"
+        else
+            normal! _
+        endif
+    endfunction
+
 " Commands:
     command! -count=1 GoToWordStart call Search_count('\v' . s:start_of_word_pattern, 'W')
     command! -count=1 GoToWordStartBackwards call Search_count('\v' . s:start_of_word_pattern, 'bW')
@@ -76,7 +84,7 @@
     " Or disable only for .txt and similar files?
     inoremap <silent> <home> <C-o>_
     vnoremap <silent> <home> <C-o>_
-    noremap <silent> <home> _
+    noremap <silent> <home> :call GoHome()<CR>
     noremap <silent> _ g<home>
 
     " Grab sentences quickly
