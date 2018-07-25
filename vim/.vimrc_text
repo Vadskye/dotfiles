@@ -42,12 +42,12 @@
 
 " Mappings:
     " more consistent Ctrl-R
-    nnoremap <C-r> i<C-r><Esc>
+    nnoremap <C-r> i<C-r>
 
     " quickly insert text from default register
-    inoremap <C-r><C-r> <C-r>"
-    nnoremap <C-r><C-r> i<C-r>"<Esc>
-    cnoremap <C-r><C-r> <C-r>"
+    " inoremap <C-r><C-r> <C-r>"
+    " nnoremap <C-r><C-r> i<C-r>"<Esc>
+    " cnoremap <C-r><C-r> <C-r>"
 
     " use a as prefix for inner ("a") text objects instead of i
     onoremap aw iw
