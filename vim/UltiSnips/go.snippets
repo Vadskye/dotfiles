@@ -1,5 +1,9 @@
+snippet fmt "Print something"
+fmt.Println("${1:text}")
+endsnippet
+
 snippet fmtv "Print a verbose description of a variable"
-fmt.Printf("${1:name}: '%#v'\n", `!p snip.rv = t[1]`)
+fmt.Printf("${1:name}: '%+v'\n", `!p snip.rv = t[1]`)
 endsnippet
 
 snippet iferr "Standard error handling"
