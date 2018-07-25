@@ -398,11 +398,38 @@ endif
     " nmap <Leader>SS <Plug>YSSurround
 
 " Tagbar:
-    nnoremap ;a :Tagbar<CR>
+    let g:tagbar_ctags_bin = "/home/kevin/programs/ctags/bin/ctags"
+
+    function! TagbarDo()
+        if &ft == 'tagbar'
+            TagbarClose
+        else
+            TagbarOpen
+        endif
+        let window_number = bufwinnr('__Tagbar__.1')
+        execute window_number . " wincmd w"
+    endfunction
+    command TagbarDo call TagbarDo()
+    nnoremap ;a :TagbarDo<CR>
+
     let g:tagbar_compact = 1
     let g:tagbar_indent = 1
     let g:tagbar_show_visibility = 0
     let g:tagbar_width=30
+
+    let g:tagbar_type_typescript = {
+      \ 'ctagstype': 'typescript',
+      \ 'kinds': [
+        \ 'c:classes',
+        \ 'n:modules',
+        \ 'f:functions',
+        \ 'v:variables',
+        \ 'v:varlambdas',
+        \ 'm:members',
+        \ 'i:interfaces',
+        \ 'e:enums',
+      \ ]
+    \ }
 
 " Perl Support:
     " tell perl-support not to override ctrl-j mapping
