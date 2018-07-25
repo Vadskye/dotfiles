@@ -83,6 +83,8 @@
     hi link CSVColumnHeaderEven Identifier
     hi link CSVColumnEven Identifier
     hi link CSVDelimiter Number
+    let g:csv_start = 1
+    let g:csv_end = 100
     let g:csv_no_conceal=1
     let g:no_csv_maps=1
 
