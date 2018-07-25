@@ -36,6 +36,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree'
 Plug 'moll/vim-node'
 Plug 'vim-perl/vim-perl', {'for': 'perl'}
+Plug 'vadskye/vim-psql', {'for': 'sql'}
 Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'vim-python/python-syntax', {'for': 'python'}
@@ -52,9 +53,6 @@ if has('nvim')
 elseif has('lua')
     Plug 'Shougo/neocomplete.vim'
 endif
-" local stuff
-Plug './vim-filesight'
-Plug './vim-psql'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
