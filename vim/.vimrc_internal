@@ -3,3 +3,23 @@
 
 " Commands:
     command! LogVerbose set verbosefile=verbose.log | set verbose=15
+
+    command! LogLessVerbose set verbosefile=verbose.log | set verbose=9
+
+    command! Fast call Fast()
+    command! Slow call Slow()
+
+" Functions:
+    function! Fast()
+        syntax off
+        AirlineToggle
+        ALEToggle
+        set lazyredraw
+    endfunction
+
+    function! Slow()
+        syntax on
+        AirlineToggle
+        ALEToggle
+        set nolazyredraw
+    endfunction
