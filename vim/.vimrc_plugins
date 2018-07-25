@@ -109,6 +109,11 @@ if get(g:, 'loaded_deoplete', 1)
 
     let g:deoplete#enable_smart_case = 1
 
+    call deoplete#custom#option({
+        \ 'auto_complete_delay': 200,
+        \ 'smart_case': v:true,
+    \ })
+
 endif
 
 " easy-align:
