@@ -25,7 +25,7 @@ function! Typescriptify() abort
     execute "e! " . substitute(expand('%:p'), '\V.js', '.ts', "")
 
     " Remove multiline eslint-disable comments
-    execute "%s%\\v/\\*\\neslint-disable\\_.{-}^\\*/%%g"
+    %s%\v/\*\neslint-disable\_.{-}^\*/%%g
 
     write
 endfunction
