@@ -92,8 +92,6 @@
     nnoremap ;q :q<Enter>
     nnoremap ;Q :q!<Enter>
     nnoremap ;x :Explore<Enter>
-    " file list
-    nnoremap ;l :e <C-d>
     " last file
     nnoremap ;# :e "#"<Enter>
     " file tree (from current file)
