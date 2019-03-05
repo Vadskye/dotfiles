@@ -25,6 +25,7 @@ Plug 'dag/vim-fish', {'for': ['fish']}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'Galooshi/vim-import-js'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'mxw/vim-jsx' " for: javascript doesn't work here
@@ -48,6 +49,8 @@ Plug 'majutsushi/tagbar'
 Plug 'tomtom/tlib_vim'
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'SirVer/ultisnips'
+Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
+Plug 'Shougo/vimproc', {'do': 'make'}
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
     Plug 'zchee/deoplete-go', {'do': 'make', 'for': 'go'}
