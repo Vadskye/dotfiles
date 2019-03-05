@@ -4,9 +4,8 @@
     let &shellpipe = '2>&1 >'
 
 " Mappings:
-    " Run external commands
-    nmap ! :!
-    nmap !! :!<Up><Enter>
+    " Repeat the last command
+    nmap ! :<Up><Enter>
 
     " open command line
     noremap <Leader><Leader> :
