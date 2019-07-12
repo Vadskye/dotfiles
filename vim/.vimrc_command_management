@@ -5,7 +5,8 @@
 
 " Mappings:
     " Repeat the last command
-    nmap ! :<Up><Enter>
+    nnoremap ! :<Up><Enter>
 
     " open command line
-    noremap <Leader><Leader> :
+    nnoremap <Leader><Leader> :
+    nnoremap _ :
