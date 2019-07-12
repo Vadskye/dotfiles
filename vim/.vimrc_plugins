@@ -216,6 +216,8 @@ endif
     command Gadd Gwrite
     command! -nargs=1 GC silent! Git add "%" | execute "!git commit -m " . shellescape('<args>')
 
+    let g:fugitive_no_maps = 1
+
     " open git status the same way we open NerdTree
     " use 'u' for 'statUs'
     nnoremap ;u :Gstatus<CR>
