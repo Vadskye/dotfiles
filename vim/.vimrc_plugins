@@ -238,6 +238,8 @@ endif
     let g:go_textobj_enabled = 0
     let g:go_doc_keywordprg_enabled = 0
 
+" ImportJS:
+    nnoremap yi :ImportJSWord<CR>
 
 " Indent Object:
     let g:indent_object_no_mappings=1
