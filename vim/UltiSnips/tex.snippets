@@ -1,76 +1,3 @@
-snippet mid "Define a new magic item"
-\begin{magicitemdef}{${1:name}}[${2:price}]{${3:spelllevel}}[${4:location}]{${5:school}}{${7:crafting}}
-endsnippet
-
-snippet emid "End a magic item definition"
-\end{magicitemdef}
-endsnippet
-
-snippet mis "Define a new simple magic item without optional fields"
-\begin{magicitemdef}{${1:name}}{${2:spelllevel}}{${3:school}}{${4:crafting}}
-endsnippet
-
-snippet map "Magic item passive ability"
-\magicitemability{Passive} ${0}
-endsnippet
-
-snippet mat "Magic item triggered ability"
-\magicitemability{Triggered}[Immediate action] ${0}
-endsnippet
-
-snippet maa "Magic item active ability"
-\magicitemability{Active}[Standard action] ${0}
-endsnippet
-
-snippet spellsection "Make a new spell"
-\begin{spellsection}{${1:name}}[${2:level}]
-	\begin{spellheader}
-		\spelldesc{${3:description}}
-	\end{spellheader}
-	\begin{spellcontent}
-		\begin{spelltargetinginfo}
-			${4:targeting}
-		\end{spelltargetinginfo}
-		\begin{spelleffects}
-			${5:effects}
-		\end{spelleffects}
-	\end{spellcontent}
-	\begin{spellfooter}
-		\spellinfo{schools}{lists}
-		\miscastexplode
-	\end{spellfooter}
-\end{spellsection}
-endsnippet
-
-snippet spellavatar "Make a new 'avatar' spell"
-\begin{spellsection}{${1:name}}[${2:level}]
-	\begin{spellheader}
-		\spelldesc{${3:description}}
-	\end{spellheader}
-	\begin{spellcontent}
-		\begin{spelltargetinginfo}
-			\spelltgt{You}
-		\end{spelltargetinginfo}
-		\begin{spelleffects}
-			\spelleffect At any time during the spell's duration, you can concentrate as a standard action. If you do, ${4:EFFECT}, as described below.
-			\spelldur \durlong
-		\end{spelleffects}
-	\end{spellcontent}
-	\begin{spellsubcontent}
-		\begin{spelltargetinginfo}
-			\spellquicktargeting{${5:TARGET}}{${6:RANGE}}
-		\end{spelltargetinginfo}
-		\begin{spelleffects}
-			${7:EFFECT}
-		\end{spelleffects}
-	\end{spellsubcontent}
-	\begin{spellfooter}
-		\spellinfo{schools}{lists}
-		\miscastexplode
-	\end{spellfooter}
-\end{spellsection}
-endsnippet
-
 snippet tfeat "A feat entry in a feat table"
 \featref{${1:name}} & ${2:\tdash} & ${3:\tdash} & \featpref{`!p snip.rv = t[1]`} \\\\
 endsnippet
@@ -82,7 +9,6 @@ endsnippet
 snippet dfeat "A feat definition"
 \begin{feat}{${1:name}}{${2:types}}
 	\featpre ${3:prerequisite}
-	\featben
 
 	${0}
 \end{feat}
@@ -374,4 +300,55 @@ endsnippet
 
 snippet pcref "Page reference"
 (see \\pcref{${1:Text}})
+endsnippet
+
+snippet sp "Spell"
+\\spell{${1:name}}
+endsnippet
+
+snippet spellfocus "Spell Focus feat"
+\\begin{feat}{Spell Focus: ${1:Spell}}{Spell}
+	\\featpre \\spell{`!p snip.rv = t[1]`} spell known.
+
+	\\ff[1]{Subspell} You learn a subspell from the \\spell{`!p snip.rv = t[1].lower()`} spell.
+	When you gain access to a new spell levels, you can change which subspell you know from that spell.
+
+	${0}
+
+	\\ff[9]{Potent `!p snip.rv = t[1]`} You gain a \\plus1 bonus to \\glossterm{accuracy} with the \\spell{`!p snip.rv = t[1].lower()`} spell.
+
+	\\ff[18]{Greater Potent `!p snip.rv = t[1]`} The bonus from your \\textit{potent `!p snip.rv = t[1].lower()`} ability increases to \\plus2.
+\\end{feat}
+endsnippet
+
+snippet fab "Free ability"
+\\begin{freeability}{${1:name}}
+	${0}
+\\end{freeability}
+endsnippet
+
+snippet fabr "Free ability with ranks"
+\\begin{freeability}{${1:name}}
+	${0}
+	\\rankline
+	\\rank{4}
+	\\rank{6}
+	\\rank{8}
+\\end{freeability}
+endsnippet
+
+snippet riserule "Box containing an official game rule"
+\\begin{rule}
+	${0}
+\\end{rule}
+endsnippet
+
+snippet dtable "Table"
+\begin{dtable}
+	\lcaption{${1:Caption}}
+	\begin{dtabularx}{\textwidth}{l X}
+		\tb{${2:Header}} & \tb{${3:Header}} \tableheaderrule
+		${0}
+	\end{dtabularx}
+\end{dtable}
 endsnippet
