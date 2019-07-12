@@ -144,3 +144,32 @@ it('${1:text}', function() {
 	${0}
 });
 endsnippet
+
+snippet prevtime "Set up previous time for logging"
+let previousTime = new Date().getTime();
+endsnippet
+
+snippet logtime "Log time based on previous time"
+console.log('${1:text}', new Date().getTime() - previousTime);
+previousTime = new Date().getTime();
+endsnippet
+
+snippet clock "Stub the clock"
+clock = sinon.useFakeTimers(new Date('${1:2017-04-01}').getTime(), 'Date');
+endsnippet
+
+snippet reset "Reset the test data"
+await integrationSetup.resetDatabaseObjects(testData);
+endsnippet
+
+snippet esd "eslint disable"
+// eslint-disable-next-line ${0}
+endsnippet
+
+snippet esg "eslint global disable"
+/*
+eslint-disable
+${0},
+TODO: Remove these exemptions and fix lint warnings/errors
+*/
+endsnippet
