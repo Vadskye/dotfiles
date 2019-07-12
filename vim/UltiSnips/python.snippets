@@ -53,52 +53,31 @@ self.${1:arg} = `!p snip.rv = t[1]`
 sc
 endsnippet
 
-snippet sub "Subspell"
-Subspell('${1:name}', ${2:level}, """
+snippet spell "Spell"
+Spell('${1:name}', ${2:level}, """
 	${3:description}
-"""),
+""", tags=[${4:tag}]),
 endsnippet
 
-snippet spell "Base template for a spell"
-spells.append(Spell(
+snippet sphere "Base template for a mystic sphere"
+mystic_spheres.append(MysticSphere(
 	name="${1:name}",
-	# header=Header("${2:description}"),
-	targeting=Targeting(
-		${3:targeting}
-	),
-	effects=Effects(
-		effect="""
-			${4:effects}
-		""",
-		tags=[${5:tags}],
-	),
+	# short_description="${2:description}",
+	cantrip=Effects('${3:name}', """
+		${4:effects}
+	""", tags=[${5:tags}]),
 	schools=[${6:schools}],
 	lists=[${7:lists}],
-	cantrip="${8:cantripeffect}",
-	subspells=[
-		${10:aug}
+	spells=[
+		${8:spell}
 	],
-	category='${11:category}',
 ))
 endsnippet
 
 snippet ritual "Base template for a ritual"
-rituals.append(Spell(
-	name="${1:name}",
-	base_level=${2:0},
-	# header=Header("${3:description}"),
-	targeting=Targeting(
-		${4:targeting}
-	),
-	effects=Effects(
-		effect="""
-			${5:effects}
-		""",
-		tags=[${6:tags}],
-	),
-	schools=[${7:schools}],
-	lists=[${8:lists}],
-))
+Spell('${1:name}', ${2:level}, """
+	${3:description}
+"""),
 endsnippet
 
 snippet app "base template for an apparel item"
@@ -197,4 +176,45 @@ endsnippet
 snippet ppp "Pretty Print a variable with its name"
 print('${1:name}', end=" ")
 pprint(`!p snip.rv = t[1]`)
+endsnippet
+
+snippet sp "Spell shortcut"
+\\\\spell<${1:name}>
+endsnippet
+
+snippet greater "Greater spell"
+Spell('Greater `!p snip.rv = t[1].title()`', ${2:level}, """
+	This spell functions like the \\\\spell<${1:name}> spell, except that ${3:stuff}
+""", tags=[${4:tags}]),
+endsnippet
+
+snippet supreme "Supreme spell"
+Spell('Supreme `!p snip.rv = t[1].title()`', ${2:level}, """
+	This spell functions like the \\\\spell<${1:name}> spell, except that ${3:stuff}
+""", tags=[${4:tags}]),
+endsnippet
+
+snippet man "Maneuver"
+maneuvers.append(Maneuver(
+	name='${1:name}',
+	short_description='${2:short_description}',
+	effect_text="""
+		${3:effect}
+	""",
+	rank_upgrades={
+		'3': '${4:rank}',
+		'5': '${5:rank}',
+		'7': '${6:rank}',
+	},
+	tags=[],
+	lists=[${0}],
+))
+endsnippet
+
+snippet hp "Hit point"
+\\\\glossterm<hit point>
+endsnippet
+
+snippet hps "Hit points"
+\\\\glossterm<hit points>
 endsnippet
