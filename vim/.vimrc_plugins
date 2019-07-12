@@ -95,7 +95,9 @@
     let g:csv_start = 1
     let g:csv_end = 100
     let g:csv_no_conceal=1
-    let g:no_csv_maps=1
+    for key in ['w', 'l', 'e', 'h', 'k', 'up', 'j', 'down', 'space']
+        execute "let g:csv_nomap_" . key . " = 1"
+    endfor
 
 " DBExt:
     " let g:dbext_default_usermaps = 0
