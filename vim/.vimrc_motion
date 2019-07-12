@@ -85,7 +85,6 @@
     inoremap <silent> <home> <C-o>_
     vnoremap <silent> <home> <C-o>_
     noremap <silent> <home> :call GoHome()<CR>
-    noremap <silent> _ g<home>
 
     " Grab sentences quickly
     nnoremap d. df.
