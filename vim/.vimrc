@@ -15,7 +15,6 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/Conque-Shell'
 Plug 'coot/CRDispatcher'
 Plug 'chrisbra/csv.vim'
-Plug 'vim-scripts/dbext.vim'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'junegunn/vim-easy-align'
 " Plug 'vadskye/vim-emotions'
@@ -51,6 +50,8 @@ Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'SirVer/ultisnips'
 Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
 Plug 'Shougo/vimproc', {'do': 'make'}
+Plug 'mustache/vim-mustache-handlebars', {'for': 'mustache'}
+Plug 'amadeus/vim-mjml', {'for': 'mjml'}
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
     Plug 'zchee/deoplete-go', {'do': 'make', 'for': 'go'}
