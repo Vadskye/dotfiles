@@ -99,10 +99,6 @@
 
     " w controls window scrolling
     nnoremap ww zz
-    nnoremap wi <C-Y>
-    nnoremap wl z<Right>
-    nnoremap wj z<Left>
-    nnoremap wk <C-E>
     nnoremap wb zb
     nnoremap wt zt
     " hide the current window (like closing, but easier to open)
