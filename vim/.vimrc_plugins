@@ -56,7 +56,7 @@
     let g:airline_inactive_collapse = 0
 
     " load specific third party extensions rather than all of them
-    let g:airline_extensions = ['ale']
+    let g:airline_extensions = ['ale', 'tabline']
 
     if get(g:, 'eclim_loaded')
         call add(g:airline_extensions, 'eclim')
@@ -72,6 +72,13 @@
         let g:airline_section_z = ''
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
+
+    " Enable tabline
+      let g:airline#extensions#tabline#enabled = 1
+
+    " Relative buffer navigation
+    nnoremap <M-u> :bprevious<CR>
+    nnoremap <M-o> :bnext<CR>
 
 " Checkpoint:
     let g:checkpoint_directory = $DOTFILES . '/vim/checkpoints'
