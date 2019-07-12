@@ -10,13 +10,10 @@
     " this doesn't work properly. need to figure out how <C-r> works.
     " map <C-y> <C-r>
     nnoremap <C-v> "+p
-    inoremap <C-v> <C-o>"+P
+    inoremap <C-v> <C-r>+
 
     " keep Literal character input functionality
     inoremap <C-l> <C-v>
-
-    " Ctrl-p to paste from registers makes more sense than Ctrl-r
-    nnoremap <C-p> i<C-r><Esc>
 
     " quickly insert text from default register
     inoremap <C-p><C-p> <C-r>"
@@ -49,6 +46,7 @@
     noremap <Leader>r "+c
     nnoremap <Leader>rr "+cc
     " paste
+    noremap <C-p> a<C-r>
     noremap <Leader>p "+p
     " paste from copied text
     nnoremap cp "0p
@@ -124,17 +122,6 @@
     " save
     inoremap <F7> <C-\><C-o>:w<CR>
     nnoremap <F7> :w<CR>
-
-    " Tabs:
-        nnoremap <C-t> :tabnew<CR>
-        " Previous page
-        nnoremap <C-j> <C-PageUp>
-        " Next page
-        nnoremap <C-l> <C-PageDown>
-        " Move left
-        nnoremap <C-i> :tabmove -1<CR>
-        " Move right
-        nnoremap <C-k> :tabmove +1<CR>
 
 " Functions:
     function! CycleLocationList()
