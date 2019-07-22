@@ -123,3 +123,6 @@
     nnoremap <Leader>" "zd$O<C-r>z<Esc>
 
     nnoremap <BS> x<Left>
+
+    " Fix <CR> completion inconsistency
+    inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"

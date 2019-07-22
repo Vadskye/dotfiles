@@ -110,6 +110,9 @@
     execute "highlight OverLength ctermbg=" . g:italics . " ctermfg=gray guifg=gray guibg=NONE gui=italic "
     " highlight OverLength ctermbg=darkgray ctermfg=white guibg=#592929
 
+    highlight Pmenu ctermbg=black ctermfg=darkgreen
+    highlight PmenuSel ctermbg=darkgray ctermfg=black
+
 
 " Mappings:
     " clear highlighting
