@@ -126,3 +126,7 @@
 
     " Fix <CR> completion inconsistency
     inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
+
+    " Diff mappings
+    nnoremap yp :diffput<CR><C-w><C-w>:write<CR><C-w><C-w>
+    nnoremap yg :diffget<CR><C-w><C-w>:write<CR><C-w><C-w>
