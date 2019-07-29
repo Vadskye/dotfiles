@@ -53,9 +53,7 @@ Plug 'Shougo/vimproc', {'do': 'make'}
 Plug 'mustache/vim-mustache-handlebars', {'for': 'mustache'}
 Plug 'amadeus/vim-mjml', {'for': 'mjml'}
 if has('nvim')
-    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-    Plug 'zchee/deoplete-go', {'do': 'make', 'for': 'go'}
-    Plug 'carlitux/deoplete-ternjs', {'do': 'npm install -g tern'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 elseif has('lua')
     Plug 'Shougo/neocomplete.vim'
 endif
