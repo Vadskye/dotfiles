@@ -168,3 +168,12 @@
         noremap [C W
         inoremap [C <C-o>Wx <C-w>q
     endif
+
+    " use m/M to jump between arbitrary values
+    " me/Me jumps between lint errors; see .vimrc_plugins
+    " ms/Ms jumps between sneak targets; see .vimrc_plugins
+    " md/Md jumps between diffs
+    nnoremap md ]c
+    nnoremap Md [c
+
+    

@@ -457,8 +457,8 @@ endif
     map F <Plug>Sneak_S
     nmap t v<Plug>Sneak_s
     nmap T v<Plug>Sneak_S
-    map m <Plug>Sneak_;
-    map M <Plug>Sneak_,
+    map ms <Plug>Sneak_;
+    map Ms <Plug>Sneak_,
     let g:sneak#s_next = 0
     let g:sneak#use_ic_scs = 1
     let g:sneak#label = 1
