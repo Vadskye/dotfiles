@@ -386,8 +386,8 @@ endif
     nmap :~~~~R <Plug>(RepeatRedo)
 
 " Supertab:
-    " let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
-    let g:SuperTabDefaultCompletionType = "context"
+    let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+    " let g:SuperTabDefaultCompletionType = "context"
     " flip tab order
     " let g:SuperTabMappingForward = '<s-tab>'
     " let g:SuperTabMappingBackward = '<tab>'
