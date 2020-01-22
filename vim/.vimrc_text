@@ -130,3 +130,6 @@
     " Diff mappings
     nnoremap yp :diffput<CR><C-w><C-w>:write<CR><C-w><C-w>
     nnoremap yg :diffget<CR><C-w><C-w>:write<CR><C-w><C-w>
+
+    " Swap text with the currently copied text
+    vnoremap gs "zy"xdv`]p
