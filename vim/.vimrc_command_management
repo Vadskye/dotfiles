@@ -9,4 +9,6 @@
 
     " open command line
     nnoremap <Leader><Leader> :
+    vnoremap <Leader><Leader> :
     nnoremap _ :
+    vnoremap _ :
