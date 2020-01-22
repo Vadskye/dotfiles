@@ -13,18 +13,19 @@ keycode 30 = u U Home Adiaeresis
 keycode 32 = o O End Aring
 
 ! Numbers
-keycode 52 = z Z 1 Z
-keycode 53 = x X 2 X
-keycode 54 = c C 3 C
-keycode 38 = a A 4 A
-keycode 39 = s S 5 S
-keycode 40 = d D 6 D
-keycode 24 = q Q 7 Q
-keycode 25 = w W 8 W
-keycode 26 = e E 9 E
-keycode 41 = f F 0 Ccedilla
+! keycode 52 = z Z 1 Z
+! keycode 53 = x X 2 X
+! keycode 54 = c C 3 C
+! keycode 38 = a A 4 A
+! keycode 39 = s S 5 S
+! keycode 40 = d D 6 D
+! keycode 24 = q Q 7 Q
+! keycode 25 = w W 8 W
+! keycode 26 = e E 9 E
+! keycode 41 = f F 0 Ccedilla
 
 ! compulsive save in vim
+keycode 39 = s S F7 F8
 keycode 47 = semicolon colon F7 F8
 
 keycode 58 = m M braceleft Eacute
