@@ -24,6 +24,7 @@ Plug 'dag/vim-fish', {'for': ['fish']}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'jparise/vim-graphql', {'for': ['typescript', 'typescript.tsx']}
 Plug 'Galooshi/vim-import-js'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
