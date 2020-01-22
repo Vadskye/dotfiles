@@ -77,7 +77,7 @@
     nnoremap B m
     xnoremap B m
 
-    " memory access is mapped to b to mirror mark access
+    " memory/register access is mapped to b to mirror mark access
     nnoremap b "
     xnoremap b "
 
