@@ -202,3 +202,49 @@ ${0}
 TODO: Remove these exemptions and fix lint warnings/errors
 */
 endsnippet
+
+snippet sand "Create sinon sandbox"
+const sandbox = sinon.createSandbox();
+endsnippet
+
+snippet aftersand  "Restore sandbox in after function"
+after(function(): void {
+	sandbox.restore();
+});
+endsnippet
+
+snippet ai "Armor inputs"
+armorInputs: [{ name: "${1:name}" }],
+endsnippet
+
+snippet wi "Weapon inputs"
+weaponInputs: [{ name: "${1:name}" }],
+endsnippet
+
+snippet gt "Glossterm"
+\\\\glossterm{${1:name}}
+endsnippet
+
+snippet page "Create a page with puppeteer"
+await runInBrowser(async (page: Page) => {
+	${0}
+});
+endsnippet
+
+snippet silly "Silly-level log"
+rootLogger.silly('${0}');
+endsnippet
+
+snippet cli "Commander-style CLI object"
+cli
+	.version('0.0.1')
+	.parse(process.argv);
+endsnippet
+
+snippet rl "Import root logger"
+import { rootLogger } from '@src/util/log';
+endsnippet
+
+snippet gql "Import gql"
+import gql from 'graphql-tag';
+endsnippet

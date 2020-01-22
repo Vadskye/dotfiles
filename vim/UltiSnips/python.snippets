@@ -54,9 +54,9 @@ sc
 endsnippet
 
 snippet spell "Spell"
-Spell('${1:name}', ${2:level}, """
-	${3:description}
-""", tags=[${4:tag}]),
+Spell('${1:name}', ${2:level}, '${3:target}', """
+	${4:description}
+""", tags=[${5:tag}]),
 endsnippet
 
 snippet sphere "Base template for a mystic sphere"
@@ -183,9 +183,9 @@ snippet sp "Spell shortcut"
 endsnippet
 
 snippet greater "Greater spell"
-Spell('Greater `!p snip.rv = t[1].title()`', ${2:level}, """
-	This spell functions like the \\\\spell<${1:name}> spell, except that ${3:stuff}
-""", tags=[${4:tags}]),
+Spell('Greater `!p snip.rv = t[1].title()`', ${2:level}, '${3:targets}', """
+	This spell functions like the \\\\spell<${1:name}> spell, except that ${4:stuff}
+""", tags=[${5:tags}]),
 endsnippet
 
 snippet supreme "Supreme spell"
@@ -217,4 +217,35 @@ endsnippet
 
 snippet hps "Hit points"
 \\\\glossterm<hit points>
+endsnippet
+
+snippet rankline "Rank line for rank 1 spell"
+\\\\rankline
+\\\\rank<3> ${0}
+\\\\rank<5> 
+\\\\rank<7> 
+endsnippet
+
+snippet rankline2 "Rank line for rank 4 spells"
+\\\\rankline
+\\\\rank<6> ${0}
+\\\\rank<8> 
+endsnippet
+
+snippet rankdmg "Rank line for damage"
+\\\\rankline
+\\\\rank<3> The damage increases to \\\\glossterm<standard damage> +1d.
+\\\\rank<5> The damage increases to \\\\glossterm<standard damage> +2d.
+\\\\rank<7> The damage increases to \\\\glossterm<standard damage> +3d.
+endsnippet
+
+snippet rankacc "Rank line for accuracy"
+\\\\rankline
+\\\\rank<3> The attack gains a +1 bonus to \\\\glossterm<accuracy>.
+\\\\rank<5> The accuracy bonus increases to +2.
+\\\\rank<7> The accuracy bonus increases to +3.
+endsnippet
+
+snippet cursecrit
+\\\\crit As above, except that the effect lasts until the curse is removed.
 endsnippet
