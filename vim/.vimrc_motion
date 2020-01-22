@@ -175,5 +175,8 @@
     " md/Md jumps between diffs
     nnoremap md ]c
     nnoremap Md [c
+    " ml/Ml jumps between location list locations
+    nnoremap ml :lnext<CR>
+    nnoremap Ml :lprev<CR>
 
     
