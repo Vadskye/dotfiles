@@ -53,7 +53,7 @@ Plug 'Shougo/vimproc', {'do': 'make'}
 Plug 'mustache/vim-mustache-handlebars', {'for': 'mustache'}
 Plug 'amadeus/vim-mjml', {'for': 'mjml'}
 if has('nvim')
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': '*'}
 elseif has('lua')
     Plug 'Shougo/neocomplete.vim'
 endif
