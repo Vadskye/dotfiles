@@ -220,7 +220,15 @@ endif
 
     " open git status the same way we open NerdTree
     " use 'u' for 'statUs'
-    nnoremap ;u :Gstatus<CR>
+    nnoremap ;u :Gstatus<CR>:resize 15<CR>
+
+    function! ViewCommit() abort
+        let commit = matchlist(expand('%'), '\v\.git//([^/]+)')[1]
+        let remoteUrl = matchlist(system("git config --get remote.origin.url"), '\vgithub.com:(.+)\.git')[1]
+        call system("google-chrome https://github.com/" . remoteUrl . "/commit/" . commit)
+    endfunction
+
+    command! ViewCommit call ViewCommit()
 
 " FZF:
     " https://github.com/junegunn/fzf.vim/issues/47
