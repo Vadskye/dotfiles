@@ -96,6 +96,9 @@
     " use case-insensitive filename completion
     set wildignorecase
 
+    " This makes file watching work better
+    set backupcopy=yes
+
 " Functions:
     function CaptureEx(command)
         redir => output
