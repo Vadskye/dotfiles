@@ -1,0 +1,11 @@
+[/]
+foreground-color='rgb(252,226,147)'
+visible-name='Kevin normal'
+palette=['rgb(0,0,0)', 'rgb(205,0,0)', 'rgb(0,205,0)', 'rgb(205,205,0)', 'rgb(30,144,255)', 'rgb(205,0,205)', 'rgb(0,205,205)', 'rgb(229,229,229)', 'rgb(76,76,76)', 'rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(255,255,0)', 'rgb(70,130,180)', 'rgb(255,0,255)', 'rgb(0,255,255)', 'rgb(255,255,255)']
+default-size-columns=120
+use-system-font=false
+use-theme-colors=false
+font='Monospace 11'
+use-theme-transparency=false
+background-color='rgb(0,0,0)'
+scrollbar-policy='never'
