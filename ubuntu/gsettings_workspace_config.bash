@@ -9,3 +9,5 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Alt><Con
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Alt><Control>j']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Alt><Control>k']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Alt><Control>l']"
+
+gsettings set org.gnome.mutter.keybindings switch-monitor '[]'
