@@ -37,3 +37,7 @@ set -g fish_prompt_git_status_order added modified renamed copied deleted untrac
 
 alias sqlite sqlite3
 alias o xdg-open
+
+# This breaks colors inside neovim terminals; see
+# https://github.com/fish-shell/fish-shell/issues/2600
+set fish_term24bit 0
