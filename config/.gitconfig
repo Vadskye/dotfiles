@@ -1,0 +1,28 @@
+[user]
+	email = vadskye@gmail.com
+	name = Kevin Johnson
+[push]
+	default = simple
+[alias]
+	co = checkout
+	b = branch
+	last = log -l HEAD
+	tossh = remote set-url origin
+	alias = "!f() { git config --global \"alias.$1\" \"$2\" && echo \"created alias: $1\"; }; f"
+	p = add -p
+	cm = commit -m
+	m = checkout master
+	ck = "!f() { git checkout \"kevin/ch$1\"; }; f"
+	aliases = config --get-regexp \"^alias\\.\"
+	unalias = "!f() { git config --global --unset \"alias.$1\" && echo \"removed alias: $1\"; }; f"
+	shalias = "!f() { git config --global \"alias.$1\" \"!f() { $2; }; f\" && echo \"created alias: $1\"; }; f"
+	yesterday = log --since=yesterday.0:00am --until=today.0.00am
+	unstash = checkout stash@{0} --
+	ap = add -p
+	timelog = log --pretty=format:'%Cred%h%Creset - %C(yellow)%ae%Creset - %Cgreen%cd%Creset - %s%Creset' --abbrev-commit --date=iso
+	this = symbolic-ref --short HEAD
+	diffm = "!f() { git diff master...`git this`; }; f"
+	diffp = "!f() { git diff production...`git this`; }; f"
+	remaster = rebase origin/master
+	todo = "!f() { git add *; git commit -m \"TODO\"; }; f"
+	pull = pull --rebase
