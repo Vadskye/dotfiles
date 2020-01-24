@@ -110,6 +110,6 @@ call SourceVimrcFile("searching")
 call SourceVimrcFile("tags")
 call SourceVimrcFile("text")
 call SourceVimrcFile("windows_and_buffers")
-if has('python')
+if has('python') || has('python3')
     call SourceVimrcFile("terminal")
 endif
