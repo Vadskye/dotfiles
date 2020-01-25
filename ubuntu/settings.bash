@@ -11,3 +11,6 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Alt><C
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Alt><Control>l']"
 
 gsettings set org.gnome.mutter.keybindings switch-monitor '[]'
+
+# See https://github.com/gatsbyjs/gatsby/issues/11406
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
