@@ -56,7 +56,7 @@ endsnippet
 snippet spell "Spell"
 Spell('${1:name}', ${2:level}, '${3:target}', """
 	${4:description}
-""", tags=[${5:tag}]),
+""", scaling='${6:something}', tags=[${5:tag}]),
 endsnippet
 
 snippet sphere "Base template for a mystic sphere"
@@ -97,10 +97,23 @@ snippet wep "base template for a weapon"
 weapons.append(MagicItem(
 	name="${1:name}",
 	level=${2:0},
-	material_type='weapon',
+	material_type='Weapon',
 	tags=[${3:tag}],
 	description="""
 		${4:effect}
+	""",
+	short_description="${5:description}",
+))
+endsnippet
+
+snippet wepg "base template for a Greater weapon"
+weapons.append(MagicItem(
+	name="${1:name}, Greater",
+	level=${2:0},
+	material_type='Weapon',
+	tags=[${3:tag}],
+	description="""
+		This weapon functions like a \\\\mitem<`!p snip.rv = t[1].lower()`> weapon, except that ${4:stuff}.
 	""",
 	short_description="${5:description}",
 ))
@@ -114,6 +127,19 @@ implements.append(MagicItem(
 	tags=[${4:tag}],
 	description="""
 		${5:effect}
+	""",
+	short_description="${6:description}",
+))
+endsnippet
+
+snippet impg "base template for a Greater implement"
+implements.append(MagicItem(
+	name="${1:name}, Greater",
+	level=${2:0},
+	material_type='${3:type}',
+	tags=[${4:tag}],
+	description="""
+		This weapon functions like a \\\\mitem<`!p snip.rv = t[1].lower()`> implement, except that ${4:stuff}.
 	""",
 	short_description="${6:description}",
 ))
@@ -198,6 +224,7 @@ snippet man "Maneuver"
 maneuvers.append(Maneuver(
 	name='${1:name}',
 	short_description='${2:short_description}',
+	target="As chosen \\\\glossterm<strike>",
 	effect_text="""
 		${3:effect}
 	""",
@@ -226,26 +253,44 @@ snippet rankline "Rank line for rank 1 spell"
 \\\\rank<7> 
 endsnippet
 
-snippet rankline2 "Rank line for rank 4 spells"
-\\\\rankline
-\\\\rank<6> ${0}
-\\\\rank<8> 
-endsnippet
-
 snippet rankdmg "Rank line for damage"
 \\\\rankline
-\\\\rank<3> The damage increases to \\\\glossterm<standard damage> +1d.
-\\\\rank<5> The damage increases to \\\\glossterm<standard damage> +2d.
-\\\\rank<7> The damage increases to \\\\glossterm<standard damage> +3d.
+The damage increases by +1d for each rank beyond ${1:1}.
 endsnippet
 
 snippet rankacc "Rank line for accuracy"
 \\\\rankline
-\\\\rank<3> The attack gains a +1 bonus to \\\\glossterm<accuracy>.
-\\\\rank<5> The accuracy bonus increases to +2.
-\\\\rank<7> The accuracy bonus increases to +3.
+You gain a +1 bonus to \\\\glossterm<accuracy> with the attack for each rank beyond ${1:1}.
 endsnippet
 
 snippet cursecrit
 \\\\crit As above, except that the effect lasts until the curse is removed.
+endsnippet
+
+snippet glance
+\\\\glance As above, except that that ${1:each target takes half damage}.
+endsnippet
+
+snippet glanceit
+\\\\glance As above, except that that ${1:the target takes half damage}.
+endsnippet
+
+snippet glanceend
+\\\\glance As above, except that the condition is removed at the end of the next round.
+endsnippet
+
+snippet damage
+damage equal to ${1:1d10} plus your \\\\glossterm<power>.
+endsnippet
+
+snippet damagehalf
+damage equal to ${1:1d8} plus half your \\\\glossterm<power>.
+endsnippet
+
+snippet crit
+\\\\crit As above, except that ${1:somethingworse}
+endsnippet
+
+snippet critremove
+\\\\crit As above, except that the condition must be removed twice before the effect ends.
 endsnippet
