@@ -11,8 +11,8 @@ eval (python3 -m virtualfish)
 set -gx ENV dev
 set -gx NODE_ENV 'development'
 
-bind \{ backward-word
-bind \} forward-word
+# bind \{ backward-word
+# bind \} forward-word
 
 set -g fish_color_git_clean green
 set -g fish_color_git_staged yellow
