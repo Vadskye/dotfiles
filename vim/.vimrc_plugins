@@ -473,22 +473,22 @@ endif
     let g:pydiction_location = 'C:/Program Files/Vim/vimfiles/ftplugin/pydiction/complete-dict'
     let g:pydiction_menu_height = 10
 
-" Sneak:
-    map f <Plug>Sneak_s
-    map F <Plug>Sneak_S
-    nmap t v<Plug>Sneak_s
-    nmap T v<Plug>Sneak_S
-    map ms <Plug>Sneak_;
-    map Ms <Plug>Sneak_,
-    let g:sneak#s_next = 0
-    let g:sneak#use_ic_scs = 1
-    let g:sneak#label = 1
-    let g:sneak#target_labels = '1234567890!@#$%^&*()'
+" " Sneak:
+"     map f <Plug>Sneak_s
+"     map F <Plug>Sneak_S
+"     nmap t v<Plug>Sneak_s
+"     nmap T v<Plug>Sneak_S
+"     map ms <Plug>Sneak_;
+"     map Ms <Plug>Sneak_,
+"     let g:sneak#s_next = 0
+"     let g:sneak#use_ic_scs = 1
+"     let g:sneak#label = 1
+"     let g:sneak#target_labels = '1234567890!@#$%^&*()'
 
-    " bold black text looks weirdly gray
-    autocmd ColorScheme * hi Sneak ctermbg=12 ctermfg=black cterm=NONE gui=NONE
-    autocmd ColorScheme * hi SneakFocus ctermbg=12 ctermfg=black cterm=NONE gui=NONE
-    autocmd ColorScheme * hi SneakLabel ctermbg=12 ctermfg=black cterm=NONE gui=NONE
+"     " bold black text looks weirdly gray
+"     autocmd ColorScheme * hi Sneak ctermbg=12 ctermfg=black cterm=NONE gui=NONE
+"     autocmd ColorScheme * hi SneakFocus ctermbg=12 ctermfg=black cterm=NONE gui=NONE
+"     autocmd ColorScheme * hi SneakLabel ctermbg=12 ctermfg=black cterm=NONE gui=NONE
 
 " Tsuquyomi:
     let g:tsuquyomi_disable_quickfix = 1
