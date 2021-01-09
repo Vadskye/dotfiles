@@ -16,7 +16,7 @@
     let g:ale_javascript_eslint_options = '--cache'
     let g:ale_linters = {
         \ 'go': ['gosimple'],
-        \ 'javascript': ['eslint', 'tsserver'],
+        \ 'javascript': ['eslint'],
         \ 'tex': [],
         \ 'typescript': [],
     \ }
