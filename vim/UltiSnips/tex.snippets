@@ -352,3 +352,24 @@ snippet dtable "Table"
 	\end{dtabularx}
 \end{dtable}
 endsnippet
+
+snippet rankline
+\\rankline
+\\rank{3} ${0}
+\\rank{5} 
+\\rank{7} 
+endsnippet
+
+snippet increases
+The bonus from your \\textit{${1:text}} ability increases to \\plus${2:1}.
+endsnippet
+
+snippet rankacc "Rank line for accuracy"
+\\rankline
+You gain a \\plus1 bonus to \\glossterm{accuracy} with the attack for each rank beyond ${1:1}.
+endsnippet
+
+snippet rankdmg "Rank line for damage"
+\\rankline
+The damage increases by \\plus1d for each rank beyond ${1:1}.
+endsnippet
