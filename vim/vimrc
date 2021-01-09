@@ -86,15 +86,7 @@ function SourceVimrcFile(name, ...)
         endif
     endif
 
-    if ! exists("l:prefix")
-        if exists("g:vimrc_prefix")
-            let l:prefix = g:vimrc_prefix
-        else
-            let l:prefix = "."
-        endif
-    endif
-
-    let filename = expand(l:directory . "/" . l:prefix . "vimrc_" . a:name)
+    let filename = expand(l:directory . "/vimrc_" . a:name)
     try
         exec "source " . filename
     catch
