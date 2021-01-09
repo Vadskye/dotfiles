@@ -48,14 +48,14 @@ Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'tpope/vim-repeat'
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
 Plug 'tomtom/tlib_vim'
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'SirVer/ultisnips'
-Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
+" Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
 Plug 'Shougo/vimproc', {'do': 'make'}
 Plug 'mustache/vim-mustache-handlebars', {'for': 'mustache'}
 Plug 'amadeus/vim-mjml', {'for': 'mjml'}
