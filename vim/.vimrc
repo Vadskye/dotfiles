@@ -41,6 +41,7 @@ Plug 'vim-scripts/mru.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'scrooloose/nerdtree'
 Plug 'moll/vim-node'
+Plug 'jvirtanen/vim-hcl'
 Plug 'vim-perl/vim-perl', {'for': 'perl'}
 Plug 'vadskye/vim-psql', {'for': 'sql'}
 Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
