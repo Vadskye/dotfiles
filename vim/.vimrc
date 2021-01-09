@@ -22,6 +22,7 @@ Plug 'mattn/emmet-vim'
 Plug 'coot/EnchantedVim'
 " Plug 'Konfekt/Fastfold'
 Plug 'dag/vim-fish', {'for': ['fish']}
+" Note: You may need to update fzf with `cd ~/.fzf; git pull; ./install`.
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', {'for': 'go'}
