@@ -25,7 +25,9 @@ Plug 'dag/vim-fish', {'for': ['fish']}
 " Note: You may need to update fzf with `cd ~/.fzf; git pull; ./install`.
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go', {'for': 'go'}
+" Updating binaries takes a weirdly long time
+" Plug 'fatih/vim-go', {'branch': 'release', 'do': ':GoUpdateBinaries', 'tag': 'v1.18'}
+Plug 'fatih/vim-go', {'branch': 'release', 'tag': 'v1.18'}
 Plug 'jparise/vim-graphql', {'for': ['typescript', 'typescript.tsx']}
 Plug 'Galooshi/vim-import-js'
 Plug 'michaeljsmith/vim-indent-object'
