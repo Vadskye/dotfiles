@@ -1,8 +1,8 @@
 . ~/.fishmarks/marks.fish
 # This is the wrong place for this config, but it works
 # see https://askubuntu.com/questions/250336/disable-mouse-movement-in-tap-zones-on-synaptics-trackpad
-synclient AreaLeftEdge=2574
-synclient AreaRightEdge=4368
+# synclient AreaLeftEdge=2574
+# synclient AreaRightEdge=4368
 
 set -x PYTHONPATH "/home/kevin/github/rise-gen:/home/kevin/github/Rise/python"
 
