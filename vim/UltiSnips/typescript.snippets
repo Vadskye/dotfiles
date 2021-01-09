@@ -191,8 +191,12 @@ snippet models "Import models"
 import models from '@src/models';
 endsnippet
 
-snippet tsd "eslint disable"
+snippet tsd "tslint disable"
 // tslint:disable-next-line:${0}
+endsnippet
+
+snippet esd "eslint disable"
+// eslint-disable-next-line ${0}
 endsnippet
 
 snippet tsg "tslint global disable"
@@ -247,4 +251,50 @@ endsnippet
 
 snippet gql "Import gql"
 import gql from 'graphql-tag';
+endsnippet
+
+snippet gquery "Gql query"
+export const ${1:name}Gql = gql\`
+	query `!p snip.rv = t[1]` {
+		${0}
+	}
+\`
+endsnippet
+
+snippet gmutation "Gql mutation"
+export const ${1:name}Gql = gql\`
+	mutation `!p snip.rv = t[1]` {
+		${0}
+	}
+\`
+endsnippet
+
+snippet clientgen "GraphQL client gen"
+import * as Graphql from '@src/graphql/client_gen';
+endsnippet
+
+snippet servergen "GraphQL server gen"
+import * as Graphql from '@src/graphql/server_gen';
+endsnippet
+
+snippet gcomponent "Graphql component"
+<Graphql.${1:Name}Component>
+	{(${2:functionName}) => {
+		return (
+			${0}
+		);
+	}}
+</Graphql.`!p snip.rv = t[1]`Component>
+endsnippet
+
+snippet linkcurrent "linkState with currentPerson default"
+{...linkState(this, '${1:varName}', currentPerson.`!p snip.rv = t[1]`)}
+endsnippet
+
+snippet importlogger
+import { ProviderLogger, rootLogger } from '@src/util/log';
+endsnippet
+
+snippet state
+const [${1:varname}, set`!p snip.rv = (t[1][0].upper() + t[1][1:]) if t[1] else ''`] = useState<${2:vartype}>(${0});
 endsnippet
