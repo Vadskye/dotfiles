@@ -48,4 +48,4 @@ nvm use > /dev/null &
 # https://github.com/fish-shell/fish-shell/issues/2600
 set fish_term24bit 0
 
-set -x FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
