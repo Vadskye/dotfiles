@@ -86,6 +86,8 @@
 
     " Increment numbers with alt-A
     nnoremap <A-a> <C-a>
+    " Decrement numbers with alt-X
+    nnoremap <A-d> <C-x>
 
     " both methods of entering insert mode should use the same key
     nnoremap e i
