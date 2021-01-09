@@ -64,6 +64,10 @@
     command! -count=1 GoToWordEndBackwards call Search_count('\v' . s:end_of_word_pattern, 'bW')
 
 " Mappings:
+    " Use m to repeat motions, just like .
+    nnoremap m ;
+    nnoremap M ,
+
     " Use arrow keys properly in wrapped lines
     inoremap <silent> <Down> <C-o>gj
     inoremap <silent> <Up> <C-o>gk
@@ -173,10 +177,10 @@
     " me/Me jumps between lint errors; see .vimrc_plugins
     " ms/Ms jumps between sneak targets; see .vimrc_plugins
     " md/Md jumps between diffs
-    nnoremap md ]c
-    nnoremap Md [c
+    " nnoremap md ]c
+    " nnoremap Md [c
     " ml/Ml jumps between location list locations
-    nnoremap ml :lnext<CR>
-    nnoremap Ml :lprev<CR>
+    " nnoremap ml :lnext<CR>
+    " nnoremap Ml :lprev<CR>
 
     
