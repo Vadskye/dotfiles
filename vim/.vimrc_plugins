@@ -28,7 +28,8 @@
 
     let g:ale_fixers = {}
     let g:ale_fixers['go'] = ['gofmt']
-    let g:ale_fixers['javascript'] = ['importjs', 'prettier']
+    let g:ale_fixers['html'] = ['tidy']
+    let g:ale_fixers['javascript'] = ['prettier']
     let g:ale_fixers['typescript'] = ['prettier', 'tslint']
     " This should be enabled only for particular directories
     let g:ale_fix_on_save = 0
