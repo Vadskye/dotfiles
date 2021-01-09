@@ -147,6 +147,9 @@
     let g:EclimKeepLocalHistory = 0
     let g:EclimProjectTreeAutoOpen = 0
 
+" Emmet:
+    let g:user_emmet_leader_key=','
+
 " Enchanted:
     " make sure vim is always very magic
     let g:VeryMagic=0
