@@ -5,7 +5,7 @@ let g:vimrc_directory = "$DOTFILES/vim"
 let &runtimepath="$DOTFILES/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$DOTFILES/vim/after"
 let g:python_flavor = 'python3'
 
-exec "source " . g:vimrc_directory . "/.vimrc"
+exec "source " . g:vimrc_directory . "/vimrc"
 
 colo jellybeans
 
@@ -18,4 +18,4 @@ inoremap À <Esc><C-u>zzi
 hi CSVColumnHeaderOdd ctermfg=71 cterm=bold
 hi CSVColumnHeaderEven ctermfg=183 cterm=bold
 
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
