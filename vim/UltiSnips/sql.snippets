@@ -1,3 +1,11 @@
 snippet ocd "Order by created_at desc"
 order by created_at desc
 endsnippet
+
+snippet select
+select
+	${2:*}
+from ${1:table_name}
+where true${0}
+order by created_at desc
+endsnippet
