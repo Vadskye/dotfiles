@@ -34,7 +34,8 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'mxw/vim-jsx' " for: javascript doesn't work here
 Plug 'vim-scripts/L9'
-Plug 'vim-latex/vim-latex', {'for': ['tex', 'latex']}
+" Plug 'vim-latex/vim-latex', {'for': ['tex', 'latex']}
+Plug 'lervag/vimtex'
 Plug 'vadskye/vim-meta'
 Plug 'vim-scripts/mru.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
