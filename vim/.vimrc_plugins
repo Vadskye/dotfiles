@@ -102,9 +102,9 @@
     nmap <silent> gr <Plug>(coc-references)
     nnoremap go :call <SID>show_documentation()<CR>
 
-    nnoremap me :lnext<CR>
-    nnoremap Me :lprev<CR>
-    nnoremap mE :lprev<CR>
+    " nnoremap me :lnext<CR>
+    " nnoremap Me :lprev<CR>
+    " nnoremap mE :lprev<CR>
 
     autocmd BufRead,BufNewFile *.tsx set filetype=typescript.tsx
 
