@@ -113,17 +113,23 @@ snippet tbind "Bind 'this' to a function"
 this.${1:function} = this.`!p snip.rv = t[1]`.bind(this);
 endsnippet
 
-snippet main "Main function of a script (async)"
+snippet amain "Main function of a script (async)"
 async function main() {
+	${0}
 }
 
 if (require.main === module) {
-	main()
-		.then(() => models.sequelize.close())
-		.catch((err: Error) => {
-			models.sequelize.close();
-			throw err;
-		});
+	main();
+}
+endsnippet
+
+snippet main "Main function of a script (sync)"
+function main() {
+	${0}
+}
+
+if (require.main === module) {
+	main();
 }
 endsnippet
 
