@@ -8,7 +8,8 @@ set -x PYTHONPATH "/home/kevin/github/rise-gen:/home/kevin/github/Rise/python"
 
 eval (python3 -m virtualfish)
 
-set -x NODE_ENV 'development'
+set -gx ENV dev
+set -gx NODE_ENV 'development'
 
 bind \{ backward-word
 bind \} forward-word
