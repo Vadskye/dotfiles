@@ -107,12 +107,6 @@ snippet reset "Reset database"
 await integrationSetup.resetDatabaseObjects(testData);
 endsnippet
 
-snippet it "It test block"
-rollbackIt('${1:text}', async function(): Promise<void> {
-	${0}
-});
-endsnippet
-
 snippet eit "Endpoint it test block"
 it('${1:text}', async function(): Promise<void> {
 	${0}
@@ -297,4 +291,172 @@ endsnippet
 
 snippet state
 const [${1:varname}, set`!p snip.rv = (t[1][0].upper() + t[1][1:]) if t[1] else ''`] = useState<${2:vartype}>(${0});
+endsnippet
+
+snippet monster
+{
+	// Required
+	alignment: REQUIRED,
+	armorInputs: [{ name: REQUIRED }],
+	knowledge: {
+		0: \`
+			TODO
+		\`,
+	},
+	level: REQUIRED,
+	name: ${1:REQUIRED},
+	size: "medium",
+	startingAttributes: { str: 0, dex: 0, con: 0, int: 0, per: 0, wil: 0 },
+	weaponInput: [{ name: REQUIRED }],
+
+	// Optional
+	// attackInputs: [],
+	// challengeRating: 1,
+	// delayedCalculations: [],
+	// description: "",
+	// languages: ["Aboleth", "Aquan", "Undercommon"],
+	// passiveAbilities: [],
+	// skillPoints: {},
+	// speeds: {},
+},
+endsnippet
+
+snippet attackInput
+{
+	// crit: "",
+	defense: REQUIRED,
+	// hit: "",
+	name: ${1:REQUIRED},
+	// preface: "",
+	// source: "magical",
+	target: REQUIRED,
+},
+endsnippet
+
+snippet cantrip
+{
+	name: '${1:name}',
+
+	effect: \`
+		${0}
+	\`,
+	scaling: {
+		2: '',
+		4: '',
+		6: '',
+	},
+	type: '${2:type}',
+},
+endsnippet
+
+snippet spell
+{
+	name: '${1:name}',
+
+	// effect: '${0}',
+	// narrative: '',
+	rank: ${2:rank},
+	scaling: {
+		3: '',
+		5: '',
+		7: '',
+	},
+	type: '${3:type}',
+},
+endsnippet
+
+snippet ritual
+{
+	name: '${1:name}',
+
+	castingTime: '${4:castingTime}',
+	// effect: '${0}',
+	// narrative: '',
+	rank: ${2:rank},
+	type: '${3:type}',
+},
+endsnippet
+
+snippet massspell
+{
+	name: "Mass `!p snip.rv = t[1]`",
+
+	castingTime: 'minor action',
+	functionsLike: {
+		mass: true,
+		spell: '${1:name}',
+	},
+	// narrative: '',
+	rank: ${2:rank},
+	scaling: {
+		5: '${0}',
+		7: '',
+	},
+	type: 'Attune (target)',
+},
+endsnippet
+
+snippet spellattack
+attack: {
+	// crit: '',
+	// glance: '',
+	hit: \`
+		${2:Hit.}
+	\`,
+	targeting: \`
+		${1:Target.}
+	\`,
+},
+endsnippet
+
+snippet curseattack
+attack: {
+	crit: 'The effect lasts until the curse is removed.',
+	glance: 'The effect lasts until the end of the next round.',
+	hit: \`
+		${1:Hit.}
+		This effect lasts until it takes a \\glossterm{short rest}.
+	\`,
+	targeting: \`
+		Make an attack vs. Mental against one creature within \\\\medrange.
+	\`,
+},
+endsnippet
+
+snippet damageattack
+attack: {
+	glance: 'Half damage.',
+	hit: \`
+		The subject takes ${2:dice} + \\\\glossterm{power} ${3:type} damage.
+	\`,
+	targeting: \`
+		Make an attack vs. ${1:Defense} against anything within \\\\medrange.
+	\`,
+},
+endsnippet
+
+snippet glanceend
+glance: "The effect lasts until the end of the next round.",
+endsnippet
+
+snippet critcondition
+crit: "The effect becomes a \\\\glossterm{condition} on each subject.",
+endsnippet
+
+
+snippet maneuver
+{
+	name: '${1:name}',
+
+	effect: \`
+		${0}
+	\`,
+	// narrative: '',
+	rank: ${2:rank},
+	type: '${3:Instant}',
+},
+endsnippet
+
+snippet it
+\\\\textit<${0}>
 endsnippet
