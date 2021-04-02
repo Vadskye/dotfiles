@@ -27,6 +27,7 @@
     " staticcheck is too slow
 
     let g:ale_fixers = {}
+    let g:ale_fixers['css'] = ['stylelint']
     let g:ale_fixers['go'] = ['gofmt']
     let g:ale_fixers['html'] = ['tidy']
     let g:ale_fixers['javascript'] = ['prettier']
