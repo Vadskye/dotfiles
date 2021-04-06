@@ -174,6 +174,8 @@ return
 
 CapsLock & Enter::Send,{Escape}
 
+!`::Send,!{F4}
+
 ;Used with WinSplit
 !^,:: Send, !^{Numpad2}
 !^.:: Send, !^{Numpad3}
