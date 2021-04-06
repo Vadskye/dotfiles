@@ -36,5 +36,5 @@ keycode 61 = slash question backslash
 keycode 18 = 9 parenleft bracketleft braceleft
 keycode 19 = 0 parenright bracketright braceright
 
-keycode 36 = Return Linefeed Escape
+keycode 36 = Return F9 Escape
 keycode 65 = space space underscore

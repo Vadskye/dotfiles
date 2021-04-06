@@ -170,6 +170,10 @@ CapsLock & /::
             Send,?
 return
 
++Enter::Send,{F9}
+
+CapsLock & Enter::Send,{Escape}
+
 CapsLock & BS::Send,{Del}
 
 ;Used with WinSplit

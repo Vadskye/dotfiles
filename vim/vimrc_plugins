@@ -503,8 +503,8 @@ endif
     " better key bindings for UltiSnipsExpandTrigger
     if has('unix')
         " hack to get around inability to detect shift-enter
-        let g:UltiSnipsExpandTrigger = "<Linefeed>"
-        let g:UltiSnipsJumpForwardTrigger = "<Linefeed>"
+        let g:UltiSnipsExpandTrigger = "<F9>"
+        let g:UltiSnipsJumpForwardTrigger = "<F9>"
         let g:UltiSnipsJumpBackwardTrigger = "<C-Enter>"
     else
         let g:UltiSnipsExpandTrigger = "<S-Enter>"
