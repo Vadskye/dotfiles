@@ -500,6 +500,18 @@ endif
     " manually specify snippet directory for speed
     let g:UltiSnipsSnippetDirectories=[$DOTFILES . '/vim/UltiSnips']
 
+    " better key bindings for UltiSnipsExpandTrigger
+    if has('unix')
+        " hack to get around inability to detect shift-enter
+        let g:UltiSnipsExpandTrigger = "<Linefeed>"
+        let g:UltiSnipsJumpForwardTrigger = "<Linefeed>"
+        let g:UltiSnipsJumpBackwardTrigger = "<C-Enter>"
+    else
+        let g:UltiSnipsExpandTrigger = "<S-Enter>"
+        let g:UltiSnipsJumpForwardTrigger = "<S-Enter>"
+        let g:UltiSnipsJumpBackwardTrigger = "<C-Enter>"
+    endif
+
 " Vim Latex:
     let g:tex_flavor='latex'
 
@@ -516,16 +528,3 @@ endif
     "     \ ],
     "     \}
 
-
-" UltiSnips:
-    " better key bindings for UltiSnipsExpandTrigger
-    if has('unix')
-        " hack to get around inability to detect shift-enter
-        let g:UltiSnipsExpandTrigger = "<Linefeed>"
-        let g:UltiSnipsJumpForwardTrigger = "<Linefeed>"
-        let g:UltiSnipsJumpBackwardTrigger = "<C-Enter>"
-    else
-        let g:UltiSnipsExpandTrigger = "<S-Enter>"
-        let g:UltiSnipsJumpForwardTrigger = "<S-Enter>"
-        let g:UltiSnipsJumpBackwardTrigger = "<C-Enter>"
-    endif
