@@ -15,6 +15,7 @@
     let g:ale_javascript_eslint_use_global = 0
     let g:ale_javascript_eslint_options = '--cache'
     let g:ale_linters = {
+        \ 'html': ['htmlhint'],
         \ 'go': ['gosimple'],
         \ 'javascript': ['eslint'],
         \ 'tex': [],
