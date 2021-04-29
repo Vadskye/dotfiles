@@ -1,0 +1,5 @@
+#!/usr/bin/env fish
+g rise
+cp character_sheet/roll20.html (p utransfer)
+cp character_sheet/roll20.css (p utransfer)
+cp core_book/Rise.pdf (p utransfer)

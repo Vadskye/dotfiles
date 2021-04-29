@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+rm *.4ct
+rm *.4tc
+rm *.aux
+rm *.dvi
+rm *.idv
+rm *.lg
+rm *.log
+rm *.tmp
+rm *.xref

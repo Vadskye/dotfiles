@@ -1,0 +1,8 @@
+#!/usr/bin/env fish
+rgen
+cd /home/kevin/github/Rise/core_book
+pdflatex Rise.tex
+pdflatex Rise.tex
+pdflatex Rise.tex
+pdflatex Rise.tex
+rtransfer

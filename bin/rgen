@@ -1,0 +1,19 @@
+#!/usr/bin/env fish
+g rise
+mkdir -p core_book/generated
+g rpy
+vf activate rise_book
+latex_generation/gen_all.py
+vf deactivate
+g rts
+npx tsc --incremental
+npm run script -- src/scripts/generate_latex.js -t monsters -o ../core_book/generated/monster_descriptions.tex
+npm run script -- src/scripts/generate_latex.js -t mystic_sphere_lists -o ../core_book/generated/mystic_sphere_lists.tex
+npm run script -- src/scripts/generate_latex.js -t mystic_sphere_summaries -o ../core_book/generated/mystic_sphere_summaries.tex
+npm run script -- src/scripts/generate_latex.js -t mystic_sphere_descriptions -o ../core_book/generated/mystic_sphere_descriptions.tex
+npm run script -- src/scripts/generate_latex.js -t combat_style_lists -o ../core_book/generated/combat_style_lists.tex
+npm run script -- src/scripts/generate_latex.js -t combat_style_summaries -o ../core_book/generated/combat_style_summaries.tex
+npm run script -- src/scripts/generate_latex.js -t combat_style_descriptions -o ../core_book/generated/combat_style_descriptions.tex
+g rise
+rm -r html_book/generated
+cp -r core_book/generated html_book/generated
