@@ -170,7 +170,12 @@ CapsLock & /::
             Send,?
 return
 
-+Enter::Send,{F9}
++Enter::
+	if WinActive("ahk_exe WindowsTerminal.exe")
+		Send,{F9}
+	else
+		Send,+{Enter}
+return
 
 CapsLock & Enter::Send,{Escape}
 
