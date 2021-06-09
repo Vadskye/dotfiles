@@ -62,16 +62,28 @@ snippet tbind "Bind 'this' to a function"
 this.${1:function} = this.`!p snip.rv = t[1]`.bind(this);
 endsnippet
 
-snippet main "Main function of a script (async)"
-import shutDownAfter from '@src/util/shut_down_after';
-
-async function main(): Promise<void> {
-	${0}
+snippet main "Main function of a script"
+function main(): void {
+	
 }
 
 if (require.main === module) {
-	// tslint:disable-next-line:no-floating-promises
-	shutDownAfter(main());
+	main();
+}
+endsnippet
+
+snippet maincli "Main function of a script (with CLI)"
+import cli from "commander";
+
+function main(): void {
+	
+}
+
+if (require.main === module) {
+	cli
+		.option("${0}")
+		.parse(process.argv);
+	main(cli);
 }
 endsnippet
 
