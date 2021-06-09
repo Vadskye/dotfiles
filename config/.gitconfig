@@ -12,7 +12,6 @@
 	p = add -p
 	cm = commit -m
 	m = checkout master
-	ck = "!f() { git checkout \"kevin/ch$1\"; }; f"
 	aliases = config --get-regexp \"^alias\\.\"
 	unalias = "!f() { git config --global --unset \"alias.$1\" && echo \"removed alias: $1\"; }; f"
 	shalias = "!f() { git config --global \"alias.$1\" \"!f() { $2; }; f\" && echo \"created alias: $1\"; }; f"
