@@ -48,6 +48,8 @@ Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'tpope/vim-repeat'
+" also install https://github.com/neoclide/coc-rls
+Plug 'rust-lang/rust.vim'
 " Plug 'justinmk/vim-sneak'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
