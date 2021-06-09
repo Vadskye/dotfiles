@@ -1,3 +1,4 @@
 #!/usr/bin/env fish
-cd (p rise)/core_book
-o Rise.pdf
+rtransfer
+g utransfer
+/mnt/c/Users/vadsk/AppData/Local/SumatraPDF/SumatraPDF.exe Rise.pdf
