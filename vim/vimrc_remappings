@@ -24,6 +24,10 @@
     noremap ' `
     noremap ` '
 
+    " use @ to record macros and q to run them
+    nnoremap @ q
+    nnoremap q @
+
     " redesign delete/copy/replace
     " delete
     nnoremap dd dd
