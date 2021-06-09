@@ -1,6 +1,6 @@
 " Mappings:
     " Seach within selection
-    vnoremap / <Esc>/\v%V
+    vnoremap ? <Esc>/\v%V
 
 " Settings:
     " use mostly case insensitive search
