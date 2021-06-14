@@ -1,4 +1,4 @@
 #!/usr/bin/env fish
 rtransfer
 g utransfer
-/mnt/c/Users/vadsk/AppData/Local/SumatraPDF/SumatraPDF.exe Rise.pdf
+"/mnt/c/Program Files/SumatraPDF/SumatraPDF.exe" Rise.pdf
