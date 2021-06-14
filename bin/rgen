@@ -3,6 +3,7 @@ g rise
 mkdir -p core_book/generated
 g rpy
 vf activate rise_book
+set -x PYTHONPATH (p rise)/python
 latex_generation/gen_all.py
 vf deactivate
 g rts
