@@ -48,7 +48,8 @@ Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'tpope/vim-repeat'
-" also install https://github.com/neoclide/coc-rls
+" also install https://github.com/fannheyward/coc-rust-analyzer
+" do NOT use https://github.com/neoclide/coc-rls it is slower
 Plug 'rust-lang/rust.vim'
 " Plug 'justinmk/vim-sneak'
 Plug 'ervandew/supertab'
