@@ -3,7 +3,4 @@ rgen
 g rise
 cd core_book
 pdflatex Rise.tex
-pdflatex Rise.tex
-pdflatex Rise.tex
-pdflatex Rise.tex
 rtransfer
