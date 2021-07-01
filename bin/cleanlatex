@@ -6,5 +6,6 @@ rm *.dvi
 rm *.idv
 rm *.lg
 rm *.log
+rm *.toc
 rm *.tmp
 rm *.xref
