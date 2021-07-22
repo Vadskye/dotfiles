@@ -1,6 +1,9 @@
 #!/usr/bin/env fish
 g rise
 mkdir -p core_book/generated
+g rust
+cargo run --bin classes_chapter > (p rise)/core_book/generated/classes.tex
+cargo run --bin monsters_chapter > (p rise)/core_book/generated/monster_descriptions.tex
 g rpy
 vf activate rise_book
 set -x PYTHONPATH (p rise)/python
@@ -15,9 +18,6 @@ npm run script -- src/scripts/generate_latex.js -t mystic_sphere_descriptions -o
 npm run script -- src/scripts/generate_latex.js -t combat_style_lists -o ../core_book/generated/combat_style_lists.tex
 npm run script -- src/scripts/generate_latex.js -t combat_style_summaries -o ../core_book/generated/combat_style_summaries.tex
 npm run script -- src/scripts/generate_latex.js -t combat_style_descriptions -o ../core_book/generated/combat_style_descriptions.tex
-g rust
-cargo run --bin classes_chapter > (p rise)/core_book/generated/classes.tex
-cargo run --bin monsters_chapter > (p rise)/core_book/generated/monster_descriptions.tex
 g rise
 rm -r html_book/generated
 cp -r core_book/generated html_book/generated
