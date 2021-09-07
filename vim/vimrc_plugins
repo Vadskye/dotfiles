@@ -244,12 +244,17 @@ endif
     endfunction
 
     command! ViewCommit call ViewCommit()
+    command! Gcommit Git commit
+    command! Gadd Git add %
+    command! Gstatus Git
 
 " FZF:
     " https://github.com/junegunn/fzf.vim/issues/47
     function! s:find_git_root()
       return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
     endfunction
+
+    let $FZF_DEFAULT_COMMAND = 'fd --type f'
 
     command! ProjectFiles execute 'Files' s:find_git_root()
 
