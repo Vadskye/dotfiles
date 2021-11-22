@@ -1,4 +1,5 @@
 " Settings:
+    set shell=/bin/bash
     set winaltkeys=no
     filetype plugin indent on
     syntax on
@@ -132,7 +133,7 @@
     endfunction
 
     function! ProfileQuit() abort
-        profile pause
+        profile stop
         noautocmd qall!
     endfunction
 
