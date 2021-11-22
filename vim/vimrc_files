@@ -84,10 +84,6 @@
     " file edit
     nnoremap ;e :e 
     nnoremap ;E :e!
-    " file release edit 
-    nnoremap ;re :EditRelease 
-    " file release current edit 
-    nnoremap ;rce :EditRelease $RELEASE<Enter>
     " file quit
     nnoremap ;q :q<Enter>
     nnoremap ;Q :q!<Enter>
