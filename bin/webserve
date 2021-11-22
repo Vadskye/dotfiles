@@ -1,0 +1,2 @@
+#!/usr/bin/fish
+sudo service apache2 start

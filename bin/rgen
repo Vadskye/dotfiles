@@ -4,6 +4,7 @@ mkdir -p core_book/generated
 g rust
 cargo run --bin classes_chapter > (p rise)/core_book/generated/classes.tex
 cargo run --bin monsters_chapter > (p rise)/core_book/generated/monster_descriptions.tex
+cargo run --bin modules_chapter > (p rise)/core_book/generated/modules.tex
 g rpy
 vf activate rise_book
 set -x PYTHONPATH (p rise)/python

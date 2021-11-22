@@ -1,6 +1,5 @@
 #!/usr/bin/env fish
-rgen
 g rise
 cd core_book
 pdflatex Rise.tex
-rtransfer
+rise

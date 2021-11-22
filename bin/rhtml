@@ -1,5 +1,4 @@
 #!/usr/bin/env fish
-rgen
 g rise
 cd html_book
 cleanlatex
