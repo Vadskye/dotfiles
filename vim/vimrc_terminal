@@ -4,7 +4,7 @@
         nnoremap ;m :vnew \| call termopen('fish') \| startinsert<CR>
         nnoremap ;M :new \| call termopen('fish') \| startinsert<CR>
 
-        nnoremap <Leader>e a<C-u>pwd \| xclip -selection clipboard<CR><C-\><C-n>:e <C-r>+<CR>
+        " nnoremap <Leader>e a<C-u>pwd \| xclip -selection clipboard<CR><C-\><C-n>:e <C-r>+<CR>
     endif
 
 " Functions:
