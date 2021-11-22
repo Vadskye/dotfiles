@@ -1,0 +1,26 @@
+snippet gt "glossterm"
+\glossterm{${0}}
+endsnippet
+
+snippet it "italics"
+\textit{${0}}
+endsnippet
+
+snippet tests "tests"
+#[cfg(test)]
+mod tests {
+	use super::*;
+
+	#[test]
+	fn ${1:it_works}() {
+		${0}
+	}
+}
+endsnippet
+
+snippet test "test"
+#[test]
+fn ${1:it_works}() {
+	${0}
+}
+endsnippet
