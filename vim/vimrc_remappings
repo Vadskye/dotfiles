@@ -2,6 +2,8 @@
     " remap leader
     let mapleader = " "
 
+    nnoremap C "zciw<C-R>=@z
+
     " Force typical Windows bindings
     nnoremap <C-s> :w<Enter>
     inoremap <C-s> <C-o>:w<Enter>
@@ -31,22 +33,22 @@
     " redesign delete/copy/replace
     " delete
     nnoremap dd dd
-    noremap <silent> D :set opfunc=AppendDeleteToUnnamedRegister<CR>g@
-    nnoremap <silent> DD :set opfunc=AppendDeleteToUnnamedRegister<CR>g@V<Space>
+    " noremap <silent> D :set opfunc=AppendDeleteToUnnamedRegister<CR>g@
+    " nnoremap <silent> DD :set opfunc=AppendDeleteToUnnamedRegister<CR>g@V<Space>
     noremap <Leader>d "+d
     nnoremap <Leader>dd "+dd
     " copy
     noremap c y
     nnoremap cc yy
-    noremap <silent> C :set opfunc=AppendCopyToUnnamedRegister<CR>g@
-    nnoremap <silent> CC :set opfunc=AppendCopyToUnnamedRegister<CR>g@V<Space>
+    " noremap <silent> C :set opfunc=AppendCopyToUnnamedRegister<CR>g@
+    " nnoremap <silent> CC :set opfunc=AppendCopyToUnnamedRegister<CR>g@V<Space>
     noremap <Leader>c "+y
     nnoremap <Leader>cc "+yy
     " replace
     noremap r c
     nnoremap rr cc
-    noremap <silent> R :set opfunc=AppendChangeToUnnamedRegister<CR>g@
-    nnoremap <silent> RR :set opfunc=AppendChangeToUnnamedRegister<CR>g@V<Space>
+    " noremap <silent> R :set opfunc=AppendChangeToUnnamedRegister<CR>g@
+    " nnoremap <silent> RR :set opfunc=AppendChangeToUnnamedRegister<CR>g@V<Space>
     noremap <Leader>r "+c
     nnoremap <Leader>rr "+cc
     " paste
@@ -108,8 +110,6 @@
     nnoremap Q @
     nnoremap QQ @@
     nnoremap Qq @@
-
-    nnoremap A ea
 
     " use enter to open new lines instead of o
     nnoremap <cr> o
