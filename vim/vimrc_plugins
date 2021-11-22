@@ -20,6 +20,7 @@
         \ 'javascript': ['eslint'],
         \ 'json': [],
         \ 'rust': [],
+        \ 'swift': [],
         \ 'tex': [],
         \ 'typescript': [],
     \ }
@@ -37,6 +38,7 @@
     let g:ale_fixers['typescript'] = ['prettier', 'eslint']
     let g:ale_fixers['python'] = ['black']
     let g:ale_fixers['rust'] = ['rustfmt']
+    let g:ale_fixers['swift'] = ['apple-swift-format']
     " This should be enabled only for particular directories
     let g:ale_fix_on_save = 0
     nnoremap ;p :ALEFix<CR>
