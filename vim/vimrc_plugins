@@ -46,7 +46,10 @@
 
 " Airline:
     let g:airline_theme="jam"
+    let g:airline#extensions#ale#enabled=0
     let g:airline#extensions#branch#enabled=0
+    let g:airline#extensions#coc#enabled=1
+    let g:airline#extensions#coc#show_coc_status=1
     let g:airline#extensions#disable_rtp_load = 1
     let g:airline_highlighting_cache = 1
 
@@ -64,7 +67,7 @@
     let g:airline_inactive_collapse = 0
 
     " load specific third party extensions rather than all of them
-    let g:airline_extensions = ['ale', 'tabline']
+    let g:airline_extensions = ['coc', 'tabline']
 
     if get(g:, 'eclim_loaded')
         call add(g:airline_extensions, 'eclim')
