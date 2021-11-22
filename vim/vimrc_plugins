@@ -18,6 +18,7 @@
         \ 'html': ['htmlhint'],
         \ 'go': ['gosimple'],
         \ 'javascript': ['eslint'],
+        \ 'json': [],
         \ 'rust': [],
         \ 'tex': [],
         \ 'typescript': [],
