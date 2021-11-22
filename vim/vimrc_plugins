@@ -104,9 +104,19 @@
 
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gt <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementatoin)
-    nmap <silent> gr <Plug>(coc-references)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> ge <Plug>(coc-references)
+    nmap <silent> <Leader>a <Plug>(coc-codeaction)
+    nmap <silent> <Leader>e <Plug>(coc-codeaction-selected)
+    vmap <silent> <Leader>e <Plug>(coc-codeaction-selected)
+    nmap <silent> <Leader>f <Plug>(coc-codeaction-line)
     nnoremap go :call <SID>show_documentation()<CR>
+
+    noremap s <nop>
+    nmap <silent> se <Plug>(coc-diagnostic-next-error)
+    nmap <silent> sE <Plug>(coc-diagnostic-prev-error)
+    nmap <silent> sw <Plug>(coc-diagnostic-next)
+    nmap <silent> sW <Plug>(coc-diagnostic-prev)
 
     " nnoremap me :lnext<CR>
     " nnoremap Me :lprev<CR>
