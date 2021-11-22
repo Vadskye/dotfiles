@@ -91,10 +91,8 @@
             if key == "none"
                 let key = ""
             endif
-            execute 'nnoremap s'        . key . " " . dict.before . ":.,$s%%%cg<Left><Left><Left><Left>" . dict.after
-            execute 'nnoremap S'        . key . " " . dict.before . ":.,$Subvert%%%cg<Left><Left><Left><Left>" . dict.after
-            execute 'nnoremap <Leader>s'. key . " " . dict.before . ":%s%%%cg<Left><Left><Left><Left>" . dict.after
-            execute 'nnoremap <Leader>S'. key . " " . dict.before . ":%Subvert%%%cg<Left><Left><Left><Left>" . dict.after
+            execute 'nnoremap S'        . key . " " . dict.before . ":.,$s%%%cg<Left><Left><Left><Left>" . dict.after
+            execute 'nnoremap <Leader>S'. key . " " . dict.before . ":%s%%%cg<Left><Left><Left><Left>" . dict.after
         endfor
     endfunction
 
@@ -154,7 +152,7 @@
         \ })
 
     " count occurrences of word
-    nnoremap sc :%s///gn<Left><Left><Left><Left>
+    nnoremap Sc :%s///gn<Left><Left><Left><Left>
 
     " fix accidental failure to save
     nnoremap s<C-s> <C-s>
@@ -168,8 +166,8 @@
     " nmap S* "9yiw:.,$s%<C-r>9%%g<Left><Left>
 
     " search and replace based on a motion
-    nnoremap <expr> s; <SID>ExecuteSubstitute("local")
-    nnoremap <expr> <Leader>s; <SID>ExecuteSubstitute("global")
+    " nnoremap <expr> s; <SID>ExecuteSubstitute("local")
+    " nnoremap <expr> <Leader>s; <SID>ExecuteSubstitute("global")
 
     " search files quickly
     nnoremap <C-f> :noautocmd vimgrep  **/*<Home><C-Right><C-Right><Right>
