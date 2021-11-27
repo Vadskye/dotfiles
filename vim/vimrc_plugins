@@ -19,6 +19,7 @@
         \ 'go': ['gosimple'],
         \ 'javascript': ['eslint'],
         \ 'json': [],
+        \ 'python': [],
         \ 'rust': [],
         \ 'swift': [],
         \ 'tex': [],
