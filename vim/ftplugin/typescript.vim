@@ -1,6 +1,6 @@
 setlocal shiftwidth=2
 setlocal tabstop=2
-setlocal textwidth=100
+setlocal textwidth=90
 setlocal foldmethod=marker
 setlocal foldmarker=//\ region,//\ endregion
 
