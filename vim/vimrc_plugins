@@ -12,6 +12,7 @@
     let g:ale_lint_delay = 1000
     let g:ale_lint_on_enter = 0
     let g:ale_lint_on_save = 0
+    let g:ale_lint_on_insert_leave = 0
     let g:ale_javascript_eslint_use_global = 0
     let g:ale_javascript_eslint_options = '--cache'
     let g:ale_linters = {
@@ -19,6 +20,7 @@
         \ 'go': ['gosimple'],
         \ 'javascript': ['eslint'],
         \ 'json': [],
+        \ 'markdown': [],
         \ 'python': [],
         \ 'rust': [],
         \ 'swift': [],
