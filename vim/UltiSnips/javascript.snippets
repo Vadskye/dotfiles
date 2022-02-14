@@ -179,3 +179,58 @@ ${0},
 TODO: Remove these exemptions and fix lint warnings/errors
 */
 endsnippet
+
+snippet tnode "Standard class for a node in an arbitrary tree"
+class TreeNode {
+  constructor(data) {
+    this.data = data;
+    this.children = [];
+  }
+}
+endsnippet
+
+snippet bnode "Standard class for a node in a binary tree"
+class BinaryNode {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+endsnippet
+
+snippet lnode "Standard class for a node in a linked list"
+class LinkedListNode {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+endsnippet
+
+snippet gnode "Standard class for a node in a graph"
+class GraphNode {
+  constructor(data) {
+    this.data = data;
+    this.children = [];
+  }
+}
+endsnippet
+
+snippet cmp "standard cmp function"
+function cp(a, b) {
+    if (a < b) {
+        return -1;
+    } else if (a > b) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+endsnippet
+
+snippet function "standard function"
+function ${1:name}(${0}) {
+    
+}
+endsnippet
