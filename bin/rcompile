@@ -6,4 +6,9 @@ pdflatex Rise.tex
 pdflatex Rise.tex
 pdflatex Rise.tex
 pdflatex Rise.tex
+
+pdflatex TomeOfGuidance.tex
+pdflatex TomeOfGuidance.tex
+pdflatex TomeOfGuidance.tex
+pdflatex TomeOfGuidance.tex
 rtransfer
