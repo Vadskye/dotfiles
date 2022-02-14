@@ -2,11 +2,11 @@
     " z is the fold manipulation command
 
     " jl opens and closes folds
-    " l and j open all the way; L and J open partially
-    nnoremap zl zO
-    nnoremap zL zo
-    nnoremap zj zC
-    nnoremap zJ zc
+    " l and j partially; L and J open all the way
+    nnoremap zl zo
+    nnoremap zL zO
+    nnoremap zj zc
+    nnoremap zJ zC
 
     " ik increases and decreases overall fold level
     nnoremap zi zm
@@ -37,3 +37,7 @@
     nnoremap ZI zk
     nnoremap Zk zj
     nnoremap ZK zj
+
+" Settings:
+    " set foldmethod=syntax
+    " set foldlevel=2
