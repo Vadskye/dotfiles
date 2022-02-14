@@ -18,7 +18,7 @@
     let g:ale_linters = {
         \ 'html': ['htmlhint'],
         \ 'go': ['gosimple'],
-        \ 'javascript': ['eslint'],
+        \ 'javascript': [],
         \ 'json': [],
         \ 'markdown': [],
         \ 'python': [],
@@ -266,6 +266,7 @@ endif
     command! Gcommit Git commit
     command! Gadd Git add %
     command! Gstatus Git
+    command! Gblame Git blame
 
 " FZF:
     " https://github.com/junegunn/fzf.vim/issues/47
