@@ -1,13 +1,3 @@
-. ~/.fishmarks/marks.fish
-# This is the wrong place for this config, but it works
-# see https://askubuntu.com/questions/250336/disable-mouse-movement-in-tap-zones-on-synaptics-trackpad
-# synclient AreaLeftEdge=2574
-# synclient AreaRightEdge=4368
-
-set -x PYTHONPATH "/home/kevin/github/rise-gen:/home/kevin/github/Rise/python"
-
-eval (python3 -m virtualfish)
-
 set -gx ENV dev
 set -gx NODE_ENV 'development'
 
@@ -43,5 +33,9 @@ alias o xdg-open
 # https://github.com/fish-shell/fish-shell/issues/2600
 set fish_term24bit 0
 
+# Load fishmarks (http://github.com/techwizrd/fishmarks)
+. $HOME/.fishmarks/marks.fish
+
 set -x FZF_DEFAULT_COMMAND 'fd --type f'
 set -x DOTFILES "$HOME/github/dotfiles"
+set -x CMAKE_ROOT /home/vadskye/bin/cmake
