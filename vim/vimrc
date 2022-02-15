@@ -23,6 +23,7 @@ Plug 'coot/EnchantedVim'
 " Plug 'Konfekt/Fastfold'
 Plug 'dag/vim-fish', {'for': ['fish']}
 " Note: You may need to update fzf with `cd ~/.fzf; git pull; ./install`.
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 " Updating binaries takes a weirdly long time
