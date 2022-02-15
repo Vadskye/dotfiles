@@ -274,8 +274,6 @@ endif
       return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
     endfunction
 
-    let $FZF_DEFAULT_COMMAND = 'fd --type f'
-
     command! ProjectFiles execute 'Files' s:find_git_root()
 
     nnoremap ;f :ProjectFiles<CR>
