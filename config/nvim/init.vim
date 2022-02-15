@@ -1,5 +1,3 @@
-let $DOTFILES="/home/kevin/github/dotfiles"
-
 let g:vimrc_directory = "$DOTFILES/vim"
 
 let &runtimepath="$DOTFILES/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$DOTFILES/vim/after"
