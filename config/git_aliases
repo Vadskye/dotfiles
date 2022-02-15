@@ -1,8 +1,0 @@
-alias.alias !f() { git config --global "alias.$1" "$2" && echo "created alias: $1"; }; f
-alias.b branch
-alias.aliases config --get-regexp "^alias\."
-alias.cm commit -m
-alias.co checkout
-alias.m checkout master
-alias.unalias !f() { git config --global --unset "alias.$1" && echo "removed alias: $1"; }; f
-alias.tossh remote set-url origin
