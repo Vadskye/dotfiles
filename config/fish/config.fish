@@ -34,8 +34,7 @@ alias o xdg-open
 set fish_term24bit 0
 
 # Load fishmarks (http://github.com/techwizrd/fishmarks)
-. $HOME/.fishmarks/marks.fish
+source "$HOME/github/fishmarks/marks.fish"
 
-set -x FZF_DEFAULT_COMMAND 'fd --type f'
 set -x DOTFILES "$HOME/github/dotfiles"
 set -x CMAKE_ROOT "$HOME/bin/cmake"
