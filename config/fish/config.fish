@@ -44,3 +44,4 @@ alias o xdg-open
 set fish_term24bit 0
 
 set -x FZF_DEFAULT_COMMAND 'fd --type f'
+set -x DOTFILES "$HOME/github/dotfiles"
