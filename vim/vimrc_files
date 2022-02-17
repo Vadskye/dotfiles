@@ -52,6 +52,10 @@
         execute 'vnew ' . expand("$DOTFILES") . '/vim/ftplugin/' . &ft . '.vim'
     endfunction
 
+    function! EditFishBookmark(bookmark)
+        execute "edit " . system("fish -c 'g " . shellescape(a:bookmark) . "; pwd'")
+    endfunction
+
 " Commands:
     command! -nargs=1 W call SaveAs('<args>')
     command! -nargs=1 Write call SaveAs('<args>')
@@ -76,6 +80,8 @@
     " Edit the ftplugin file for the current file type
     command! FTEdit call FTEdit()
 
+    command! -nargs=1 EditFishBookmark call EditFishBookmark(<f-args>)
+
 " Mappings:
     " File operation remappings with ;
     " file write
@@ -83,7 +89,7 @@
     nnoremap ;W :w!<Enter>
     " file edit
     nnoremap ;e :e 
-    nnoremap ;E :e!
+    nnoremap ;E :EditFishBookmark 
     " file quit
     nnoremap ;q :q<Enter>
     nnoremap ;Q :q!<Enter>
