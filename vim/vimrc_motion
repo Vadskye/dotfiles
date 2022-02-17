@@ -97,7 +97,9 @@
 
     " keep screen centered
     noremap <PageDown> <C-d>zz
+    noremap <S-Down> <C-d>zz
     noremap <PageUp> <C-u>zz
+    noremap <S-Up> <C-u>zz
     inoremap <PageDown> <Esc><C-d>zzi
     inoremap <PageUp> <Esc><C-u>zzi
 
