@@ -120,8 +120,8 @@
 
 " Commands:
     " quicksearch
-    command -nargs=1 Sh noautocmd vim /<args>/ *
-    command -nargs=1 Sj noautocmd vim /<args>/j *|cw
+    " command -nargs=1 Sh noautocmd vim /<args>/ *
+    " command -nargs=1 Sj noautocmd vim /<args>/j *|cw
 
     " multi-file substitution
     command -nargs=* MultiFileSubstitute call MultiFileSubstitute(<f-args>, 1)
