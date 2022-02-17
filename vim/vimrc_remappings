@@ -49,8 +49,8 @@
     nnoremap rr cc
     " noremap <silent> R :set opfunc=AppendChangeToUnnamedRegister<CR>g@
     " nnoremap <silent> RR :set opfunc=AppendChangeToUnnamedRegister<CR>g@V<Space>
-    noremap <Leader>r "+c
-    nnoremap <Leader>rr "+cc
+    " noremap <Leader>r "+c
+    " nnoremap <Leader>rr "+cc
     " paste
     noremap <C-p> a<C-r>
     noremap <Leader>p "+p
