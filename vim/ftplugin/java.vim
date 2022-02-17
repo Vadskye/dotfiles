@@ -1,3 +1,7 @@
+setlocal shiftwidth=2
+setlocal tabstop=2
+setlocal textwidth=90
+
 " enable full highlighting
 let g:java_highlight_all = 1
 
