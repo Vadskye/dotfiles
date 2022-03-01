@@ -1,0 +1,29 @@
+# add this line to /usr/share/X11/xkb/symbols/us inside the 'xkb_symbols "basic"' block:
+# include "capsmodifier(capsmodifier)"
+
+partial keypad_keys
+xkb_symbols "capsmodifier" {
+    # replace Caps with AltGr
+    key <CAPS> { [ ISO_Level3_Shift            ] };
+    # Add vim cursor keys to be accessed with AltGr
+    key <AD08> {	[	  i,	I, Up, Up		]	};
+    key <AC09> {	[	  l,	L, Right, Right		]	};
+    key <AC07> {	[	  j,	J, Left, Left		]	};
+    key <AC08> {	[	  k,	K, Down, Down		]	};
+    key <AD07> {	[	  u,	U, Home, Home		]	};
+    key <AD09> {	[	  o,	O, End, End		]	};
+    # Compulsive save in Vim
+    key <AC02> {	[	  s,	S, F7, F8		]	};
+    key <AC10> {	[ semicolon,	colon, F7, F8		]	};
+
+    # Braces
+    key <AB10> {	[     slash,	question, backslash, backslash	]	};
+    key <AE09> {	[	  9,	parenleft, bracketleft, braceleft	]	};
+    key <AE10> {	[	  0,	parenright, bracketright, braceright	]	};
+    key <AB07> {	[	  m,	M, braceleft, braceleft		]	};
+    key <AB09> {	[    period,	greater, braceright, braceright		]	};
+
+
+    key <SPCE> { [        space,        space,           underscore,     underscore ] };
+    key <ESC> { [        Escape,        asciitilde,           grave,     grave ] };
+};

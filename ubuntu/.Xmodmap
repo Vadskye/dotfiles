@@ -5,10 +5,10 @@ clear Lock
 keycode 66 = Mode_switch
 
 ! Directional navigation
-keycode 31 = i I KP_Up Agrave
+keycode 31 = i I KP_Up Prior
 keycode 46 = l L KP_Right Aacute
 keycode 44 = j J KP_Left Acircumflex
-keycode 45 = k K KP_Down Atilde
+keycode 45 = k K KP_Down Next
 keycode 30 = u U Home Adiaeresis
 keycode 32 = o O End Aring
 
@@ -38,3 +38,7 @@ keycode 19 = 0 parenright bracketright braceright
 
 keycode 36 = Return F9 Escape
 keycode 65 = space space underscore
+
+! tiny keyboard fixes
+keycode 9 = Escape asciitilde Escape asciitilde
+keycode 48 = apostrophe quotedbl grave quotedbl
