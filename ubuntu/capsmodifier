@@ -1,4 +1,5 @@
-# add this line to /usr/share/X11/xkb/symbols/us inside the 'xkb_symbols "basic"' block:
+# Copy this to xkb with `sudo cp capsmodifier /usr/share/X11/xkb/symbols/capsmodifier`
+# then add this line to /usr/share/X11/xkb/symbols/us inside the 'xkb_symbols "basic"' block:
 # include "capsmodifier(capsmodifier)"
 
 partial keypad_keys
@@ -16,6 +17,9 @@ xkb_symbols "capsmodifier" {
     key <AC02> {	[	  s,	S, F7, F8		]	};
     key <AC10> {	[ semicolon,	colon, F7, F8		]	};
 
+    # Type underscore more easily
+    key <SPCE> { [        space,        space,           underscore,     underscore ] };
+
     # Braces
     key <AB10> {	[     slash,	question, backslash, backslash	]	};
     key <AE09> {	[	  9,	parenleft, bracketleft, braceleft	]	};
@@ -23,7 +27,7 @@ xkb_symbols "capsmodifier" {
     key <AB07> {	[	  m,	M, braceleft, braceleft		]	};
     key <AB09> {	[    period,	greater, braceright, braceright		]	};
 
-
-    key <SPCE> { [        space,        space,           underscore,     underscore ] };
-    key <ESC> { [        Escape,        asciitilde,           grave,     grave ] };
+    # Tiny keyboard fixes
+    key <ESC> { [        Escape,        asciitilde,           Escape,     asciitilde ] };
+    key <AC11> {	[ apostrophe,	quotedbl, grave, grave	]	};
 };
