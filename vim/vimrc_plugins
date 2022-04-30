@@ -113,7 +113,7 @@
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gt <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> ge <Plug>(coc-references)
+    nmap <silent> gr <Plug>(coc-references)
     nmap <silent> <Leader>aw <Plug>(coc-codeaction)
     nmap <silent> <Leader>as <Plug>(coc-codeaction-selected)
     vmap <silent> <Leader>as <Plug>(coc-codeaction-selected)

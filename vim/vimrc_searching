@@ -145,20 +145,21 @@
     " lowercase s is normal substitution, uppercase S is Abolish-based substitution
     call s:substitution_mapping_helper({
         \ 'none' : {'before': ''     , 'after': ''},
-        \ '*'    : {'before': '"syiw', 'after': '<<C-r>s><Right>'},
-        \ '*~'   : {'before': '"syiwg~iw"zyiwg~iw', 'after': '<<C-r>s><Right><C-r>z'},
-        \ '**'   : {'before': '"syiw', 'after': '<<C-r>s><Right><C-r>s'},
-        \ '/'    : {'before': ''     , 'after': '<C-r>/<Right>'},
-        \ })
+    \ })
+        " \ '*'    : {'before': '"syiw', 'after': '<<C-r>s><Right>'},
+        " \ '*~'   : {'before': '"syiwg~iw"zyiwg~iw', 'after': '<<C-r>s><Right><C-r>z'},
+        " \ '**'   : {'before': '"syiw', 'after': '<<C-r>s><Right><C-r>s'},
+        " \ '/'    : {'before': ''     , 'after': '<C-r>/<Right>'},
+        " \ })
 
     " count occurrences of word
-    nnoremap Sc :%s///gn<Left><Left><Left><Left>
+    " nnoremap Sc :%s///gn<Left><Left><Left><Left>
 
     " fix accidental failure to save
     nnoremap s<C-s> <C-s>
     nnoremap <Leader>s<C-s> <C-s>
-    nnoremap S<C-s> <C-s>
-    nnoremap <Leader>S<C-s> <C-s>
+    " nnoremap S<C-s> <C-s>
+    " nnoremap <Leader>S<C-s> <C-s>
     " replace current word. The word is placed into the s register for ease of access.
     " nnoremap ;c :.,s%%%gn<Left><Left><Left><Left>
     " no confirmation

@@ -44,7 +44,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'moll/vim-node'
 Plug 'jvirtanen/vim-hcl'
 Plug 'vim-perl/vim-perl', {'for': 'perl'}
-Plug 'vadskye/vim-psql', {'for': 'sql'}
+" Plug 'vadskye/vim-psql', {'for': 'sql'}
 Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'vim-python/python-syntax', {'for': 'python'}
