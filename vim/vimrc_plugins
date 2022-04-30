@@ -508,7 +508,7 @@ endif
     let g:tex_flavor='latex'
 
 " VimTex:
-    let g:vimtex_compiler_method = 'latexrun'
+    " let g:vimtex_compiler_method = 'latexrun'
     let g:vimtex_matchparen_enabled = 0
     " let g:vimtex_compiler_latexrun = {
     "     \ 'backend' : 'nvim',
