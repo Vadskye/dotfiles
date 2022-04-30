@@ -69,6 +69,7 @@ if has('nvim')
 elseif has('lua')
     Plug 'Shougo/neocomplete.vim'
 endif
+Plug 'lervag/vimtex'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
