@@ -123,3 +123,12 @@
     map hl :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Functions:
+function Bright()
+    set background=light
+    colo morning
+endfunction
+
+" Commmands:
+    command! Bright call Bright()
