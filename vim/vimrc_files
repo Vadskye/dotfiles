@@ -114,7 +114,7 @@
     nnoremap ;dN [c
     " change working directory
     nnoremap ;cd :cd %:p:h<Enter>
-    nnoremap ;lcd :lcd %:p:h<Enter>
+    " nnoremap ;lcd :lcd %:p:h<Enter>
     " navigate files in vimgrep search
     nnoremap ;n :cnext<Enter>zvzz
     nnoremap ;N :cprev<Enter>zvzz
