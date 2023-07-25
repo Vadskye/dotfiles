@@ -3,7 +3,9 @@ g rise
 cd html_book
 cleanlatex
 rm *.html
-make4ht -c rise.cfg -u rise "xhtml,3"
+# make4ht -c rise.cfg -u rise "xhtml,3"
+# make4ht -c rise.cfg -a info -l rise "xhtml,3"
+make4ht -c rise.cfg -l rise "xhtml,3"
 g html
 rm rise/*.html
 g personalwebsite

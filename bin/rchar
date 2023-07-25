@@ -5,3 +5,4 @@ vf activate rise_book
 ./sheet.py
 ./sheet.py -d roll20
 vf deactivate
+rtransfer
