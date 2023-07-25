@@ -112,8 +112,9 @@
     nnoremap Qq @@
 
     " use enter to open new lines instead of o
-    nnoremap <cr> o
-    nnoremap <S-cr> O
+    " See https://stackoverflow.com/questions/37211250/how-can-i-check-if-a-vim-buffer-is-modifiable
+    nnoremap <expr> <cr> &ma?"o":"\<cr>"
+    nnoremap <expr> <S-cr> &ma?"O":"\<cr>"
 
     " enter blockwise visual mode
     nnoremap <Leader>v <C-v>
