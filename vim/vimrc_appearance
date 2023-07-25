@@ -1,6 +1,8 @@
 " Settings:
 
-    " use most of the file to determine syntax highlighting
+    " Use the latest 1k lines to determine syntax highlighting
+    " Note that this is too small for some file types, so check after/ftplugin
+    " for overrides.
     syntax sync minlines=1000
 
     " ConEmu can use bold and italic backgrounds
