@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+# Generate only the Typescript code, which is faster
+g rts
+npx tsc --incremental
+npm run script -- src/scripts/generate_latex.js -t mystic_sphere_lists -o ../core_book/generated/mystic_sphere_lists.tex
+npm run script -- src/scripts/generate_latex.js -t mystic_sphere_summaries -o ../core_book/generated/mystic_sphere_summaries.tex
+npm run script -- src/scripts/generate_latex.js -t mystic_sphere_descriptions -o ../core_book/generated/mystic_sphere_descriptions.tex
+npm run script -- src/scripts/generate_latex.js -t combat_style_lists -o ../core_book/generated/combat_style_lists.tex
+npm run script -- src/scripts/generate_latex.js -t combat_style_summaries -o ../core_book/generated/combat_style_summaries.tex
+npm run script -- src/scripts/generate_latex.js -t combat_style_descriptions -o ../core_book/generated/combat_style_descriptions.tex
