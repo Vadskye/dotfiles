@@ -6,6 +6,18 @@ snippet it "italics"
 \textit{${0}}
 endsnippet
 
+snippet at "abilitytag"
+\abilitytag{${0}}
+endsnippet
+
+snippet ph "parhead"
+\parhead{${0}}
+endsnippet
+
+snippet adv "advancement"
+\advancement ${0}
+endsnippet
+
 snippet tests "tests"
 #[cfg(test)]
 mod tests {
@@ -23,4 +35,103 @@ snippet test "test"
 fn ${1:it_works}() {
 	${0}
 }
+endsnippet
+
+snippet d0
+\\damagerankzero{${0}}
+endsnippet
+
+snippet d1
+\\damagerankone{${0}}
+endsnippet
+snippet d1h
+\\damagerankonehigh{${0}}
+endsnippet
+snippet d1l
+\\damagerankonelow{${0}}
+endsnippet
+
+snippet d2
+\\damageranktwo{${0}}
+endsnippet
+snippet d2h
+\\damageranktwohigh{${0}}
+endsnippet
+snippet d2l
+\\damageranktwolow{${0}}
+endsnippet
+
+snippet d3
+\\damagerankthree{${0}}
+endsnippet
+snippet d3h
+\\damagerankthreehigh{${0}}
+endsnippet
+snippet d3l
+\\damagerankthreelow{${0}}
+endsnippet
+
+snippet d4
+\\damagerankfour{${0}}
+endsnippet
+snippet d4h
+\\damagerankfourhigh{${0}}
+endsnippet
+snippet d4l
+\\damagerankfourlow{${0}}
+endsnippet
+
+snippet d5
+\\damagerankfive{${0}}
+endsnippet
+snippet d5h
+\\damagerankfivehigh{${0}}
+endsnippet
+snippet d5l
+\\damagerankfivelow{${0}}
+endsnippet
+
+snippet d6
+\\damageranksix{${0}}
+endsnippet
+snippet d6h
+\\damageranksixhigh{${0}}
+endsnippet
+snippet d6l
+\\damageranksixlow{${0}}
+endsnippet
+
+snippet d7
+\\damagerankseven{${0}}
+endsnippet
+snippet d7h
+\\damageranksevenhigh{${0}}
+endsnippet
+snippet d7l
+\\damageranksevenlow{${0}}
+endsnippet
+
+snippet customability
+ActiveAbility::Custom(CustomAbility {
+	name: "${1:Name}".to_string(),
+	ability_type: AbilityType::Normal,
+	effect: r"
+		${0}
+	".to_string(),
+	is_magical: ${2:false},
+	tags: vec![],
+	usage_time: UsageTime::Standard,
+}),
+endsnippet
+
+snippet strikeability
+ActiveAbility::Strike(StrikeAbility {
+	name: "${1:Name}".to_string(),
+	effect: r"
+		${0}
+	".to_string(),
+	is_magical: ${2:false},
+	tags: vec![],
+	weapon: StandardWeapon::${3:WeaponName}.weapon(),
+}),
 endsnippet

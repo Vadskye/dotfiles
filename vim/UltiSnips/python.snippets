@@ -294,3 +294,25 @@ endsnippet
 snippet critremove
 \\\\crit As above, except that the condition must be removed twice before the effect ends.
 endsnippet
+
+snippet upgrade
+Upgrade(
+    description="""
+        ${1}
+    """,
+    rank=${2},
+    short_description="${3}",
+),
+endsnippet
+
+snippet upgrades
+upgrades=[
+    Upgrade(
+        description="""
+            ${1}
+        """,
+        rank=${2},
+        short_description="${3}",
+    ),
+],
+endsnippet
