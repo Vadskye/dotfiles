@@ -3,7 +3,6 @@
         let g:ackprg = 'ag --vimgrep --hidden'
     endif
     nnoremap ;s :Ack! ''<Left>
-    nnoremap ;S "zyiw:Ack! '\b<C-R>z\b'<CR>
     nnoremap ;g :Ack! '' %:p:h<Left><Left><Left><Left><Left><Left><Left>
     nnoremap ;G :Ack! --depth=0 '' %:p:h<Left><Left><Left><Left><Left><Left><Left>
 
