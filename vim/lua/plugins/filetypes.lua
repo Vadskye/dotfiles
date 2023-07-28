@@ -14,12 +14,8 @@ return {
         lazy = true,
 	    ft = {'javascript', 'javascript.jsx'},
     },
-    'mxw/vim-jsx', -- for: javascript doesn't work here
-    {
-        'udalov/kotlin-vim',
-        lazy = true,
-        ft = "kotlin",
-    },
+    'mxw/vim-jsx', -- ft: javascript doesn't work here
+    'udalov/kotlin-vim', -- ft=kotlin only loads this after a reload for some reason
     {
         'lervag/vimtex',
         lazy = true,
