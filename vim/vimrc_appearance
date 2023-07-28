@@ -25,10 +25,9 @@
       endif
     endif
 
-    " Change color scheme
-    " colo vibrantink this has weird highlighting
-    " colo blacksea
-    " colo jellybeans
+    " Color scheme has to be set in init.lua after the vimrc files are all
+    " loaded due to runtimepath nonsense. This just configures some of the
+    " details of jellybeans so that it's ready when we load it.
     let g:jellybeans_background_color = "000000"
     let g:jellybeans_background_color_256 = "000"
     if has('gui_running')
@@ -95,7 +94,6 @@
             \ 'VisualNOS': { 'ctermfg': 'Gray', 'ctermbg': g:bold},
         \ }
     endif
-    colo jellybeans
     " let g:jellybeans_use_lowcolor_black = 0
 
     " fix perl comment coloring

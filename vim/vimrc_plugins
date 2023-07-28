@@ -45,7 +45,7 @@
     let g:ale_fixers['swift'] = ['apple-swift-format']
     " This should be enabled only for particular directories
     let g:ale_fix_on_save = 0
-    nnoremap ;p :ALEFix<CR>
+    " nnoremap ;p :ALEFix<CR>
     let g:ale_set_loclist = 0
 
 " Airline:
