@@ -43,7 +43,7 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "vsnip" },
     { name = "path" },
-    { name = "buffer" },
+    { name = "buffer", keyword_length = 5 },
   },
 })
 
@@ -51,14 +51,7 @@ cmp.setup({
 -- Mostly taken from https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
 local lspconfig = require('lspconfig')
 
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
+function createStandardLspMappings(ev)
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
@@ -76,7 +69,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<space>f', function()
+    vim.keymap.set('n', ';p', function()
       vim.lsp.buf.format { async = true }
     end, opts)
 
@@ -88,6 +81,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local goto_error_opts = { severity = vim.diagnostic.severity.ERROR }
     vim.keymap.set('n', 'ge', function() vim.diagnostic.goto_next(goto_error_opts) end, opts)
     vim.keymap.set('n', 'gE', function() vim.diagnostic.goto_prev(goto_error_opts) end, opts)
+end
+
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    createStandardLspMappings(ev)
   end,
 })
 
