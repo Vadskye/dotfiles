@@ -32,7 +32,12 @@ vim.cmd("source " .. os.getenv("VIMRUNTIME") .. "/mswin.vim")
 -- modules
 vim.opt.runtimepath:append("$DOTFILES/vim")
 
-require("lazy").setup("plugins")
+require("lazy").setup({
+    spec = {
+        {import = "plugins"},
+        {import = "local_plugins"},
+    },
+})
 
 -- lazy resets the runtimepath so we have to add this back again
 vim.opt.runtimepath:append("$DOTFILES/vim,$DOTFILES/vim/after")
