@@ -83,11 +83,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
+    -- Go to warnings/errors
     vim.keymap.set('n', 'gw', vim.diagnostic.goto_next, opts)
     vim.keymap.set('n', 'gW', vim.diagnostic.goto_prev, opts)
     local goto_error_opts = { severity = vim.diagnostic.severity.ERROR }
     vim.keymap.set('n', 'ge', function() vim.diagnostic.goto_next(goto_error_opts) end, opts)
     vim.keymap.set('n', 'gE', function() vim.diagnostic.goto_prev(goto_error_opts) end, opts)
+
+    -- Format file
+    vim.keymap.set('n', ';p', function() vim.lsp.buf.format({async=true}) end, opts)
   end,
 })
 
