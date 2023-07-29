@@ -1,12 +1,7 @@
 return {
     {
          "junegunn/fzf.vim",
-         dependencies = {
-             "junegunn/fzf",
-             -- Note: You may need to update fzf with `cd ~/.fzf; git pull; ./install`.
-             build = "./install --all",
-             dir = "~/.fzf",
-         },
+         dependencies = "junegunn/fzf",
     },
     {
         'mileszs/ack.vim',
