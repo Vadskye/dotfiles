@@ -69,13 +69,12 @@ function createStandardLspMappings(ev)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', ';p', function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
+    vim.keymap.set('n', ';p', function() vim.lsp.buf.format({async=true}) end, opts)
 
     vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
+    -- Go to warnings/errors
     vim.keymap.set('n', 'gw', vim.diagnostic.goto_next, opts)
     vim.keymap.set('n', 'gW', vim.diagnostic.goto_prev, opts)
     local goto_error_opts = { severity = vim.diagnostic.severity.ERROR }
