@@ -50,6 +50,7 @@ cmp.setup({
 -- LSPCONFIG CONFIG
 -- Mostly taken from https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
 local lspconfig = require('lspconfig')
+lspconfig.tsserver.setup {}
 
 function createStandardLspMappings(ev)
     -- Buffer local mappings.
@@ -122,6 +123,9 @@ local opts = {
       -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
       ["rust-analyzer"] = {
         -- enable clippy on save
+        -- checkOnSave = {
+        --     command = "check",
+        -- },
         checkOnSave = {
           command = "clippy",
         },
