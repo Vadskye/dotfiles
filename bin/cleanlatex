@@ -9,3 +9,5 @@ rm *.log
 rm *.toc
 rm *.tmp
 rm *.xref
+rm *.out
+rm *.fls
