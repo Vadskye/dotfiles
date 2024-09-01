@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
 g rise
 cd core_book
-pdflatex Rise.tex
+pdflatex -interaction nonstopmode -halt-on-error -file-line-error Rise.tex
 rise
