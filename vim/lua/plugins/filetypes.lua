@@ -65,7 +65,9 @@ return {
     {
         'MunifTanjim/prettier.nvim',
         lazy = true,
-        ft = 'typescript',
+        -- TODO: this should be installed for more filetypes if I actually
+        -- interact with them.
+        ft = {'less', 'typescript'},
     },
     {
         'mustache/vim-mustache-handlebars',
