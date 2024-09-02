@@ -58,7 +58,12 @@ return {
         ft = "swift",
     },
     {
-        'leafgarland/typescript-vim',
+        'HerringtonDarkholme/yats.vim',
+        lazy = true,
+        ft = 'typescript',
+    },
+    {
+        'MunifTanjim/prettier.nvim',
         lazy = true,
         ft = 'typescript',
     },
