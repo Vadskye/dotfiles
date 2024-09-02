@@ -47,10 +47,31 @@ cmp.setup({
   },
 })
 
+-- Prettier
+local prettier = require('prettier')
+prettier.setup({
+  bin = 'prettierd',
+  filetypes = {
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+  },
+})
+
 -- LSPCONFIG CONFIG
 -- Mostly taken from https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
 local lspconfig = require('lspconfig')
-lspconfig.tsserver.setup {}
+lspconfig.tsserver.setup({})
+lspconfig.eslint.setup({})
 
 function createStandardLspMappings(ev)
     -- Buffer local mappings.
@@ -81,6 +102,9 @@ function createStandardLspMappings(ev)
     local goto_error_opts = { severity = vim.diagnostic.severity.ERROR }
     vim.keymap.set('n', 'ge', function() vim.diagnostic.goto_next(goto_error_opts) end, opts)
     vim.keymap.set('n', 'gE', function() vim.diagnostic.goto_prev(goto_error_opts) end, opts)
+
+    -- Format buffer
+    vim.keymap.set('n', ';p', vim.lsp.buf.format, opts)
 end
 
 
