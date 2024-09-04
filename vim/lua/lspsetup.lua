@@ -72,6 +72,15 @@ prettier.setup({
 local lspconfig = require('lspconfig')
 lspconfig.tsserver.setup({})
 lspconfig.eslint.setup({})
+lspconfig.texlab.setup({
+    settings = {
+        texlab = {
+            latexindent = {
+                ["local"] = os.getenv("DOTFILES") .. "/config/latexindent/indentconfig.yaml"
+            }
+        }
+    }
+})
 
 function createStandardLspMappings(ev)
     -- Buffer local mappings.
