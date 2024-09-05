@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/usr/bin/latexindent -c "$HOME/latexindent/" -l "$DOTFILES/config/latexindent/indentconfig.yaml" "$@"
