@@ -35,6 +35,9 @@ vim.opt.runtimepath:append("$DOTFILES/vim")
 require("lazy").setup({
     spec = {
         {import = "plugins"},
+        -- You'll need to add a `return {}` in
+        -- `~/.config/nvim/lua/local_plugins/empty.lua` if you don't have any
+        -- local plugins to add.
         {import = "local_plugins"},
     },
 })

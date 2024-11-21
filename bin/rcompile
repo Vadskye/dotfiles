@@ -2,13 +2,20 @@
 rgen
 g rise
 cd core_book
-pdflatex Rise.tex
-pdflatex Rise.tex
-pdflatex Rise.tex
-pdflatex Rise.tex
+pdflatex -interaction nonstopmode -file-line-error Rise.tex
+pdflatex -interaction nonstopmode -file-line-error Rise.tex
+pdflatex -interaction nonstopmode -file-line-error Rise.tex
+pdflatex -interaction nonstopmode -file-line-error Rise.tex
 
-pdflatex TomeOfGuidance.tex
-pdflatex TomeOfGuidance.tex
-pdflatex TomeOfGuidance.tex
-pdflatex TomeOfGuidance.tex
+pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
+pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
+pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
+pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
+
+cd ../tome_of_creation
+pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
+pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
+pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
+pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
+
 rtransfer

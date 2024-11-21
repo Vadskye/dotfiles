@@ -53,7 +53,7 @@
     endfunction
 
     function! EditFishBookmark(bookmark)
-        execute "edit " . system("fish -c 'g " . shellescape(a:bookmark) . "; pwd'")
+        execute "NERDTree " . trim(system("fish -c 'g " . shellescape(a:bookmark) . "; pwd'"))
     endfunction
 
 " Commands:

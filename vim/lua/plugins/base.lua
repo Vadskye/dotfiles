@@ -36,4 +36,5 @@ return {
         'Shougo/vimproc',
         build = 'make',
     },
+    'jose-elias-alvarez/null-ls.nvim'
 }

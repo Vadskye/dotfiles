@@ -58,9 +58,16 @@ return {
         ft = "swift",
     },
     {
-        'leafgarland/typescript-vim',
+        'HerringtonDarkholme/yats.vim',
         lazy = true,
         ft = 'typescript',
+    },
+    {
+        'MunifTanjim/prettier.nvim',
+        lazy = true,
+        -- TODO: this should be installed for more filetypes if I actually
+        -- interact with them.
+        ft = {'less', 'typescript'},
     },
     {
         'mustache/vim-mustache-handlebars',
