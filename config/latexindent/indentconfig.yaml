@@ -257,6 +257,7 @@ itemNames:
   item: 1
   myitem: 1
   itemhead: 1
+  magicalitemhead: 1
 
 # specialBeginEnd is, by default, mathmode focus, although
 # there's no restrictions
@@ -313,6 +314,21 @@ indentAfterHeadings:
   cf:
     indentAfterThisHeading: 1
     level: 3
+  sectiongraphic:
+    indentAfterThisHeading: 1
+    level: 1
+  subsectiongraphic:
+    indentAfterThisHeading: 1
+    level: 2
+  subsubsectiongraphic:
+    indentAfterThisHeading: 1
+    level: 3
+  skill:
+    indentAfterThisHeading: 1
+    level: 1
+  newpage:
+    indentAfterThisHeading: 1
+    level: 1
 
 # maximum indentation, off by default
 maximumIndentation: -1

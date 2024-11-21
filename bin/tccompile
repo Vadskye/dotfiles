@@ -1,0 +1,5 @@
+#!/usr/bin/env fish
+g rise
+cd tome_of_creation
+pdflatex TomeOfCreation.tex
+tog

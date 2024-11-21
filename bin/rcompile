@@ -11,4 +11,11 @@ pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
 pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
 pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
 pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
+
+cd ../tome_of_creation
+pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
+pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
+pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
+pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
+
 rtransfer
