@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 # Generate only the Typescript code, which is faster
 g rts
-npx tsc --incremental
+npx tsc --incremental; or exit 1
 npm run script -- src/scripts/generate_latex.js -t mystic_sphere_lists -o ../core_book/generated/mystic_sphere_lists.tex
 npm run script -- src/scripts/generate_latex.js -t mystic_sphere_summaries -o ../core_book/generated/mystic_sphere_summaries.tex
 npm run script -- src/scripts/generate_latex.js -t mystic_sphere_descriptions -o ../core_book/generated/mystic_sphere_descriptions.tex
