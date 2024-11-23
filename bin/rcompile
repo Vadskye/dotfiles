@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 rgen
-g rise
+g rise; or exit 1
 cd core_book
 pdflatex -interaction nonstopmode -file-line-error Rise.tex
 pdflatex -interaction nonstopmode -file-line-error Rise.tex
