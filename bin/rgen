@@ -6,7 +6,6 @@ g utransfer; or set has_art 0
 cd "Rise Art"; or set has_art 0
 
 if [ "$has_art" -eq "1" ]
-then
     g rise
     # Remove existing image files
     for dir in lib/images/*
