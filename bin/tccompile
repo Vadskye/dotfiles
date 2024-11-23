@@ -1,5 +1,4 @@
 #!/usr/bin/env fish
 g rise
 cd tome_of_creation
-latexrun TomeOfCreation.tex
-tog
+latexrun TomeOfCreation.tex; and toc

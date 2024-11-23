@@ -2,20 +2,11 @@
 rgen
 g rise; or exit 1
 cd core_book
-pdflatex -interaction nonstopmode -file-line-error Rise.tex
-pdflatex -interaction nonstopmode -file-line-error Rise.tex
-pdflatex -interaction nonstopmode -file-line-error Rise.tex
-pdflatex -interaction nonstopmode -file-line-error Rise.tex
+latexrun Rise.tex
 
-pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
-pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
-pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
-pdflatex -interaction nonstopmode -file-line-error TomeOfGuidance.tex
+latexrun TomeOfGuidance.tex
 
 cd ../tome_of_creation
-pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
-pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
-pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
-pdflatex -interaction nonstopmode -file-line-error TomeOfCreation.tex
+latexrun TomeOfCreation.tex
 
 rtransfer

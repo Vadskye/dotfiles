@@ -1,5 +1,4 @@
 #!/usr/bin/env fish
 g rise
 cd core_book
-pdflatex TomeOfGuidance.tex
-tog
+latexrun TomeOfGuidance.tex; and tog
