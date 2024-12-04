@@ -314,6 +314,9 @@ indentAfterHeadings:
   cf:
     indentAfterThisHeading: 1
     level: 3
+  magicalcf:
+    indentAfterThisHeading: 1
+    level: 3
   sectiongraphic:
     indentAfterThisHeading: 1
     level: 1
