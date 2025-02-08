@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+rcompile
+rhtml
+g rise
+cd html_book
+latexrun Omnibook.tex

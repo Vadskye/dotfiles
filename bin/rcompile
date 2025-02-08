@@ -6,7 +6,7 @@ latexrun Rise.tex
 
 latexrun TomeOfGuidance.tex
 
-cd ../tome_of_creation
-latexrun TomeOfCreation.tex
+cd ../comprehensive_codex
+latexrun ComprehensiveCodex.tex
 
 rtransfer
