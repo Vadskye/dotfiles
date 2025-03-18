@@ -4,3 +4,4 @@ rhtml
 g rise
 cd html_book
 latexrun Omnibook.tex
+cp Omnibook.pdf (p utransfer)
