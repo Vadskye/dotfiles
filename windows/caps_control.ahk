@@ -108,6 +108,31 @@ CapsLock & Space::
     Send,_
 return
 
+;CapsLock & y::
+;    Send,!^y
+;return
+
+; automove in poe
+; $ as a prefix means "only if the key was actually pushed on the keyboard"
+;+Space::
+; 	if WinActive("ahk_exe PathOfExileSteam.exe") or WinActive("ahk_exe Diablo IV.exe") or WinActive("ahk_exe Last Epoch.exe")
+;		Send,{Click Down}
+;	else
+;		Send,{Space}
+;return
+
+; autoflask in poe
+; $ as a prefix means "only if the key was actually pushed on the keyboard"
+;+RButton::
+;	if WinActive("ahk_exe PathOfExileSteam.exe") or WinActive("ahk_exe Diablo IV.exe") {
+;		Send,q
+;               Sleep, 10
+;                Send, e
+;                Sleep, 10
+;	} else
+;		Send,{RButton}
+;return
+
 CapsLock & 1:: Send, #1
 CapsLock & 2:: Send, #2
 CapsLock & 3:: Send, #3
@@ -216,13 +241,15 @@ CapsLock & '::
 return
 +Esc::~
 
-;rename in TTS
-CapsLock & R::
+; rename in TTS for Sentinels cards
+; this version is for only a single card
+CapsLock & S::
 	BlockInput, On
-	Click, 0, 0, Right, Relative
+	Click, 0, 0, Right, Up, Relative
 	Sleep, 50
-	MouseMove, 125, 9999, 0, R
-	MouseMove, 0, -45, 0, R
+	Click, 0, 0, Right, Relative
+	Sleep, 300
+	MouseMove, 109, 827, 0, R
 	Sleep, 200
 	Click, 0, 0, Relative
 	Sleep, 50
@@ -230,7 +257,22 @@ CapsLock & R::
 	BlockInput, Off
 return
 
-;apply deck backd in MPC
+; this version is for having multiple cards selected
+CapsLock & R::
+	BlockInput, On
+	Click, 0, 0, Right, Up, Relative
+	Sleep, 50
+	Click, 0, 0, Right, Relative
+	Sleep, 300
+	MouseMove, 109, 932, 0, R
+	Sleep, 200
+	Click, 0, 0, Relative
+	Sleep, 50
+	Send, {Home}
+	BlockInput, Off
+return
+
+;apply deck back in MPC
 CapsLock & D::
 	WinActivate, Playing Card - Google Chrome ahk_class Chrome_WidgetWin_1
 	Click, 1152, 419, 0
@@ -570,3 +612,33 @@ CapsLock & D::
 	Sleep, 50
 	Send, {Down}{Down}{Down}{Down}{Down}{Down}
 return
+
+; WheelDown::
+; 	if WinActive("ahk_exe PathOfExileSteam.exe")
+; 		send {lbutton down}{lbutton up}
+; 	else
+; 		send {WheelDown}
+; 	return
+; WheelUp::
+; 	if WinActive("ahk_exe PathOfExileSteam.exe")
+; 		send {lbutton down}{lbutton up}
+; 	else
+; 		send {WheelUp}
+;	return
+
+;LAlt & WheelDown::
+;	send {WheelDown}
+;	return
+;LAlt & WheelUp::
+;	send {WheelUp}
+;	return
+
+; +WheelUp::
+; +WheelDown::
+; Loop, 4
+; {
+; Send {lbutton down}
+; Sleep, 100
+; Send {lbutton up}
+; }
+; return
