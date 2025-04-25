@@ -26,7 +26,7 @@ for _, suffix in pairs({"basic", "remappings", "appearance", "command_management
     sourceVimrcFile(suffix)
 end
 
-vim.cmd("source " .. os.getenv("VIMRUNTIME") .. "/mswin.vim")
+vim.cmd("source " .. os.getenv("DOTFILES") .. "/vim/mswin.vim")
 
 -- Lazy needs $DOTFILES/vim to be in the runtimepath to load the "plugins" lua
 -- modules
