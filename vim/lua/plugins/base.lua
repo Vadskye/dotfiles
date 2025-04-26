@@ -36,5 +36,12 @@ return {
         'Shougo/vimproc',
         build = 'make',
     },
-    'jose-elias-alvarez/null-ls.nvim'
+    'jose-elias-alvarez/null-ls.nvim',
+    -- 'rebelot/kanagawa.nvim',
+    {
+        'projekt0n/github-nvim-theme',
+        name = 'github-theme',
+        lazy = false,
+        priority = 1000, -- make sure to load this before all the other start plugins
+    }
 }

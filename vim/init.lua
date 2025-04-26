@@ -47,7 +47,11 @@ vim.opt.runtimepath:append("$DOTFILES/vim,$DOTFILES/vim/after")
 
 vim.cmd [[
 
-colo jellybeans
+" colo jellybeans
+" colo github_dark_default
+colo github_dark_high_contrast
+" colo kanagawa
+" colo kanagawa-dragon
 
 " This fixes some mappings on Linux
 noremap Ã <C-d>zz
