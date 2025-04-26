@@ -70,7 +70,11 @@ prettier.setup({
 -- LSPCONFIG CONFIG
 -- Mostly taken from https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
 local lspconfig = require('lspconfig')
-lspconfig.ts_ls.setup({})
+
+-- In neovim 0.11, tsserver is renamed to ts_ls
+lspconfig.tsserver.setup({})
+-- lspconfig.ts_ls.setup({})
+
 lspconfig.eslint.setup({})
 lspconfig.texlab.setup({
     settings = {
