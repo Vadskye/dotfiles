@@ -19,7 +19,7 @@ return {
     -- Snippet engine
     'hrsh7th/vim-vsnip',
     -- Adds extra functionality for rust analyzer
-    "simrat39/rust-tools.nvim",
+    "mrcjkb/rustaceanvim",
 
     -- Optional
     "nvim-lua/popup.nvim",

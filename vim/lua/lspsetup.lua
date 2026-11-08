@@ -69,14 +69,26 @@ prettier.setup({
 
 -- LSPCONFIG CONFIG
 -- Mostly taken from https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
-local lspconfig = require('lspconfig')
+
+-- this was the syntax before nvim 0.11
+-- local lspconfig = require('lspconfig')
 
 -- In neovim 0.11, tsserver is renamed to ts_ls
-lspconfig.tsserver.setup({})
+-- lspconfig.tsserver.setup({})
+-- lspconfig was deprecated too
 -- lspconfig.ts_ls.setup({})
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+vim.lsp.config('ts_ls', {
+    cmd = {'typescript-language-server', '--stdio'},
+    filetypes = { 'typescript' },
+    -- capabilities = capabilities,
+})
+vim.lsp.enable('ts_ls')
 
-lspconfig.eslint.setup({})
-lspconfig.texlab.setup({
+vim.lsp.enable('basedpyright')
+
+vim.lsp.config('eslint', {})
+vim.lsp.config('texlab', {
     settings = {
         texlab = {
             latexindent = {
@@ -170,5 +182,3 @@ local opts = {
     },
   },
 }
-
-require("rust-tools").setup(opts)
